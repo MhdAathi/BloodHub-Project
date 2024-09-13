@@ -3,9 +3,24 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
+                        </a>
+                        
+                        <a class="nav-link" href="viewregister.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Users
+                        </a>
+
+                        <a class="nav-link" href="blood_requests.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-request"></i></div>
+                            Blood Requests
+                        </a>
+
+                        <a class="nav-link" href="donor_history.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Donor History
                         </a>
                         <div class="sb-sidenav-menu-heading">Interface</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -50,11 +65,7 @@
                                 </div>
                             </nav>
                         </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
+                        
                         <a class="nav-link" href="tables.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables

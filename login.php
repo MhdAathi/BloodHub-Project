@@ -174,6 +174,7 @@ include('includes/navbar.php');
             <h4>Login to <a class="navbar-brand" href="#"><span class="text-danger">Blood</span>Hub</a></h4>
         </div>
         <div class="card-body">
+            
             <?php include('message.php'); ?>
 
             <form action="logincode.php" method="POST">

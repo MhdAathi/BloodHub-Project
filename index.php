@@ -6,24 +6,65 @@ include('includes/navbar.php');
 ?>
 
 <style>
+    /* Import Montserrat Font */
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
+    /* Global Styles */
     * {
         font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     body {
-        background: #f1fbff;
+        background-color: #f1fbff;
     }
+
+    h2 {
+        font-size: 35px;
+        font-weight: 600;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
 
     .section-padding {
         padding: 25px 0;
     }
 
-    /* carousel */
+    /* Carousel Styles */
     .carousel-item {
         height: 75vh;
         min-height: 100px;
+
+    }
+
+    /* Carousel Image Styles */
+    .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .carousel-inner::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1;
     }
 
     .carousel-caption {
@@ -45,20 +86,7 @@ include('includes/navbar.php');
         line-height: 1.9;
     }
 
-    .carousel-inner:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 1;
-    }
-
-    /* carousel */
-    /* about-card */
-
+    /* About Card Styles */
     .about_card {
         background-color: #f7f7f7;
         padding: 20px;
@@ -74,7 +102,6 @@ include('includes/navbar.php');
         color: #333;
         font-weight: bold;
         margin-bottom: 10px;
-
     }
 
     .about_card img {
@@ -90,15 +117,9 @@ include('includes/navbar.php');
         color: #666;
         font-size: 14px;
         margin-bottom: 20px;
-        overflow: hidden;
-        /* Hide overflow text */
         text-overflow: ellipsis;
-        /* Indicate overflow with ellipsis */
-        white-space: wrap;
-
     }
 
-    /* about-card */
     /* CTA Section */
     .cta-section {
         color: #fff;
@@ -123,70 +144,91 @@ include('includes/navbar.php');
     .cta-buttons {
         display: flex;
         justify-content: center;
-        gap: 150px;
+        gap: 50px;
+        /* Reduced gap for better spacing */
         flex-wrap: wrap;
     }
 
     .cta-buttons .cta-request,
     .cta-buttons .cta-donate {
-        background: #fff;
+        background-color: #fff;
         color: #333;
-        padding: 20px 30px;
-        border-radius: 8px;
-        text-align: left;
+        padding: 20px;
+        border-radius: 10px;
+        /* Increased border radius for a softer look */
         width: 300px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        overflow: hidden;
+        /* Ensures content doesn’t overflow */
     }
 
     .cta-buttons .cta-request:hover,
     .cta-buttons .cta-donate:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-8px);
+        /* Increased hover lift effect */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        /* Enhanced shadow on hover */
     }
 
     .cta-buttons img {
         display: block;
-        margin: 0 auto 15px auto;
-        /* Center the image horizontally and add bottom margin */
-        width: 100px;
-        /* Set a fixed width */
-        height: 100px;
-        /* Set a fixed height */
+        margin: 0 auto 15px;
+        width: 80px;
+        /* Reduced image size */
+        height: 80px;
+        /* Reduced image size */
         object-fit: contain;
     }
 
     .cta-buttons h3 {
         text-transform: uppercase;
-        text-align: center;
-        font-size: 20px;
+        font-size: 22px;
+        /* Slightly increased font size */
         margin-bottom: 15px;
     }
 
     .cta-buttons p {
         font-size: 16px;
-        line-height: 1.5;
+        line-height: 1.6;
+        /* Increased line height for better readability */
         margin-bottom: 20px;
     }
 
-    .cta-buttons .btn {
+    .cta-buttons .btn .a {
         display: block;
         margin: 0 auto;
-        font-size: 13px;
+        font-size: 14px;
+        /* Slightly increased font size */
         font-weight: 500;
+        /* Increased font weight */
         text-transform: uppercase;
         color: #fff;
-        padding: 7px 14px;
+        padding: 05px 10px;
+        /* Increased padding for better button appearance */
         border-radius: 5px;
         text-decoration: none;
+        transition: background-color 0.3s ease;
+        /* Smooth transition for background color */
+    }
+
+    .cta-buttons .btn-success {
+        background-color: #28a745;
+        /* Custom green color for success */
+    }
+
+    .cta-buttons .btn-danger {
+        background-color: #dc3545;
+        /* Custom red color for danger */
     }
 
     .cta-buttons .btn:hover {
-        background: #535353;
+        background-color: #333;
+        /* Darker background color on hover */
     }
 
-    /* CTA Section */
-
+    /* Media Queries */
     @media only screen and (min-width: 768px) and (max-width: 991px) {
         .carousel-caption {
             bottom: 370px;
@@ -194,10 +236,6 @@ include('includes/navbar.php');
 
         .carousel-caption p {
             width: 100%;
-        }
-
-        .card {
-            margin-bottom: 30px;
         }
 
         .img-area img {
@@ -218,11 +256,6 @@ include('includes/navbar.php');
             font-size: 17px;
         }
 
-        .carousel-caption a {
-            padding: 10px 15px;
-            font-size: 15px;
-        }
-
         .carousel-caption p {
             width: 100%;
             line-height: 1.6;
@@ -238,6 +271,7 @@ include('includes/navbar.php');
         }
     }
 </style>
+
 
 <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
     <div class="carousel-indicators">
@@ -286,7 +320,7 @@ include('includes/navbar.php');
             </div>
             <div class="col-lg-8 col-md-12 col-12 ps-lg-5">
                 <div class="about-text">
-                    <h2 class="font-weight-bold mb-3 text-uppercase">Providing Life-Saving Quality Services</h2>
+                    <h3 class="font-weight-bold mb-3 text-uppercase">Providing Life-Saving Quality Services</h3>
                     <p>At BloodHub, we are committed to offering exceptional services that truly make an impact. Whether you urgently need blood or wish to donate and save lives, our platform is designed to support you in every possible way. <span style="color:red; font-weight:500"> Join us in our mission to ensure that no one is left without the essential care they deserve.</span></p>
                     <p class="mt-3">Our dedication to excellence goes beyond just fulfilling blood requests.<span style="color:red; font-weight:500"> We prioritize safety, reliability, and efficiency</span> in every aspect of our service. Together, we can create a healthier, more supportive community where everyone plays a part in saving lives.</p>
                     <h3 class="mt-5">BLOOD GROUPS</h3>
@@ -343,50 +377,6 @@ include('includes/navbar.php');
 </section>
 <!-- end about card section -->
 
-<!-- portfolio starts -->
-<section class="portfolio section-padding" id="portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-header text-center pb-3">
-                    <h2>Our Projects</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur<br>
-                        adipisicing elit. Non, quo.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-12 col-lg-4">
-                <div class="card text-light text-center bg-white pb-2">
-                    <div class="card-body text-dark">
-                        <div class="img-area mb-4"><img alt="" class="img-fluid" src="img/project-1.jpg"></div>
-                        <h3 class="card-title">Building Make</h3>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p><button class="btn bg-warning text-dark">Learn More</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <div class="card text-light text-center bg-white pb-2">
-                    <div class="card-body text-dark">
-                        <div class="img-area mb-4"><img alt="" class="img-fluid" src="img/project-2.jpg"></div>
-                        <h3 class="card-title">Building Make</h3>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p><button class="btn bg-warning text-dark">learn More</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <div class="card text-light text-center bg-white pb-2">
-                    <div class="card-body text-dark">
-                        <div class="img-area mb-4"><img alt="" class="img-fluid" src="img/project-3.jpg"></div>
-                        <h3 class="card-title">Building Make</h3>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eligendi modi temporibus alias iste. Accusantium?</p><button class="btn bg-warning text-dark">Learn More</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!-- portfolio ends -->
-
 <!-- Contact starts -->
 <section class="contact section-padding" id="contact">
     <div class="container">
@@ -394,7 +384,7 @@ include('includes/navbar.php');
             <div class="col-md-12">
                 <div class="section-header text-center pb-3">
                     <h2>Contact Us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, quo.</p>
+                    <p>If you have any questions or need assistance, Contact us today and let us know how we can assist you!</p>
                 </div>
             </div>
         </div>
@@ -443,7 +433,7 @@ include('includes/navbar.php');
                 <img src="assets/images/request-icon.jpg" alt="Request Blood">
                 <h3>Request Blood</h3>
                 <p>Need blood urgently? Submit a request and get help from our community.</p>
-                <button class="btn btn-success align-items-center">Request Blood</button>
+                <a href="request-blood.php" class="btn btn-success align-items-center">Request Blood</a>
                 <p class="mt-2"><em>Over 500 requests fulfilled last month.</em></p>
             </div>
 
@@ -451,14 +441,13 @@ include('includes/navbar.php');
                 <img src="assets/images/donate-icon.jpg" alt="Donate Blood">
                 <h3>Donate Blood</h3>
                 <p>Become a hero by donating blood. Your single donation can save up to three lives.</p>
-                <button class="btn btn-danger">Donate Blood</button>
+                <a href="donate-blood.php" class="btn btn-danger">Donate Blood</a>
                 <p class="mt-2"><em>Join 10,000+ donors already making a difference.</em></p>
             </div>
         </div>
     </div>
 </section>
 <!-- end donate section -->
-
 
 <?php
 include('includes/footer.php');
