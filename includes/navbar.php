@@ -130,7 +130,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">My Profile</a></li>
                             <li>
-                                <form action="allcode.php" method="POST">
+                                <form action="all_code.php" method="POST">
                                     <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
                                 </form>
                             </li>

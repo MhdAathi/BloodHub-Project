@@ -1,7 +1,7 @@
 <?php
 include('includes/header.php');
 include('includes/navbar.php');
-include('config/dbcon.php'); // Make sure to include your DB connection file
+include('config/dbcon.php'); // Ensure your DB connection file is included
 
 // Check if 'id' is present in the query string
 if (isset($_GET['id'])) {
@@ -17,12 +17,14 @@ if (isset($_GET['id'])) {
     if ($result->num_rows > 0) {
         $donor = $result->fetch_assoc();
     } else {
-        // Handle case where no donor is found
-        die("Donor not found.");
+        // Redirect or show a user-friendly message if donor not found
+        echo '<div class="alert alert-danger">Donor not found.</div>';
+        exit();
     }
 } else {
-    // Handle case where 'id' is not present
-    die("No donor ID provided.");
+    // Redirect or show a user-friendly message if no donor ID provided
+    echo '<div class="alert alert-warning">No donor ID provided.</div>';
+    exit();
 }
 ?>
 
@@ -36,7 +38,7 @@ if (isset($_GET['id'])) {
     <div class="row">
         <div class="col-md-12">
             <!-- Show session messages -->
-            <?php include('C:\xampp\htdocs\bb\message.php'); ?>
+            <?php include('C:/xampp/htdocs/bb/message.php'); ?>
 
             <div class="card">
                 <div class="card-header">
@@ -48,7 +50,8 @@ if (isset($_GET['id'])) {
 
                         <div class="form-group mb-3">
                             <label for="scheduled_date">Scheduled Date:</label>
-                            <input type="date" id="scheduled_date" name="scheduled_date" class="form-control" required>
+                            <input type="date" id="scheduled_date" name="scheduled_date" class="form-control" required
+                                min="<?= date('Y-m-d'); ?>"> <!-- Prevent past date -->
                         </div>
 
                         <div class="form-group mb-3">
@@ -58,7 +61,12 @@ if (isset($_GET['id'])) {
 
                         <div class="form-group mb-3">
                             <label for="location">Location:</label>
-                            <input type="text" id="location" name="location" class="form-control" required>
+                            <select id="location" name="location" class="form-control" required>
+                                <option value="" disabled selected>Select a Location</option>
+                                <option value="Center 1">Donation Center 1</option>
+                                <option value="Center 2">Donation Center 2</option>
+                                <!-- Add more locations as needed -->
+                            </select>
                         </div>
 
                         <button type="submit" name="schedule_btn" class="btn btn-primary mt-2">Schedule Donation</button>
