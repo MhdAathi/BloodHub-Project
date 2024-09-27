@@ -10,7 +10,7 @@ include('includes/navbar.php');
     .form-section {
         padding: 40px 0;
         /* Padding for top and bottom */
-        background-color: #f9f9f9;
+        background-color: #ecebf3;
         /* Light background color for the section */
     }
 
@@ -30,6 +30,7 @@ include('includes/navbar.php');
     }
 
     .form-wrapper h2 {
+        text-transform: uppercase;
         text-align: center;
         /* Center align the heading */
         margin-bottom: 20px;

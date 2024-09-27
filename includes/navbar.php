@@ -1,7 +1,7 @@
 <style>
     /* Navbar */
     .navbar {
-        background-color: #ffffff;
+        background-color: #fff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         
     }
@@ -17,7 +17,7 @@
 
     .navbar .navbar-brand:focus,
     .navbar .navbar-brand:hover {
-        color: #106eea; 
+        color: #C20114; 
     }
 
     .navbar .navbar-nav .nav-link {
@@ -32,7 +32,7 @@
 
     .navbar .navbar-nav .nav-link:focus,
     .navbar .navbar-nav .nav-link:hover {
-        color: #ea1410;
+        color: #C20114;
     }
 
     /* Underline animation on hover */
@@ -41,7 +41,7 @@
         display: block;
         width: 0;
         height: 2px;
-        background: #ea1410;
+        background: #C20114;
         transition: width 0.3s;
         position: absolute;
         bottom: -5px;
@@ -54,7 +54,7 @@
 
     /* Get Started Button */
     .navbar .getstarted {
-        background: linear-gradient(90deg, #106eea, #54b4eb);
+        background: linear-gradient(90deg, #C20114, #a0153e);
         margin-left: 30px;
         border-radius: 30px;
         font-weight: 600;
@@ -66,7 +66,7 @@
     }
 
     .navbar .getstarted:hover {
-        background: linear-gradient(90deg, #54b4eb, #106eea);
+        background: linear-gradient(90deg, #a0153e, #C20114);
         box-shadow: 0 8px 15px rgba(16, 110, 234, 0.2);
     }
 
@@ -74,7 +74,7 @@
     .navbar-toggler {
         padding: 8px 10px;
         font-size: 18px;
-        background: #ea1410;
+        background: #0C120C;
         color: #fff;
         border: none;
         transition: background 0.3s ease;
@@ -82,7 +82,7 @@
 
     .navbar-toggler:focus,
     .navbar-toggler:hover {
-        background: #54b4eb;
+        background: #fff;
     }
 
     .w-100 {

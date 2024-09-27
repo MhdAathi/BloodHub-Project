@@ -42,11 +42,12 @@ if (isset($_POST['add_blood'])) {
     $blood_type = $_POST['blood_type'];
     $collection_date = $_POST['collection_date'];
     $expiry_date = $_POST['expiry_date'];
+    $donor_name = $donor['donor_name']; // Fetch donor name
 
     // Insert blood details into the blood_inventory table
     $insert_query = "INSERT INTO blood_inventory 
-                     (blood_type, blood_quantity, collection_date, expiry_date, donor_id) 
-                     VALUES ('$blood_type', '$blood_quantity', '$collection_date', '$expiry_date', '$donor_id')";
+                     (blood_type, blood_quantity, collection_date, expiry_date, donor_id, donor_name) 
+                     VALUES ('$blood_type', '$blood_quantity', '$collection_date', '$expiry_date', '$donor_id', '$donor_name')";
 
     $insert_query_run = mysqli_query($con, $insert_query);
 
@@ -66,6 +67,7 @@ if (isset($_POST['add_blood'])) {
         $_SESSION['message'] = "Failed to add blood details!";
     }
 }
+
 
 // Retrieve the scheduled date from the donation_schedule table
 $query = "SELECT scheduled_date FROM donation_schedule WHERE donor_id = '$donor_id'";

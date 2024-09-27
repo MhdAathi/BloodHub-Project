@@ -6,6 +6,7 @@ include('includes/navbar.php');
 ?>
 
 <style>
+    /* Main*/
     /* Import Montserrat Font */
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
@@ -18,13 +19,14 @@ include('includes/navbar.php');
     }
 
     body {
-        background-color: #f1fbff;
+        background-color: #ecebf3;
     }
 
     h2 {
         font-size: 35px;
         font-weight: 600;
-        color: #333;
+        color: #0C120C;
+        /* Neutral color */
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 20px;
@@ -35,18 +37,20 @@ include('includes/navbar.php');
         font-size: 16px;
         line-height: 1.5;
         margin-bottom: 20px;
+        color: #0C120C;
+        /* Neutral color */
     }
-
 
     .section-padding {
         padding: 25px 0;
     }
 
+    /* Main End*/
+
     /* Carousel Styles */
     .carousel-item {
         height: 75vh;
         min-height: 100px;
-
     }
 
     /* Carousel Image Styles */
@@ -63,7 +67,8 @@ include('includes/navbar.php');
         height: 100%;
         top: 0;
         left: 0;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(12, 18, 12, 0.7);
+        /* Neutral color with transparency */
         z-index: 1;
     }
 
@@ -77,6 +82,8 @@ include('includes/navbar.php');
         text-transform: uppercase;
         letter-spacing: 2px;
         margin-top: 25px;
+        color: #ecebf3;
+        /* Primary color */
     }
 
     .carousel-caption p {
@@ -84,58 +91,299 @@ include('includes/navbar.php');
         margin: auto;
         font-size: 18px;
         line-height: 1.9;
+        color: #ecebf3;
+        /* Primary color */
     }
+
+    /* Carousel Styles End*/
+
+    /* About Section Styles */
+    .about {
+        background-color: #ecebf3;
+        /* Primary color */
+        padding: 30px 0;
+        /* Padding for top and bottom */
+    }
+
+    .about .section-header h2 {
+        color: #0C120C;
+        /* Neutral color */
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .about .section-header p {
+        color: #0C120C;
+        /* Neutral color */
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .about-img {
+        display: flex;
+        justify-content: center;
+        /* Center the image */
+    }
+
+    .about-img img {
+        max-width: 100%;
+        /* Ensure responsiveness */
+        width: 100%;
+        /* Make image width 100% of the column */
+        height: auto;
+        /* Maintain aspect ratio */
+        border-radius: 10px;
+        /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow for the image */
+    }
+
+    .about-text {
+        color: #0C120C;
+        /* Neutral color */
+        margin-bottom: 10px;
+    }
+
+    .about-text h3 {
+        font-weight: bold;
+        margin-top: 30px;
+        /* Margin above */
+        color: #0C120C;
+        /* Secondary color */
+    }
+
+    .about-text p {
+        font-size: 18px;
+        /* Text size */
+        line-height: 1.6;
+        /* Line height for readability */
+    }
+
+    .about-text ul {
+        margin-top: 15px;
+        /* Space above the list */
+        padding-left: 20px;
+        /* Padding for the list */
+    }
+
+    .about-text a {
+        background-color: #C20114;
+        /* Secondary color for the button */
+        color: #fff;
+        /* White text for the button */
+        padding: 10px;
+        /* Padding for the button */
+        border: none;
+        /* No border */
+        border-radius: 5px;
+        /* Rounded corners for the button */
+        transition: background-color 0.3s ease;
+        /* Smooth transition */
+        font-size: 16px;
+        /* Consistent font size */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+    }
+
+    .about-text a:hover {
+        background-color: #a0153e;
+        /* Darken button on hover */
+    }
+
+    /* About End*/
 
     /* About Card Styles */
     .about_card {
-        background-color: #f7f7f7;
-        padding: 20px;
-        border: 1px solid #ddd;
+        background-color: #fff;
+        /* Primary color */
+        padding: 5px;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         margin: 20px;
         height: 100%;
         overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        /* Center content like in CTA */
+    }
+
+    .about_card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     .about_card h3 {
-        color: #333;
+        color: #0C120C;
+        /* Neutral color */
         font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .about_card p {
+        color: #0C120C;
+        /* Neutral color */
+        font-size: 16px;
         margin-bottom: 10px;
     }
 
     .about_card img {
         margin: 0 auto;
         display: block;
-        width: 30%;
-        height: auto;
-        object-fit: cover;
+        width: 100px;
+        /* Adjusted for consistency */
+        height: 100px;
+        /* Adjusted for consistency */
+        object-fit: contain;
         border-radius: 10px 10px 0 0;
     }
 
-    .about_card p {
-        color: #666;
-        font-size: 14px;
-        margin-bottom: 20px;
-        text-overflow: ellipsis;
+    /* About Card Styles */
+
+    /* Contact Section Styles */
+    .contact {
+        background-color: #ecebf3;
+        /* Primary color */
+        padding: 30px 0;
+        /* Padding for top and bottom */
+        text-align: center;
+        /* Centered text */
     }
+
+    .contact h2 {
+        color: #0C120C;
+        /* Neutral color */
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .contact p {
+        color: #0C120C;
+        /* Neutral color */
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .contact .row {
+        display: flex;
+        /* Use flex for proper alignment */
+    }
+
+    .contact img {
+        max-width: 100%;
+        /* Ensure responsiveness */
+        width: 100%;
+        /* Make image width 100% of the column */
+        height: auto;
+        /* Maintain aspect ratio */
+        border-radius: 10px;
+        /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow for the image */
+    }
+
+    .contact .contact-image {
+        width: 100%;
+        /* Set image width */
+        height: auto;
+        /* Maintain aspect ratio */
+    }
+
+    .contact form {
+        background-color: #fff;
+        /* Background color for the form */
+        padding: 30px;
+        /* Padding inside the form */
+        border-radius: 10px;
+        /* Rounded corners for the form */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow for the form */
+        display: flex;
+        /* Use flex for full height */
+        flex-direction: column;
+        /* Stack elements vertically */
+        justify-content: space-between;
+        /* Distribute space between elements */
+        height: 100%;
+        /* Full height of parent */
+    }
+
+    .contact .form-group {
+        margin-bottom: 15px;
+        /* Space between inputs */
+    }
+
+    .contact input,
+    .contact textarea {
+        border: 1px solid #ccc;
+        /* Border for inputs */
+        border-radius: 5px;
+        /* Rounded corners for inputs */
+        padding: 10px;
+        /* Padding for inputs */
+        font-size: 16px;
+        /* Consistent font size */
+        transition: border-color 0.3s;
+        /* Smooth transition for border color */
+        width: 100%;
+        /* Full width */
+    }
+
+    .contact input:focus,
+    .contact textarea:focus {
+        border-color: #C20114;
+        /* Highlight border on focus */
+        outline: none;
+        /* Remove default outline */
+    }
+
+    .contact button {
+        background-color: #C20114;
+        /* Secondary color for the button */
+        color: #fff;
+        /* White text for the button */
+        padding: 10px;
+        /* Padding for the button */
+        border: none;
+        /* No border */
+        border-radius: 5px;
+        /* Rounded corners for the button */
+        transition: background-color 0.3s ease;
+        /* Smooth transition */
+        font-size: 16px;
+        /* Consistent font size */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+    }
+
+    .contact button:hover {
+        background-color: #a0153e;
+        /* Darken button on hover */
+    }
+
+    /* Contact Styles End */
 
     /* CTA Section */
     .cta-section {
-        color: #fff;
-        padding: 60px 0;
+        color: #ecebf3;
+        /* Primary color */
+        padding: 30px 0;
         text-align: center;
     }
 
     .cta-section h2 {
-        color: #333;
+        color: #0C120C;
+        /* Secondary color */
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 20px;
     }
 
     .cta-section p {
-        color: #333;
+        color: #0C120C;
+        /* Neutral color */
         font-size: 18px;
         margin-bottom: 40px;
         line-height: 1.6;
@@ -145,54 +393,47 @@ include('includes/navbar.php');
         display: flex;
         justify-content: center;
         gap: 50px;
-        /* Reduced gap for better spacing */
         flex-wrap: wrap;
     }
 
     .cta-buttons .cta-request,
     .cta-buttons .cta-donate {
         background-color: #fff;
-        color: #333;
+        /* Primary color */
+        color: #0C120C;
+        /* Neutral color */
         padding: 20px;
         border-radius: 10px;
-        /* Increased border radius for a softer look */
         width: 300px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: center;
         overflow: hidden;
-        /* Ensures content doesn’t overflow */
     }
 
     .cta-buttons .cta-request:hover,
     .cta-buttons .cta-donate:hover {
         transform: translateY(-8px);
-        /* Increased hover lift effect */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        /* Enhanced shadow on hover */
     }
 
     .cta-buttons img {
         display: block;
         margin: 0 auto 15px;
         width: 80px;
-        /* Reduced image size */
         height: 80px;
-        /* Reduced image size */
         object-fit: contain;
     }
 
     .cta-buttons h3 {
         text-transform: uppercase;
         font-size: 22px;
-        /* Slightly increased font size */
         margin-bottom: 15px;
     }
 
     .cta-buttons p {
         font-size: 16px;
         line-height: 1.6;
-        /* Increased line height for better readability */
         margin-bottom: 20px;
     }
 
@@ -200,33 +441,31 @@ include('includes/navbar.php');
         display: block;
         margin: 0 auto;
         font-size: 14px;
-        /* Slightly increased font size */
         font-weight: 500;
-        /* Increased font weight */
         text-transform: uppercase;
         color: #fff;
         padding: 05px 10px;
-        /* Increased padding for better button appearance */
         border-radius: 5px;
         text-decoration: none;
         transition: background-color 0.3s ease;
-        /* Smooth transition for background color */
     }
 
     .cta-buttons .btn-success {
         background-color: #28a745;
-        /* Custom green color for success */
+        /* Original green for success button */
     }
 
     .cta-buttons .btn-danger {
-        background-color: #dc3545;
-        /* Custom red color for danger */
+        background-color: #C20114;
+        /* Secondary color */
     }
 
     .cta-buttons .btn:hover {
-        background-color: #333;
-        /* Darker background color on hover */
+        background-color: #0C120C;
+        /* Neutral color */
     }
+
+    /* CTA Section End */
 
     /* Media Queries */
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -270,6 +509,8 @@ include('includes/navbar.php');
             margin-bottom: 30px;
         }
     }
+
+    /* Media Queries End */
 </style>
 
 
@@ -305,26 +546,32 @@ include('includes/navbar.php');
     </div><button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators" type="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators" type="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button>
 </div>
 
-<!-- about section starts -->
+<!-- About Section Starts -->
 <section class="about section-padding" id="about">
-    <div class="container mt-3 mb-3">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="section-header text-center pb-5">
+                <div class="section-header text-center pb-3">
                     <h2 class="text-uppercase">About Us</h2>
+                    <p>Together, we can create a healthier community where everyone plays a part in saving lives.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 col-12 d-flex">
-
-                <div class="about-img"><img alt="" class="img-fluid w-100 h-100" src="assets\images\about.jpg"></div>
+            <div class="col-lg-4 col-md-12 col-12 d-flex justify-content-center align-items-center">
+                <div class="about-img">
+                    <img alt="About BloodHub" class="img-fluid w-100" src="assets/images/about.jpg">
+                </div>
             </div>
             <div class="col-lg-8 col-md-12 col-12 ps-lg-5">
                 <div class="about-text">
                     <h3 class="font-weight-bold mb-3 text-uppercase">Providing Life-Saving Quality Services</h3>
-                    <p>At BloodHub, we are committed to offering exceptional services that truly make an impact. Whether you urgently need blood or wish to donate and save lives, our platform is designed to support you in every possible way. <span style="color:red; font-weight:500"> Join us in our mission to ensure that no one is left without the essential care they deserve.</span></p>
-                    <p class="mt-3">Our dedication to excellence goes beyond just fulfilling blood requests.<span style="color:red; font-weight:500"> We prioritize safety, reliability, and efficiency</span> in every aspect of our service. Together, we can create a healthier, more supportive community where everyone plays a part in saving lives.</p>
-                    <h3 class="mt-5">BLOOD GROUPS</h3>
-                    <p class="mt-1">Learn about the different blood groups and their importance.</p>
+                    <p>At BloodHub, we are committed to offering exceptional services that truly make an impact. Whether you urgently need blood or wish to donate and save lives, our platform is designed to support you in every possible way.
+                        <span style="color:red; font-weight:500">Join us in our mission to ensure that no one is left without the essential care they deserve.</span>
+                    </p>
+                    <p class="mt-3">Our dedication to excellence goes beyond just fulfilling blood requests.
+                        <span style="color:red; font-weight:500">We prioritize safety, reliability, and efficiency</span> in every aspect of our service. Together, we can create a healthier, more supportive community where everyone plays a part in saving lives.
+                    </p>
+                    <h3 class="mt-5">Blood Groups</h3>
+                    <p class="mt-1">Learn about the different blood groups and their importance:</p>
                     <ul>
                         <li>A positive or A negative</li>
                         <li>B positive or B negative</li>
@@ -337,7 +584,7 @@ include('includes/navbar.php');
         </div>
     </div>
 </section>
-<!-- about section Ends -->
+<!-- About Section Ends -->
 
 <!-- about card section -->
 <section class="about-card section-padding" id="about-card">
@@ -378,52 +625,43 @@ include('includes/navbar.php');
 <!-- end about card section -->
 
 <!-- Contact starts -->
-<section class="contact section-padding" id="contact">
+<section class="contact section-padding mb-3" id="contact">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="section-header text-center pb-3">
+                <div class="section-header text-center">
                     <h2>Contact Us</h2>
-                    <p>If you have any questions or need assistance, Contact us today and let us know how we can assist you!</p>
+                    <p>If you have any questions or need assistance, contact us today and let us know how we can assist you!</p>
                 </div>
             </div>
         </div>
-        <div class="row m-0">
+        <div class="row m-0 align-items-stretch"> <!-- Added align-items-stretch -->
             <!-- Image Column -->
-            <div class="col-md-4 p-4 text-center">
-                <img src="assets\images\contact.jpg" class="img-fluid" alt="Contact Image" style="max-width: 100%; height: auto;">
+            <div class="col-md-6 p-1 text-center">
+                <img src="assets/images/contact.jpg" class="img-fluid contact-image" alt="Contact Image">
             </div>
             <!-- Form Column -->
-            <div class="col-md-8 p-4">
-                <form action="#" class="bg-light p-4">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <input type="text" class="form-control" required placeholder="Your Full Name">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <input type="email" class="form-control" required placeholder="Your Email Address">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <textarea rows="3" required class="form-control" placeholder="Your Query Here"></textarea>
-                            </div>
-                        </div>
-                        <button class="btn btn-warning btn-sm">Send</button>
+            <div class="col-md-6 p-1">
+                <form action="#" class="bg-light p-4 contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" required placeholder="Your Full Name">
                     </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" required placeholder="Your Email Address">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="3" required class="form-control" placeholder="Your Query Here"></textarea>
+                    </div>
+                    <button class="btn btn-warning btn-sm">Send</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
-
-<!-- contact ends -->
+<!-- Contact ends -->
 
 <!-- donate section -->
-<section class="cta-section" id="cta">
+<section class="cta-section mb-3" id="cta">
     <div class="container">
         <h2>Make a Difference Today</h2>
         <p>Whether you need blood or want to donate, your participation can help save lives in our community. Get started now!</p>
