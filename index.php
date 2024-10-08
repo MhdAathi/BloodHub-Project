@@ -6,7 +6,7 @@ include('includes/navbar.php');
 ?>
 
 <style>
-    /* Main*/
+    /* Main */
     /* Import Montserrat Font */
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
@@ -26,7 +26,6 @@ include('includes/navbar.php');
         font-size: 35px;
         font-weight: 600;
         color: #0C120C;
-        /* Neutral color */
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 20px;
@@ -38,14 +37,11 @@ include('includes/navbar.php');
         line-height: 1.5;
         margin-bottom: 20px;
         color: #0C120C;
-        /* Neutral color */
     }
 
     .section-padding {
         padding: 25px 0;
     }
-
-    /* Main End*/
 
     /* Carousel Styles */
     .carousel-item {
@@ -53,7 +49,6 @@ include('includes/navbar.php');
         min-height: 100px;
     }
 
-    /* Carousel Image Styles */
     .carousel-item img {
         width: 100%;
         height: 100%;
@@ -68,7 +63,6 @@ include('includes/navbar.php');
         top: 0;
         left: 0;
         background: rgba(12, 18, 12, 0.7);
-        /* Neutral color with transparency */
         z-index: 1;
     }
 
@@ -83,7 +77,6 @@ include('includes/navbar.php');
         letter-spacing: 2px;
         margin-top: 25px;
         color: #ecebf3;
-        /* Primary color */
     }
 
     .carousel-caption p {
@@ -92,22 +85,16 @@ include('includes/navbar.php');
         font-size: 18px;
         line-height: 1.9;
         color: #ecebf3;
-        /* Primary color */
     }
 
-    /* Carousel Styles End*/
-
-    /* About Section Styles */
+    /* About Section */
     .about {
         background-color: #ecebf3;
-        /* Primary color */
         padding: 30px 0;
-        /* Padding for top and bottom */
     }
 
     .about .section-header h2 {
         color: #0C120C;
-        /* Neutral color */
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 20px;
@@ -115,7 +102,6 @@ include('includes/navbar.php');
 
     .about .section-header p {
         color: #0C120C;
-        /* Neutral color */
         font-size: 18px;
         margin-bottom: 10px;
     }
@@ -123,80 +109,55 @@ include('includes/navbar.php');
     .about-img {
         display: flex;
         justify-content: center;
-        /* Center the image */
     }
 
     .about-img img {
         max-width: 100%;
-        /* Ensure responsiveness */
         width: 100%;
-        /* Make image width 100% of the column */
         height: auto;
-        /* Maintain aspect ratio */
         border-radius: 10px;
-        /* Rounded corners */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* Subtle shadow for the image */
     }
 
     .about-text {
         color: #0C120C;
-        /* Neutral color */
         margin-bottom: 10px;
     }
 
     .about-text h3 {
         font-weight: bold;
         margin-top: 30px;
-        /* Margin above */
         color: #0C120C;
-        /* Secondary color */
     }
 
     .about-text p {
         font-size: 18px;
-        /* Text size */
         line-height: 1.6;
-        /* Line height for readability */
     }
 
     .about-text ul {
         margin-top: 15px;
-        /* Space above the list */
         padding-left: 20px;
-        /* Padding for the list */
     }
 
     .about-text a {
         background-color: #C20114;
-        /* Secondary color for the button */
         color: #fff;
-        /* White text for the button */
         padding: 10px;
-        /* Padding for the button */
         border: none;
-        /* No border */
         border-radius: 5px;
-        /* Rounded corners for the button */
         transition: background-color 0.3s ease;
-        /* Smooth transition */
         font-size: 16px;
-        /* Consistent font size */
         cursor: pointer;
-        /* Pointer cursor on hover */
     }
 
     .about-text a:hover {
         background-color: #a0153e;
-        /* Darken button on hover */
     }
-
-    /* About End*/
 
     /* About Card Styles */
     .about_card {
         background-color: #fff;
-        /* Primary color */
         padding: 5px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -205,7 +166,6 @@ include('includes/navbar.php');
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: center;
-        /* Center content like in CTA */
     }
 
     .about_card:hover {
@@ -215,7 +175,6 @@ include('includes/navbar.php');
 
     .about_card h3 {
         color: #0C120C;
-        /* Neutral color */
         font-weight: bold;
         margin-bottom: 10px;
         margin-top: 10px;
@@ -223,7 +182,6 @@ include('includes/navbar.php');
 
     .about_card p {
         color: #0C120C;
-        /* Neutral color */
         font-size: 16px;
         margin-bottom: 10px;
     }
@@ -232,28 +190,20 @@ include('includes/navbar.php');
         margin: 0 auto;
         display: block;
         width: 100px;
-        /* Adjusted for consistency */
         height: 100px;
-        /* Adjusted for consistency */
         object-fit: contain;
         border-radius: 10px 10px 0 0;
     }
 
-    /* About Card Styles */
-
-    /* Contact Section Styles */
+    /* Contact Section */
     .contact {
         background-color: #ecebf3;
-        /* Primary color */
         padding: 30px 0;
-        /* Padding for top and bottom */
         text-align: center;
-        /* Centered text */
     }
 
     .contact h2 {
         color: #0C120C;
-        /* Neutral color */
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 20px;
@@ -261,121 +211,65 @@ include('includes/navbar.php');
 
     .contact p {
         color: #0C120C;
-        /* Neutral color */
         font-size: 18px;
         margin-bottom: 40px;
     }
 
-    .contact .row {
-        display: flex;
-        /* Use flex for proper alignment */
-    }
-
-    .contact img {
-        max-width: 100%;
-        /* Ensure responsiveness */
-        width: 100%;
-        /* Make image width 100% of the column */
-        height: auto;
-        /* Maintain aspect ratio */
-        border-radius: 10px;
-        /* Rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* Subtle shadow for the image */
-    }
-
-    .contact .contact-image {
-        width: 100%;
-        /* Set image width */
-        height: auto;
-        /* Maintain aspect ratio */
-    }
-
     .contact form {
         background-color: #fff;
-        /* Background color for the form */
         padding: 30px;
-        /* Padding inside the form */
         border-radius: 10px;
-        /* Rounded corners for the form */
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        /* Subtle shadow for the form */
         display: flex;
-        /* Use flex for full height */
         flex-direction: column;
-        /* Stack elements vertically */
         justify-content: space-between;
-        /* Distribute space between elements */
         height: 100%;
-        /* Full height of parent */
     }
 
     .contact .form-group {
         margin-bottom: 15px;
-        /* Space between inputs */
     }
 
     .contact input,
     .contact textarea {
         border: 1px solid #ccc;
-        /* Border for inputs */
         border-radius: 5px;
-        /* Rounded corners for inputs */
         padding: 10px;
-        /* Padding for inputs */
         font-size: 16px;
-        /* Consistent font size */
         transition: border-color 0.3s;
-        /* Smooth transition for border color */
         width: 100%;
-        /* Full width */
     }
 
     .contact input:focus,
     .contact textarea:focus {
         border-color: #C20114;
-        /* Highlight border on focus */
         outline: none;
-        /* Remove default outline */
     }
 
     .contact button {
         background-color: #C20114;
-        /* Secondary color for the button */
         color: #fff;
-        /* White text for the button */
         padding: 10px;
-        /* Padding for the button */
         border: none;
-        /* No border */
         border-radius: 5px;
-        /* Rounded corners for the button */
         transition: background-color 0.3s ease;
-        /* Smooth transition */
         font-size: 16px;
-        /* Consistent font size */
         cursor: pointer;
-        /* Pointer cursor on hover */
     }
 
     .contact button:hover {
         background-color: #a0153e;
-        /* Darken button on hover */
     }
-
-    /* Contact Styles End */
 
     /* CTA Section */
     .cta-section {
         color: #ecebf3;
-        /* Primary color */
         padding: 30px 0;
         text-align: center;
     }
 
     .cta-section h2 {
         color: #0C120C;
-        /* Secondary color */
         font-size: 36px;
         font-weight: 700;
         margin-bottom: 20px;
@@ -383,7 +277,6 @@ include('includes/navbar.php');
 
     .cta-section p {
         color: #0C120C;
-        /* Neutral color */
         font-size: 18px;
         margin-bottom: 40px;
         line-height: 1.6;
@@ -399,9 +292,7 @@ include('includes/navbar.php');
     .cta-buttons .cta-request,
     .cta-buttons .cta-donate {
         background-color: #fff;
-        /* Primary color */
         color: #0C120C;
-        /* Neutral color */
         padding: 20px;
         border-radius: 10px;
         width: 300px;
@@ -452,20 +343,15 @@ include('includes/navbar.php');
 
     .cta-buttons .btn-success {
         background-color: #28a745;
-        /* Original green for success button */
     }
 
     .cta-buttons .btn-danger {
         background-color: #C20114;
-        /* Secondary color */
     }
 
     .cta-buttons .btn:hover {
         background-color: #0C120C;
-        /* Neutral color */
     }
-
-    /* CTA Section End */
 
     /* Media Queries */
     @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -486,44 +372,24 @@ include('includes/navbar.php');
         .navbar-nav {
             text-align: center;
         }
-
-        .carousel-caption {
-            bottom: 125px;
-        }
-
-        .carousel-caption h5 {
-            font-size: 17px;
-        }
-
-        .carousel-caption p {
-            width: 100%;
-            line-height: 1.6;
-            font-size: 12px;
-        }
-
-        .about-text {
-            padding-top: 50px;
-        }
-
-        .card {
-            margin-bottom: 30px;
-        }
     }
-
-    /* Media Queries End */
 </style>
 
 
 <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
     <div class="carousel-indicators">
-        <button aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators" type="button"></button> <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleIndicators" type="button"></button> <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleIndicators" type="button"></button>
+        <button aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators"
+            type="button"></button> <button aria-label="Slide 2" data-bs-slide-to="1"
+            data-bs-target="#carouselExampleIndicators" type="button"></button> <button aria-label="Slide 3"
+            data-bs-slide-to="2" data-bs-target="#carouselExampleIndicators" type="button"></button>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img alt="..." class="d-block w-100" src="assets\images\Img1.jpg">
             <div class="carousel-caption">
                 <h5>Join Our Blood Donation Drive</h5>
-                <p>Your contribution helps save lives. Participate in our next blood donation drive and make a difference in your community.</p>
+                <p>Your contribution helps save lives. Participate in our next blood donation drive and make a
+                    difference in your community.</p>
                 <p><a class="btn btn-warning mt-3" href="#">Learn More</a></p>
             </div>
         </div>
@@ -543,7 +409,11 @@ include('includes/navbar.php');
                 <p><a class="btn btn-warning mt-3" href="#cta">Request Blood</a></p>
             </div>
         </div>
-    </div><button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators" type="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators" type="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button>
+    </div><button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators"
+        type="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span
+            class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next"
+        data-bs-target="#carouselExampleIndicators" type="button"><span aria-hidden="true"
+            class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button>
 </div>
 
 <!-- About Section Starts -->
@@ -564,11 +434,16 @@ include('includes/navbar.php');
             <div class="col-lg-8 col-md-12 col-12 ps-lg-5">
                 <div class="about-text">
                     <h3 class="font-weight-bold mb-3 text-uppercase">Providing Life-Saving Quality Services</h3>
-                    <p>At BloodHub, we are committed to offering exceptional services that truly make an impact. Whether you urgently need blood or wish to donate and save lives, our platform is designed to support you in every possible way.
-                        <span style="color:red; font-weight:500">Join us in our mission to ensure that no one is left without the essential care they deserve.</span>
+                    <p>At BloodHub, we are committed to offering exceptional services that truly make an impact. Whether
+                        you urgently need blood or wish to donate and save lives, our platform is designed to support
+                        you in every possible way.
+                        <span style="color:red; font-weight:500">Join us in our mission to ensure that no one is left
+                            without the essential care they deserve.</span>
                     </p>
                     <p class="mt-3">Our dedication to excellence goes beyond just fulfilling blood requests.
-                        <span style="color:red; font-weight:500">We prioritize safety, reliability, and efficiency</span> in every aspect of our service. Together, we can create a healthier, more supportive community where everyone plays a part in saving lives.
+                        <span style="color:red; font-weight:500">We prioritize safety, reliability, and
+                            efficiency</span> in every aspect of our service. Together, we can create a healthier, more
+                        supportive community where everyone plays a part in saving lives.
                     </p>
                     <h3 class="mt-5">Blood Groups</h3>
                     <p class="mt-1">Learn about the different blood groups and their importance:</p>
@@ -593,9 +468,12 @@ include('includes/navbar.php');
             <div class="col">
                 <div class="about_card">
                     <h3 class="text-center">Our Vision</h3>
-                    <img src="assets/images/binoculars.png" alt="Our Vision" class="justify-center" width="168" height="168">
+                    <img src="assets/images/binoculars.png" alt="Our Vision" class="justify-center" width="168"
+                        height="168">
                     <p class="text-center mt-3">
-                        At BloodHub, our vision is to revolutionize blood donation and distribution through cutting-edge technology. We aim to create a world where timely <span style="color:red; font-weight:500"> access to blood resources </span> is guaranteed, enhancing community health and support.
+                        At BloodHub, our vision is to revolutionize blood donation and distribution through cutting-edge
+                        technology. We aim to create a world where timely <span style="color:red; font-weight:500">
+                            access to blood resources </span> is guaranteed, enhancing community health and support.
                     </p>
                 </div>
             </div>
@@ -603,9 +481,13 @@ include('includes/navbar.php');
             <div class="col">
                 <div class="about_card">
                     <h3 class="text-center">Our Goal</h3>
-                    <img src="assets/images/target.png" alt="Our Goal" class="img img-responsive" width="168" height="168">
+                    <img src="assets/images/target.png" alt="Our Goal" class="img img-responsive" width="168"
+                        height="168">
                     <p class="text-center mt-3">
-                        Our goal is to transform blood bank management with a centralized platform that <span style="color:red; font-weight:500"> improves operational efficiency </span> and ensures blood availability. We seek to <span style="color:red; font-weight:500"> elevate patient care </span> and optimize the blood supply chain.
+                        Our goal is to transform blood bank management with a centralized platform that <span
+                            style="color:red; font-weight:500"> improves operational efficiency </span> and ensures
+                        blood availability. We seek to <span style="color:red; font-weight:500"> elevate patient care
+                        </span> and optimize the blood supply chain.
                     </p>
                 </div>
             </div>
@@ -613,9 +495,12 @@ include('includes/navbar.php');
             <div class="col">
                 <div class="about_card">
                     <h3 class="text-center">Our Mission</h3>
-                    <img src="assets/images/goal.png" alt="Our Mission" class="img img-responsive" width="168" height="168">
+                    <img src="assets/images/goal.png" alt="Our Mission" class="img img-responsive" width="168"
+                        height="168">
                     <p class="text-center mt-3">
-                        Our mission is to streamline blood donation and distribution with an innovative online platform. We focus on <span style="color:red; font-weight:500"> increasing accessibility and efficiency </span> in blood management, supporting and saving lives with precision and care.
+                        Our mission is to streamline blood donation and distribution with an innovative online platform.
+                        We focus on <span style="color:red; font-weight:500"> increasing accessibility and efficiency
+                        </span> in blood management, supporting and saving lives with precision and care.
                     </p>
                 </div>
             </div>
@@ -631,7 +516,8 @@ include('includes/navbar.php');
             <div class="col-md-12">
                 <div class="section-header text-center">
                     <h2>Contact Us</h2>
-                    <p>If you have any questions or need assistance, contact us today and let us know how we can assist you!</p>
+                    <p>If you have any questions or need assistance, contact us today and let us know how we can assist
+                        you!</p>
                 </div>
             </div>
         </div>
@@ -664,7 +550,8 @@ include('includes/navbar.php');
 <section class="cta-section mb-3" id="cta">
     <div class="container">
         <h2>Make a Difference Today</h2>
-        <p>Whether you need blood or want to donate, your participation can help save lives in our community. Get started now!</p>
+        <p>Whether you need blood or want to donate, your participation can help save lives in our community. Get
+            started now!</p>
 
         <div class="cta-buttons">
             <div class="cta-request">

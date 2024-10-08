@@ -2,9 +2,36 @@
 session_start();
 include('authentication.php');
 include('includes/header.php');
+
+// Fetch total number of requests
+$total_requests_query = "SELECT COUNT(*) AS total_requests FROM blood_requests";
+$total_requests_result = mysqli_query($con, $total_requests_query);
+$total_requests_data = mysqli_fetch_assoc($total_requests_result);
+$total_requests = $total_requests_data['total_requests'];
+
+// Fetch total number of donors
+$total_donors_query = "SELECT COUNT(*) AS total_donors FROM donor_history";
+$total_donors_result = mysqli_query($con, $total_donors_query);
+$total_donors_data = mysqli_fetch_assoc($total_donors_result);
+$total_donors = $total_donors_data['total_donors'];
+
+// Fetch total number of approved requests
+$total_approved_query = "SELECT COUNT(*) AS total_approved FROM blood_requests WHERE status = 'accepted'";
+$total_approved_result = mysqli_query($con, $total_approved_query);
+$total_approved_data = mysqli_fetch_assoc($total_approved_result);
+$total_approved = $total_approved_data['total_approved'];
+
+// Fetch total blood units for the specific blood type
+$total_blood_units_query = "SELECT SUM(blood_quantity) AS total_blood_units FROM blood_inventory";
+$total_blood_units_result = mysqli_query($con, $total_blood_units_query);
+$total_blood_units_data = mysqli_fetch_assoc($total_blood_units_result);
+$total_blood_units = $total_blood_units_data['total_blood_units'] ?? 0;
 ?>
 
 <style>
+    * {
+        text-transform: capitalize;
+    }
     /* Global Styles */
     .container-fluid {
         padding: 0 20px;
@@ -18,15 +45,32 @@ include('includes/header.php');
         margin-bottom: 1.5rem;
     }
 
-
     /* Card Styles */
     .card {
         border: none;
         border-radius: 10px;
-        background-color: #780606;
-        /* Professional color scheme */
+        background: linear-gradient(to bottom, #780606, #b92b27 );
         color: #fff;
+        transition: transform 0.5s ease-in-out;
     }
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+
+    .card-total {
+        border: none;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        background: linear-gradient(to bottom, #b92b27, #780606);
+        color: #fff;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .card-total:hover {
+        transform: scale(1.1);
+    }
+
 
     .card-body {
         padding: 0.5rem;
@@ -49,14 +93,12 @@ include('includes/header.php');
 
     .progress-bar {
         background-color: #e38e00;
-        /* Professional color scheme */
         height: 100%;
         border-radius: 10px;
     }
 
     .card-footer {
-        background-color: #780606;
-        /* Professional color scheme */
+        background-color: #b92b27;
         padding: 0.5rem 1.5rem;
         border-top: none;
         border-bottom-left-radius: 10px;
@@ -76,6 +118,27 @@ include('includes/header.php');
         color: #fff;
         text-decoration: none;
     }
+
+    /* Icon Styles */
+.card i {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.card i:hover {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Link Styles */
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: none;
 </style>
 
 <div class="container-fluid px-4">
@@ -96,7 +159,7 @@ include('includes/header.php');
                     <p>120 units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="#">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('A+') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -112,7 +175,7 @@ include('includes/header.php');
                     <p>80 units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="#">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('A-') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -128,7 +191,7 @@ include('includes/header.php');
                     <p>40 units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="#">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('B+') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -144,13 +207,13 @@ include('includes/header.php');
                     <p>130 units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="#">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('B-') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-3">
         <!-- AB+ Blood Type -->
         <div class="col-xl-3 col-md-6">
             <div class="card">
@@ -162,7 +225,7 @@ include('includes/header.php');
                     <p>100 units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="#">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('AB+') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -178,7 +241,7 @@ include('includes/header.php');
                     <p>50 units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="#">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('AB-') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -194,7 +257,7 @@ include('includes/header.php');
                     <p>180 units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="#">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('O+') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
@@ -210,12 +273,63 @@ include('includes/header.php');
                     <p>90 units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="#">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('O-') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row mb-3">
+        <!-- Total Donors -->
+        <div class="col-xl-3 col-md-6">
+            <a href="donor_history.php" style="text-decoration: none; color: #fff;">
+                <div class="card-total">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fas fa-users"></i> Total Donors</h4>
+                        <p><?php echo $total_donors; ?> donors registered</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Total Requests -->
+        <div class="col-xl-3 col-md-6">
+            <a href="blood_requests.php" style="text-decoration: none; color: #fff;">
+                <div class="card-total">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fas fa-clipboard-list"></i> Total Requests</h4>
+                        <p><?php echo $total_requests; ?> requests submitted</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Total Approved -->
+        <div class="col-xl-3 col-md-6">
+            <a href="blood_requests.php" style="text-decoration: none; color: #fff;">
+                <div class="card-total">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fas fa-check-circle"></i> Total Approved</h4>
+                        <p><?php echo $total_approved; ?> requests approved</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Total Blood Units -->
+        <div class="col-xl-3 col-md-6">
+            <a href="blood_inventory.php" style="text-decoration: none; color: #fff;">
+                <div class="card-total">
+                    <div class="card-body">
+                        <h4 class="card-title"><i class="fas fa-tint"></i> Total Blood Units</h4>
+                        <p><?php echo $total_blood_units; ?> units available</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
+
 
 <?php
 include('includes/footer.php');

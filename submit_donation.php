@@ -13,8 +13,8 @@ if (isset($_POST['submit_detail'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
 
     // Insert the data into the donor_history table
-    $query = "INSERT INTO donor_history (donor_name, dob, gender, blood_group, contact_number, health_history, email, last_donation_date, donation_status)
-              VALUES ('$donor_name', '$dob', '$gender', '$blood_type', '$contact_number','$health_history', '$email','$last_donation_date', 'pending')";
+    $query = "INSERT INTO donor_history (donor_name, dob, gender, blood_group, contact_number, health_history, email, last_donation_date, donation_status) VALUES ('$donor_name', '$dob', '$gender', '$blood_group', '$contact_number', '$health_history', '$email', NULL, 0)";
+
 
     if (mysqli_query($con, $query)) {
         $_SESSION['message'] = "Donation information has been submitted successfully!";

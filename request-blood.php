@@ -115,7 +115,7 @@ include('includes/navbar.php');
 
                     <!-- Blood Group -->
                     <label>Blood Group</label>
-                    <select id="blood-type" name="blood_type" required>
+                    <select id="blood-group" name="blood_group" required>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>

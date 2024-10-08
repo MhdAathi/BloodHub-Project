@@ -1,13 +1,6 @@
 <?php
 session_start();
-// check if user is already logged in and redirect to index page if true
-if (isset($_SESSION['auth'])) {
-    if (!isset($_SESSION['auth'])) {
-        $_SESSION['message'] = "You are Already Logged in";
-    }
-    header("Location: index.php");
-    exit(0);
-}
+include('authentication.php');
 include('includes/header.php');
 include('includes/navbar.php');
 ?>
@@ -16,7 +9,7 @@ include('includes/navbar.php');
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
     body {
-        background: #f1fbff;
+        background: linear-gradient(135deg, #b92b27, #4a0c0c);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -25,41 +18,53 @@ include('includes/navbar.php');
         font-family: 'Montserrat', sans-serif;
     }
 
-    .login-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .login-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        position: relative;
+        background: linear-gradient(135deg, rgba(185, 43, 39, 0.8), rgba(74, 12, 12, 0.8));
+        z-index: -1;
+        opacity: 0.9;
     }
 
     .login-card {
         width: 100%;
         max-width: 400px;
-        background: #ffffff;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        background: #f8f9fa;
+        /* Lighter form background */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         overflow: hidden;
         padding: 20px;
+        /* Increased padding for a more spacious feel */
     }
 
     .card-header {
         text-transform: uppercase;
-        font-weight: 700%;
+        font-weight: 700;
         letter-spacing: 1px;
         text-align: center;
+        margin-top: 20px;
         margin-bottom: 20px;
-        color: #106eea;
+        color: #b92b27;
+        /* Matching header color with the gradient */
     }
 
     .card-header h4 {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+    }
+
+    .span-color {
+        color: #000;
+        /* Set span text color to black */
     }
 
     .card-body {
-        padding: 20px;
+        padding: 10px;
     }
 
     .form-group label {
@@ -72,81 +77,81 @@ include('includes/navbar.php');
         font-size: 16px;
         padding: 10px;
         border-radius: 5px;
-        border: 1px solid #ddd;
+        border: 1px solid #ccc;
         margin-top: 5px;
         width: 100%;
+        background-color: #f0f0f0;
+        /* Softer input background */
+        color: #333;
     }
 
     .btn-block {
         display: block;
         margin: 0 auto;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 500;
         text-transform: uppercase;
-        color: #fff;
-        padding: 7px 14px;
+        padding: 10px 16px;
         border-radius: 5px;
-        text-decoration: none;
         width: 100%;
+        cursor: pointer;
     }
 
     .btn-primary {
-        background-color: #106eea;
-        color: #ffffff;
+        background-color: #db4437;
+        /* Updated button color */
+        color: #fff;
         margin-bottom: 10px;
+        transition: background-color 0.3s ease;
     }
 
     .btn-primary:hover {
-        background: #0844a8;
+        background-color: #c23321;
+        /* Slightly darker on hover */
     }
 
     .btn-google {
-        background-color: #db4437;
-        color: #ffffff;
+        background-color: transparent;
+        /* Transparent background */
+        color: #000;
+        /* Black text */
+        border: 2px solid #000;
+        /* Black border */
         margin-bottom: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .btn-google:hover {
-        background-color: #c23321;
+        background-color: #000;
+        /* White background on hover */
+        color: #fff;
+        /* Black text on hover */
+        border: 2px solid #fff;
+        /* Black border remains */
     }
 
     .form-group a {
         text-decoration: none;
         font-size: 14px;
-        color: #106eea;
+        color: #000;
         display: inline-block;
         margin-top: 10px;
     }
 
     .form-group a:hover {
-        color: #0844a8;
-    }
-
-    .login-container::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('assets/images/login-bg.jpg') no-repeat center center/cover;
-        z-index: -1;
-        opacity: 0.7;
+        color: #921d1d;
     }
 
     ::placeholder {
-        color: #b0b0b0;
+        color: #888;
         font-weight: 300;
-        font-style: italic;
-        letter-spacing: 1px;
-        opacity: 1;
-        font-size: 16px;
+        letter-spacing: 0.5px;
+        font-size: 13px;
     }
 
     input:focus::placeholder {
-        color: #d0d0d0;
+        color: #aaa;
         opacity: 0.7;
-        font-size: 15px;
     }
 
     @media only screen and (max-width: 767px) {
@@ -171,10 +176,9 @@ include('includes/navbar.php');
 <div class="login-container">
     <div class="login-card">
         <div class="card-header text-center">
-            <h4>Login to <a class="navbar-brand" href="#"><span class="text-danger">Blood</span>Hub</a></h4>
+            <h4>Login to <a class="navbar-brand" href="#"><span class="span-color">Blood</span>Hub</a></h4>
         </div>
         <div class="card-body">
-            
             <?php include('message.php'); ?>
 
             <form action="logincode.php" method="POST">

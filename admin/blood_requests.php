@@ -14,8 +14,7 @@ include('includes/navbar.php');
 
     <div class="row">
         <div class="col-md-12">
-            <!-- Show session messages -->
-            <?php include('C:\xampp\htdocs\bb\message.php'); ?>
+
 
             <div class="card">
                 <div class="card-header">
@@ -43,7 +42,7 @@ include('includes/navbar.php');
 
                             if (mysqli_num_rows($query_run) > 0) {
                                 foreach ($query_run as $row) {
-                            ?>
+                                    ?>
                                     <tr>
                                         <td><?= $row['id']; ?></td>
                                         <td><?= $row['hospital_name']; ?></td>
@@ -54,31 +53,35 @@ include('includes/navbar.php');
                                         <td><?= $row['additional_info']; ?></td>
                                         <td><?= ucfirst($row['status']); ?></td>
                                         <td>
-                                            <?php if ($row['status'] == 'pending') : ?>
+                                            <?php if ($row['status'] == 'pending'): ?>
                                                 <form action="process_request.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="accept_btn" class="btn btn-success btn-sm">Accept</button>
+                                                    <button type="submit" name="accept_btn"
+                                                        class="btn btn-success btn-sm">Accept</button>
                                                 </form>
                                                 <form action="process_request.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="reject_btn" class="btn btn-danger btn-sm">Reject</button>
+                                                    <button type="submit" name="reject_btn"
+                                                        class="btn btn-danger btn-sm">Reject</button>
                                                 </form>
-                                            <?php else : ?>
+                                            <?php else: ?>
                                                 <!-- If already accepted or rejected, no action buttons -->
-                                                <span class="badge <?= $row['status'] == 'accepted' ? 'bg-success' : 'bg-danger'; ?>">
+                                                <span
+                                                    class="badge <?= $row['status'] == 'accepted' ? 'bg-success' : 'bg-danger'; ?>">
                                                     <?= ucfirst($row['status']); ?>
                                                 </span>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
-                            <?php
+                                    <?php
                                 }
                             } else {
+
                                 ?>
                                 <tr>
                                     <td colspan="9"> No Record Found!</td>
                                 </tr>
-                            <?php
+                                <?php
                             }
                             ?>
                         </tbody>
