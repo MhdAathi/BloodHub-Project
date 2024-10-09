@@ -1,6 +1,5 @@
 <?php
-ob_start(); // Start output buffering
-
+ob_start();
 session_start();
 include('authentication.php'); // Authentication check
 include('includes/header.php');

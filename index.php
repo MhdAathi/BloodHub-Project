@@ -117,6 +117,12 @@ include('includes/navbar.php');
         height: auto;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-img img:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     .about-text {
@@ -202,6 +208,17 @@ include('includes/navbar.php');
         text-align: center;
     }
 
+    .contact img {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact img:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
     .contact h2 {
         color: #0C120C;
         font-size: 36px;
@@ -224,6 +241,11 @@ include('includes/navbar.php');
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact form:hover {
+        transform: translateY(-8px);
     }
 
     .contact .form-group {
@@ -375,7 +397,6 @@ include('includes/navbar.php');
     }
 </style>
 
-
 <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
     <div class="carousel-indicators">
         <button aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators"
@@ -461,7 +482,7 @@ include('includes/navbar.php');
 </section>
 <!-- About Section Ends -->
 
-<!-- about card section -->
+<!-- About Card section -->
 <section class="about-card section-padding" id="about-card">
     <div class="container">
         <div class="row">
@@ -507,7 +528,7 @@ include('includes/navbar.php');
         </div>
     </div>
 </section>
-<!-- end about card section -->
+<!-- End About Card section -->
 
 <!-- Contact starts -->
 <section class="contact section-padding mb-3" id="contact">

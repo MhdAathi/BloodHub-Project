@@ -4,16 +4,8 @@ include('includes/header.php');
 include('includes/navbar.php');
 include('config/dbcon.php'); // Ensure your DB connection file is included
 
-// Check if blood_type is set in the GET parameters
-if (isset($_GET['blood_type']) && !empty($_GET['blood_type'])) {
-    $blood_type = $_GET['blood_type'];
-} else {
-    // Set a default value or handle the error
-    $blood_type = 'default_type'; // Replace with an appropriate default type or handle as needed
-    // Alternatively, you could redirect to another page or show an error message
-    // header("Location: some_error_page.php");
-    // exit;
-}
+// Get blood_type from GET parameters or set it to null for all types
+$blood_type = isset($_GET['blood_type']) ? $_GET['blood_type'] : null; // Use null for all types
 ?>
 
 <div class="container-fluid px-4">
@@ -30,7 +22,7 @@ if (isset($_GET['blood_type']) && !empty($_GET['blood_type'])) {
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4>All Blood Inventory Details (<?= $blood_type ?>)</h4>
+                    <h4>All Blood Inventory Details <?= $blood_type ? "($blood_type)" : "" ?></h4>
                     <a href="add_blood.php" class="btn btn-primary btn-sm">Add Blood</a> <!-- Button to add new blood -->
                 </div>
                 <div class="card-body">
@@ -50,7 +42,8 @@ if (isset($_GET['blood_type']) && !empty($_GET['blood_type'])) {
                         <tbody>
                             <?php
                             // Fetch blood inventory records from the database
-                            $query = "SELECT * FROM blood_inventory WHERE blood_type = '$blood_type'";
+                            // If $blood_type is null, fetch all records
+                            $query = $blood_type ? "SELECT * FROM blood_inventory WHERE blood_type = '$blood_type'" : "SELECT * FROM blood_inventory";
                             $query_run = mysqli_query($con, $query);
 
                             if ($query_run) {
@@ -89,7 +82,7 @@ if (isset($_GET['blood_type']) && !empty($_GET['blood_type'])) {
                                     }
                                 } else {
                                     // If no records found
-                                    echo '<tr><td colspan="8">No Record Found for ' . $blood_type . ' blood type!</td></tr>';
+                                    echo '<tr><td colspan="8">No Record Found for ' . ($blood_type ? $blood_type : 'all blood types') . '!</td></tr>';
                                 }
                             } else {
                                 // Handle query execution failure

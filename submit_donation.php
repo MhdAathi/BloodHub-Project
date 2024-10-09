@@ -6,7 +6,7 @@ if (isset($_POST['submit_detail'])) {
     $donor_name = mysqli_real_escape_string($con, $_POST['donor-name']);
     $dob = mysqli_real_escape_string($con, $_POST['dob']);
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
-    $blood_type = mysqli_real_escape_string($con, $_POST['blood-type']);
+    $blood_group = mysqli_real_escape_string($con, $_POST['blood-type']);
     $contact_number = mysqli_real_escape_string($con, $_POST['contact-number']);
     $health_history = mysqli_real_escape_string($con, $_POST['health-history']);
     $last_donation_date = mysqli_real_escape_string($con, $_POST['last-donation']);

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('includes/header.php');
 include('includes/navbar.php');
 include('config/dbcon.php'); // Ensure your DB connection file is included
@@ -38,7 +39,7 @@ if (isset($_GET['id'])) {
     <div class="row">
         <div class="col-md-12">
             <!-- Show session messages -->
-            <?php include('C:/xampp/htdocs/bb/message.php'); ?>
+            <?php include('../message.php'); ?>
 
             <div class="card">
                 <div class="card-header">

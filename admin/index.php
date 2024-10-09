@@ -2,36 +2,14 @@
 session_start();
 include('authentication.php');
 include('includes/header.php');
-
-// Fetch total number of requests
-$total_requests_query = "SELECT COUNT(*) AS total_requests FROM blood_requests";
-$total_requests_result = mysqli_query($con, $total_requests_query);
-$total_requests_data = mysqli_fetch_assoc($total_requests_result);
-$total_requests = $total_requests_data['total_requests'];
-
-// Fetch total number of donors
-$total_donors_query = "SELECT COUNT(*) AS total_donors FROM donor_history";
-$total_donors_result = mysqli_query($con, $total_donors_query);
-$total_donors_data = mysqli_fetch_assoc($total_donors_result);
-$total_donors = $total_donors_data['total_donors'];
-
-// Fetch total number of approved requests
-$total_approved_query = "SELECT COUNT(*) AS total_approved FROM blood_requests WHERE status = 'accepted'";
-$total_approved_result = mysqli_query($con, $total_approved_query);
-$total_approved_data = mysqli_fetch_assoc($total_approved_result);
-$total_approved = $total_approved_data['total_approved'];
-
-// Fetch total blood units for the specific blood type
-$total_blood_units_query = "SELECT SUM(blood_quantity) AS total_blood_units FROM blood_inventory";
-$total_blood_units_result = mysqli_query($con, $total_blood_units_query);
-$total_blood_units_data = mysqli_fetch_assoc($total_blood_units_result);
-$total_blood_units = $total_blood_units_data['total_blood_units'] ?? 0;
+include('dashboard_fetching.php');
 ?>
 
 <style>
     * {
         text-transform: capitalize;
     }
+
     /* Global Styles */
     .container-fluid {
         padding: 0 20px;
@@ -49,7 +27,7 @@ $total_blood_units = $total_blood_units_data['total_blood_units'] ?? 0;
     .card {
         border: none;
         border-radius: 10px;
-        background: linear-gradient(to bottom, #780606, #b92b27 );
+        background: linear-gradient(to bottom, #780606, #b92b27);
         color: #fff;
         transition: transform 0.5s ease-in-out;
     }
@@ -120,25 +98,25 @@ $total_blood_units = $total_blood_units_data['total_blood_units'] ?? 0;
     }
 
     /* Icon Styles */
-.card i {
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
-}
+    .card i {
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+    }
 
-.card i:hover {
-  transform: rotate(360deg);
-  transition: transform 0.5s ease-in-out;
-}
+    .card i:hover {
+        transform: rotate(360deg);
+        transition: transform 0.5s ease-in-out;
+    }
 
-/* Link Styles */
-a {
-  text-decoration: none;
-  color: #fff;
-}
+    /* Link Styles */
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
 
-a:hover {
-  color: #fff;
-  text-decoration: none;
+    a:hover {
+        color: #fff;
+        text-decoration: none;
 </style>
 
 <div class="container-fluid px-4">
@@ -156,7 +134,8 @@ a:hover {
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
                     </div>
-                    <p>120 units available</p>
+                    <p><?= $a_plus_units ?> units available</p>
+                    </p>
                 </div>
                 <div class="card-footer">
                     <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('A+') ?>">View Details <i class="fas fa-angle-right"></i></a>
@@ -172,7 +151,7 @@ a:hover {
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
                     </div>
-                    <p>80 units available</p>
+                    <p><?= $a_minus_units ?> units available</p>
                 </div>
                 <div class="card-footer">
                     <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('A-') ?>">View Details <i class="fas fa-angle-right"></i></a>
@@ -188,7 +167,7 @@ a:hover {
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                     </div>
-                    <p>40 units available</p>
+                    <p><?= $b_plus_units ?> units available</p>
                 </div>
                 <div class="card-footer">
                     <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('B+') ?>">View Details <i class="fas fa-angle-right"></i></a>
@@ -204,7 +183,7 @@ a:hover {
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
                     </div>
-                    <p>130 units available</p>
+                    <p><?= $b_minus_units ?> units available</p>
                 </div>
                 <div class="card-footer">
                     <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('B-') ?>">View Details <i class="fas fa-angle-right"></i></a>
@@ -222,7 +201,7 @@ a:hover {
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
                     </div>
-                    <p>100 units available</p>
+                    <p><?= $ab_plus_units ?> units available</p>
                 </div>
                 <div class="card-footer">
                     <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('AB+') ?>">View Details <i class="fas fa-angle-right"></i></a>
@@ -238,7 +217,7 @@ a:hover {
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
                     </div>
-                    <p>50 units available</p>
+                    <p><?= $ab_minus_units ?> units available</p>
                 </div>
                 <div class="card-footer">
                     <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('AB-') ?>">View Details <i class="fas fa-angle-right"></i></a>
@@ -254,7 +233,7 @@ a:hover {
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
                     </div>
-                    <p>180 units available</p>
+                    <p><?= $o_plus_units ?> units available</p>
                 </div>
                 <div class="card-footer">
                     <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('O+') ?>">View Details <i class="fas fa-angle-right"></i></a>
@@ -270,7 +249,7 @@ a:hover {
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
                     </div>
-                    <p>90 units available</p>
+                    <p><?= $o_minus_units ?> units available</p>
                 </div>
                 <div class="card-footer">
                     <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('O-') ?>">View Details <i class="fas fa-angle-right"></i></a>

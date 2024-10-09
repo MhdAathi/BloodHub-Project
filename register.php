@@ -1,13 +1,6 @@
 <?php
 session_start();
-// check if user is already logged in and redirect to index page if true
-if (isset($_SESSION['auth'])) {
-    if (!isset($_SESSION['auth'])) {
-        $_SESSION['message'] = "You are Already Logged in";
-    }
-    header("Location: index.php");
-    exit(0);
-}
+include('admin/authentication.php');
 include('includes/navbar.php');
 include('includes/header.php');
 ?>

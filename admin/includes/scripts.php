@@ -12,7 +12,7 @@
 <script src="js/scripts.js"></script>
 
     <!-- Summer note JS - CDN Link -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
         $(document).ready(function() {
             $("#summernote").summernote({
@@ -22,7 +22,7 @@
             $('.dropdown-toggle').dropdown();
         });
     </script> --> -->
-    <!-- //Summer note JS - CDN Link -->
-
+<!-- //Summer note JS - CDN Link -->
 </body>
+
 </html>

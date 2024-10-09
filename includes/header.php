@@ -16,4 +16,5 @@
 
     <!-- Custom Link Styles Files -->
     <link rel="stylesheet" href="assets\css\styles.css">
+    <script defer src="assets\js\script.js"></script>
 </head>
