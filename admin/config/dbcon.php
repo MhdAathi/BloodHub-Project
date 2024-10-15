@@ -10,4 +10,3 @@ if (!$con) {
     header("Location: ../errors/dberror.php");
     die();
 }
-?>

@@ -30,23 +30,12 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['message'] = "Welcome to dashboard";
             header("Location: admin/index.php");
             exit(0);
-        }
-
-        // if ($_SESSION['auth_role'] == 2) // 2 = Super Admin
-        // {
-        //     $_SESSION['message'] = "Welcome to dashboard";
-        //     header("Location: admin/index.php");
-        //     exit(0);
-        // } 
-        
-        elseif ($_SESSION['auth_role'] == 0) // 0 = User
+        } elseif ($_SESSION['auth_role'] == 0) // 0 = User
         {
             $_SESSION['message'] = "Your are Logged in ";
             header("Location: index.php");
             exit(0);
-        } 
-        
-        else {
+        } else {
             $_SESSION['message'] = "Your are Logged in ";
             header("Location: index.php");
             exit(0);

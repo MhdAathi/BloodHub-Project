@@ -1,6 +1,6 @@
 <body>
 
-    <style>
+<style>
         /* Ensuring the body and html take up full height */
         html,
         body {
@@ -159,7 +159,7 @@
                 /* Neutral color on hover */
             }
         }
-    </style>
+</style>
 
     <!-- Footer Section -->
     <footer class="footer">

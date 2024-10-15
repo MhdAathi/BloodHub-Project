@@ -1,7 +1,13 @@
 <?php
 session_start();
+if (isset($_SESSION['auth'])) {
+    $_SESSION['message']  = 'You are already Logged In';
+    header("Location: ../index.php");
+    exit(0);
+};
 include('includes/header.php');
 include('includes/navbar.php');
+
 ?>
 
 <style>
@@ -32,13 +38,18 @@ include('includes/navbar.php');
     .login-card {
         width: 100%;
         max-width: 400px;
-        background: #f8f9fa;
         /* Lighter form background */
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         overflow: hidden;
         padding: 20px;
-        /* Increased padding for a more spacious feel */
+        background: rgba(255, 255, 255, 0.45);
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.225);
+        -webkit-box-shadow: 0 -1px 12.5px -1.5px #d5bfbf;
+        -moz-box-shadow: 0 -1px 12.5px -1.5px #d5bfbf;
+        box-shadow: 0 -1px 12.5px -1.5px #d5bfbf;
     }
 
     .card-header {
@@ -99,13 +110,15 @@ include('includes/navbar.php');
     .btn-primary {
         background-color: #db4437;
         /* Updated button color */
-        color: #fff;
+        color: #000;
         margin-bottom: 10px;
         transition: background-color 0.3s ease;
+        border-color: #000;
     }
 
     .btn-primary:hover {
         background-color: #c23321;
+        border-color: #fff;
         /* Slightly darker on hover */
     }
 
@@ -178,6 +191,7 @@ include('includes/navbar.php');
             <h4>Login to <a class="navbar-brand" href="#"><span class="span-color">Blood</span>Hub</a></h4>
         </div>
         <div class="card-body">
+            
             <?php include('message.php'); ?>
 
             <form action="logincode.php" method="POST">
@@ -208,7 +222,7 @@ include('includes/navbar.php');
                 </div>
 
                 <div class="form-group text-center">
-                    <span>Don't have an account? <a href="#">Sign up</a></span>
+                    <span>Don't have an account? <a href="register.php">Sign up</a></span>
                 </div>
             </form>
         </div>

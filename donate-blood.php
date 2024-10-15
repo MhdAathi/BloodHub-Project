@@ -10,7 +10,7 @@ include('includes/navbar.php');
     .form-section {
         padding: 40px 0;
         /* Padding for top and bottom */
-        background-color: #ecebf3;
+        background: linear-gradient(135deg, #b92b27, #4a0c0c);
         /* Light background color for the section */
     }
 
@@ -25,8 +25,14 @@ include('includes/navbar.php');
         /* Padding inside the form wrapper */
         border-radius: 8px;
         /* Rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.95);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.475);
         /* Soft shadow for depth */
+        -webkit-box-shadow: 1px 0.5px 31.5px -2.5px #333333;
+        -moz-box-shadow: 1px 0.5px 31.5px -2.5px #333333;
+        box-shadow: 1px 0.5px 31.5px -2.5px #333333;
     }
 
     .form-wrapper h2 {

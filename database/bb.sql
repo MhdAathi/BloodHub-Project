@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2024 at 07:58 PM
+-- Generation Time: Oct 15, 2024 at 10:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,8 @@ CREATE TABLE `blood_inventory` (
 --
 
 INSERT INTO `blood_inventory` (`id`, `blood_type`, `blood_quantity`, `collection_date`, `expiry_date`, `donor_id`, `donor_name`) VALUES
-(1, 'O+', 300, '2024-10-10', '2024-11-17', 1, 'Arshak');
+(1, 'O+', 300, '2024-10-10', '2024-11-17', 1, 'Arshak'),
+(2, 'A+', 250, '2024-10-25', '2024-11-20', 4, 'Ahamed');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,12 @@ CREATE TABLE `donation_schedule` (
 --
 
 INSERT INTO `donation_schedule` (`id`, `donor_id`, `scheduled_date`, `time_slot`, `location`) VALUES
-(1, 1, '2024-10-10', '11:20:00', 'Center 1');
+(1, 1, '2024-10-10', '11:20:00', 'Center 1'),
+(2, 4, '2024-10-25', '10:15:00', 'Center 1'),
+(3, 1, '2024-10-24', '16:23:00', 'Center 1'),
+(4, 4, '2024-10-17', '17:00:00', 'Center 1'),
+(5, 4, '2024-10-17', '17:00:00', 'Center 1'),
+(6, 5, '2024-10-16', '16:23:00', 'Center 1');
 
 -- --------------------------------------------------------
 
@@ -116,7 +122,9 @@ CREATE TABLE `donor_history` (
 --
 
 INSERT INTO `donor_history` (`id`, `donor_name`, `dob`, `gender`, `blood_group`, `contact_number`, `health_history`, `email`, `last_donation_date`, `donation_status`) VALUES
-(1, 'Arshak', '2003-12-25', 'male', 'O+', '0778211464', 'Fine', 'Arshak@gmail.com', '2024-10-10', 2);
+(1, 'Arshak', '2003-12-25', 'male', 'O+', '0778211464', 'Fine', 'Arshak@gmail.com', '2024-10-10', 1),
+(4, 'Ahamed', '1999-10-12', 'male', 'A+', '0775486211', 'Fine', 'ahamed@gmail.com', '2024-10-25', 1),
+(5, 'Mohamed Aathif', '2001-07-16', 'male', 'O+', '0769183535', 'Fine!', 'Mhdaathi124@gmail.com', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -141,7 +149,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `role_as`, `status`, `created_at`) VALUES
 (1, 'Aathief', 'Asrak', 'Mhdaathi124@gmail.com', '111', 0, 0, '2024-07-14 10:49:22'),
-(2, 'Arshak', 'Asrak', 'Arshak@gmail.com', '111', 1, 0, '2024-07-14 13:09:22');
+(2, 'Arshak', 'Asrak', 'Arshak@gmail.com', '111', 1, 0, '2024-07-14 13:09:22'),
+(3, 'Fathima', 'Fathi', 'fathi@gmail.com', '111', 0, 0, '2024-10-12 06:20:49');
 
 --
 -- Indexes for dumped tables
@@ -187,7 +196,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blood_inventory`
 --
 ALTER TABLE `blood_inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `blood_requests`
@@ -199,19 +208,19 @@ ALTER TABLE `blood_requests`
 -- AUTO_INCREMENT for table `donation_schedule`
 --
 ALTER TABLE `donation_schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `donor_history`
 --
 ALTER TABLE `donor_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
