@@ -173,7 +173,6 @@ include('includes/navbar.php');
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: center;
     }
-
     .about_card:hover {
         transform: translateY(-8px);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -375,6 +374,124 @@ include('includes/navbar.php');
         background-color: #0C120C;
     }
 
+    /* Driver Section Styles */
+    .driver-section {
+        background-color: #ecebf3;
+        padding: 30px 0;
+        /* Increased padding for a more spacious look */
+        text-align: center;
+    }
+
+    .driver-section h2 {
+        color: #0C120C;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .driver-section p {
+        color: #0C120C;
+        font-size: 18px;
+        margin-bottom: 30px;
+        /* Increased margin for better spacing */
+    }
+
+    .driver-image img {
+        width: 100%;
+        /* Make the image responsive */
+        height: auto;
+        /* Keep aspect ratio */
+        max-height: 445px;
+        /* Limit height */
+        object-fit: cover;
+        /* Ensure the image covers the container */
+        border-radius: 10px;
+        /* Match with the driver info */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        /* Optional: add shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .driver-image img:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .driver-info {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .driver-info:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .driver-info h3 {
+        font-weight: bold;
+        margin-top: 20px;
+        /* Reduced margin for tighter layout */
+    }
+
+    .driver-info ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        font-size: 16px;
+        line-height: 1.8;
+        /* Increased line height for readability */
+    }
+
+    .driver-info li {
+        margin-bottom: 15px;
+        /* Increased spacing between items */
+    }
+
+    .driver-info .form-group {
+        margin-bottom: 15px;
+
+    }
+
+    .driver-info input,
+    .driver-info textarea {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+        width: 100%;
+    }
+
+    .driver-info input:focus,
+    .driver-info textarea:focus {
+        border-color: #C20114;
+        outline: none;
+    }
+
+    .driver-info a {
+        background-color: #C20114;
+        color: #fff;
+        padding: 12px 20px;
+        /* Increased padding for better a size */
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .driver-info a:hover {
+        background-color: #a0153e;
+    }
+
+    /* Driver Queries End*/
+
     /* Media Queries */
     @media only screen and (min-width: 768px) and (max-width: 991px) {
         .carousel-caption {
@@ -395,6 +512,8 @@ include('includes/navbar.php');
             text-align: center;
         }
     }
+
+    /* Media Queries End*/
 </style>
 
 <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
@@ -594,6 +713,50 @@ include('includes/navbar.php');
     </div>
 </section>
 <!-- end donate section -->
+
+<!-- Driver Section starts -->
+<section class="driver-section section-padding" id="drivers">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header text-center">
+                    <h2>Meet Our Drivers</h2>
+                    <p>Our dedicated drivers ensure that blood is delivered safely and promptly to hospitals. They are trained professionals committed to making a difference in the lives of patients.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 align-items-stretch"> <!-- Ensure d-flex is present -->
+            <div class="col-md-6 p-1">
+                <div class="driver-info bg-light p-4">
+                    <h3>Why Choose Our Drivers?</h3>
+                    <ul>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle me-2" style="color: #28a745; font-size: 20px;"></i>
+                            <span>Experienced and trained in safe transportation.</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-box-open me-2" style="color: #007bff; font-size: 20px;"></i>
+                            <span>Equipped with proper storage to maintain blood quality.</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-clock me-2" style="color: #ffc107; font-size: 20px;"></i>
+                            <span>Committed to timely deliveries, ensuring no delays in urgent situations.</span>
+                        </li>
+                    </ul>
+                    <p>Join us in supporting our drivers as they play a crucial role in saving lives!</p>
+                    <a href="driver_register.php" class="btn btn-danger btn-sm">Register</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 p-1 text-center">
+                <div class="driver-image">
+                    <img src="assets/images/driver.jpg" class="img-fluid contact-image" alt="Driver delivering blood">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Driver Section ends -->
 
 <?php
 include('includes/footer.php');

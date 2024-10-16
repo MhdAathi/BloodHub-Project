@@ -42,7 +42,7 @@ include('includes/navbar.php');
 
                             if (mysqli_num_rows($query_run) > 0) {
                                 foreach ($query_run as $row) {
-                                    ?>
+                            ?>
                                     <tr>
                                         <td><?= $row['id']; ?></td>
                                         <td><?= $row['hospital_name']; ?></td>
@@ -51,37 +51,38 @@ include('includes/navbar.php');
                                         <td><?= $row['urgency_level']; ?></td>
                                         <td><?= $row['date_needed']; ?></td>
                                         <td><?= $row['additional_info']; ?></td>
-                                        <td><?= ucfirst($row['status']); ?></td>
+                                        <td>
+                                            <span class="badge 
+                        <?= $row['status'] == 'pending' ? 'bg-warning' : ($row['status'] == 'accepted' ? 'bg-success' : 'bg-danger'); ?>">
+                                                <?= ucfirst($row['status']); ?>
+                                            </span>
+                                        </td>
                                         <td>
                                             <?php if ($row['status'] == 'pending'): ?>
                                                 <form action="process_request.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="accept_btn"
-                                                        class="btn btn-success btn-sm">Accept</button>
+                                                    <button type="submit" name="accept_btn" class="btn btn-success btn-sm">Accept</button>
                                                 </form>
                                                 <form action="process_request.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="reject_btn"
-                                                        class="btn btn-danger btn-sm">Reject</button>
+                                                    <button type="submit" name="reject_btn" class="btn btn-danger btn-sm">Reject</button>
                                                 </form>
-                                            <?php else: ?>
-                                                <!-- If already accepted or rejected, no action buttons -->
-                                                <span
-                                                    class="badge <?= $row['status'] == 'accepted' ? 'bg-success' : 'bg-danger'; ?>">
-                                                    <?= ucfirst($row['status']); ?>
-                                                </span>
+                                            <?php elseif ($row['status'] == 'accepted'): ?>
+                                                <form action="dispatch_blood.php" method="POST" style="display:inline;">
+                                                    <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
+                                                    <button type="submit" name="dispatch_btn" class="btn btn-primary btn-sm">Dispatch</button>
+                                                </form>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
-                                    <?php
+                                <?php
                                 }
                             } else {
-
                                 ?>
                                 <tr>
-                                    <td colspan="9"> No Record Found!</td>
+                                    <td colspan="9">No Record Found!</td>
                                 </tr>
-                                <?php
+                            <?php
                             }
                             ?>
                         </tbody>

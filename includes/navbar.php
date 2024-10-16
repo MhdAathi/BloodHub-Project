@@ -163,6 +163,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="donate-blood.php">Donate Blood</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="driver_register.php">Register Driver</a>
+                </li>
                 <?php if (isset($_SESSION['auth_user'])) : ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
