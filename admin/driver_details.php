@@ -31,6 +31,7 @@ include('includes/header.php');
                                 <th>License Number</th>
                                 <th>Emergency Contact Number</th>
                                 <th>Work Days</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -44,13 +45,22 @@ include('includes/header.php');
                             ?>
                                     <tr>
                                         <td><?= $row['driver_id']; ?></td>
-                                        <td><?= $row['full_name']; ?></td>
+                                        <td><?= $row['driver_name']; ?></td>
                                         <td><?= $row['contact_number']; ?></td>
                                         <td><?= $row['email']; ?></td>
                                         <td><?= $row['license_number']; ?></td>
                                         <td><?= $row['emergency_contact_number']; ?></td>
                                         <td style="word-wrap: break-word; white-space: normal; max-width: 200px;">
                                             <?= $row['work_days']; ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            if ($row['status'] == 1) {
+                                                echo "Active";
+                                            } else {
+                                                echo "Inactive";
+                                            }
+                                            ?>
                                         </td>
                                         <td>
                                             <!-- Provide action buttons for managing blood inventory -->
@@ -63,7 +73,7 @@ include('includes/header.php');
                             } else {
                                 ?>
                                 <tr>
-                                    <td colspan="8"> No Record Found!</td>
+                                    <td colspan="9"> No Record Found!</td>
                                 </tr>
                             <?php
                             }

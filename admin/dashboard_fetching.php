@@ -70,3 +70,6 @@ $o_minus_query = "SELECT SUM(blood_quantity) AS total_units FROM blood_inventory
 $o_minus_result = mysqli_query($con, $o_minus_query);
 $o_minus_data = mysqli_fetch_assoc($o_minus_result);
 $o_minus_units = $o_minus_data['total_units'] ?? 0; // Default to 0 if no data
+
+
+

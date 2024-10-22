@@ -115,8 +115,9 @@ include('includes/navbar.php');
             <form action="submit_request.php" method="POST">
 
                 <!-- Hospital Name -->
-                <label">Hospital Name</label>
-                    <input type="text" id="hospital-name" name="hospital_name" required>
+                <label">Hospital Details</label>
+                    <input type="text" id="hospital-name" name="hospital_name" placeholder="Hospital Name" required>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
 
                     <!-- Blood Group -->
                     <label>Blood Group</label>

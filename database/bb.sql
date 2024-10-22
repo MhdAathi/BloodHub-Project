@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2024 at 10:56 AM
+-- Generation Time: Oct 22, 2024 at 06:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,8 +42,9 @@ CREATE TABLE `blood_inventory` (
 --
 
 INSERT INTO `blood_inventory` (`id`, `blood_type`, `blood_quantity`, `collection_date`, `expiry_date`, `donor_id`, `donor_name`) VALUES
-(1, 'O+', 300, '2024-10-10', '2024-11-17', 1, 'Arshak'),
-(2, 'A+', 250, '2024-10-25', '2024-11-20', 4, 'Ahamed');
+(1, 'O+', 0, '2024-10-10', '2024-11-17', 1, 'Arshak'),
+(2, 'A+', 0, '2024-10-25', '2024-11-20', 4, 'Ahamed'),
+(3, 'O+', 150, '2024-10-16', '2024-12-03', 5, 'Mohamed Aathif');
 
 -- --------------------------------------------------------
 
@@ -54,6 +55,7 @@ INSERT INTO `blood_inventory` (`id`, `blood_type`, `blood_quantity`, `collection
 CREATE TABLE `blood_requests` (
   `id` int(11) NOT NULL,
   `hospital_name` varchar(255) NOT NULL,
+  `email` varchar(191) NOT NULL,
   `blood_group` varchar(10) NOT NULL,
   `quantity` int(11) NOT NULL,
   `urgency_level` varchar(20) NOT NULL,
@@ -61,16 +63,19 @@ CREATE TABLE `blood_requests` (
   `additional_info` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` enum('pending','accepted','rejected') NOT NULL DEFAULT 'pending'
+  `status` enum('pending','accepted','rejected','dispatched') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `blood_requests`
 --
 
-INSERT INTO `blood_requests` (`id`, `hospital_name`, `blood_group`, `quantity`, `urgency_level`, `date_needed`, `additional_info`, `created_at`, `updated_at`, `status`) VALUES
-(3, 'osro', 'AB+', 150, 'routine', '2024-10-15', 'operation', '2024-10-05 07:38:46', '2024-10-06 11:44:09', 'rejected'),
-(4, 'Asiri', 'O+', 300, 'routine', '2024-02-10', 'For a Operation', '2024-10-08 16:03:18', '2024-10-08 16:11:47', 'accepted');
+INSERT INTO `blood_requests` (`id`, `hospital_name`, `email`, `blood_group`, `quantity`, `urgency_level`, `date_needed`, `additional_info`, `created_at`, `updated_at`, `status`) VALUES
+(3, 'osro', '', 'AB+', 150, 'routine', '2024-10-15', 'operation', '2024-10-05 07:38:46', '2024-10-06 11:44:09', 'rejected'),
+(4, 'Asiri', 'Mhdaathi124@gmail.com', 'O+', 300, 'routine', '2024-02-10', 'For a Operation', '2024-10-08 16:03:18', '2024-10-22 16:04:24', 'dispatched'),
+(5, 'Medi Sewana', 'Medisewana@gmail.com', 'O+', 150, 'routine', '2024-10-17', 'For Surjery', '2024-10-22 14:54:03', '2024-10-22 15:34:14', 'dispatched'),
+(6, 'Medi Sewana', 'Mhdaathi124@gmail.com', 'A+', 100, 'routine', '2024-10-24', 'Surjery', '2024-10-22 16:09:26', '2024-10-22 16:10:10', 'dispatched'),
+(7, 'Osro', 'Mhdaathi124@gmail.com', 'O+', 100, 'routine', '2024-10-24', '!', '2024-10-22 16:17:12', '2024-10-22 16:18:02', 'dispatched');
 
 -- --------------------------------------------------------
 
@@ -124,7 +129,7 @@ CREATE TABLE `donor_history` (
 INSERT INTO `donor_history` (`id`, `donor_name`, `dob`, `gender`, `blood_group`, `contact_number`, `health_history`, `email`, `last_donation_date`, `donation_status`) VALUES
 (1, 'Arshak', '2003-12-25', 'male', 'O+', '0778211464', 'Fine', 'Arshak@gmail.com', '2024-10-10', 1),
 (4, 'Ahamed', '1999-10-12', 'male', 'A+', '0775486211', 'Fine', 'ahamed@gmail.com', '2024-10-25', 1),
-(5, 'Mohamed Aathif', '2001-07-16', 'male', 'O+', '0769183535', 'Fine!', 'Mhdaathi124@gmail.com', NULL, 1);
+(5, 'Mohamed Aathif', '2001-07-16', 'male', 'O+', '0769183535', 'Fine!', 'Mhdaathi124@gmail.com', '2024-10-16', 2);
 
 -- --------------------------------------------------------
 
@@ -196,13 +201,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `blood_inventory`
 --
 ALTER TABLE `blood_inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `blood_requests`
 --
 ALTER TABLE `blood_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `donation_schedule`

@@ -8,7 +8,7 @@ if (!isset($_SESSION['auth'])) {
     header("Location: ../login.php");
     exit(0);
 } else {
-    if ($_SESSION['auth_role'] != "1") {
+    if ($_SESSION['auth_role'] != "0") {
         $_SESSION['message'] = "You are not Authorized as ADMIN!";
         header("Location: ../login.php");
         exit(0);

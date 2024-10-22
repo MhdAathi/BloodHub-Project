@@ -17,8 +17,10 @@ include('includes/navbar.php');
 
 
             <div class="card">
-                <div class="card-header">
-                    <h4>All Blood Requests</h4>
+            <div class="card-header">
+                    <h4>All Blood Requests
+                        <a href="../request-blood.php" class="btn btn-primary float-end">Request</a>
+                    </h4>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -26,6 +28,7 @@ include('includes/navbar.php');
                             <tr>
                                 <th>ID</th>
                                 <th>Hospital Name</th>
+                                <th>Email</th>
                                 <th>Blood Group</th>
                                 <th>Quantity</th>
                                 <th>Urgency Level</th>
@@ -46,6 +49,7 @@ include('includes/navbar.php');
                                     <tr>
                                         <td><?= $row['id']; ?></td>
                                         <td><?= $row['hospital_name']; ?></td>
+                                        <td><?= $row['email']; ?></td>
                                         <td><?= $row['blood_group']; ?></td>
                                         <td><?= $row['quantity']; ?></td>
                                         <td><?= $row['urgency_level']; ?></td>
@@ -53,7 +57,7 @@ include('includes/navbar.php');
                                         <td><?= $row['additional_info']; ?></td>
                                         <td>
                                             <span class="badge 
-                        <?= $row['status'] == 'pending' ? 'bg-warning' : ($row['status'] == 'accepted' ? 'bg-success' : 'bg-danger'); ?>">
+    <?= $row['status'] == 'pending' ? 'bg-warning text-dark' : ($row['status'] == 'accepted' ? 'bg-success text-white' : ($row['status'] == 'dispatched' ? 'bg-info text-white' : 'bg-danger text-white')) ?>">
                                                 <?= ucfirst($row['status']); ?>
                                             </span>
                                         </td>
@@ -72,7 +76,13 @@ include('includes/navbar.php');
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
                                                     <button type="submit" name="dispatch_btn" class="btn btn-primary btn-sm">Dispatch</button>
                                                 </form>
+                                            <?php elseif ($row['status'] == 'dispatched'): ?>
+                                                <form action="dispatch_report.php" method="POST" style="display:inline;">
+                                                    <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
+                                                    <button type="submit" name="dispatch_report_btn" class="btn btn-primary btn-sm">View Report</button>
+                                                </form>
                                             <?php endif; ?>
+
                                         </td>
                                     </tr>
                                 <?php

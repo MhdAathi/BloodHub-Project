@@ -28,12 +28,7 @@ if (isset($_POST['login_btn'])) {
         if ($_SESSION['auth_role'] == 1) // 1 = Admin
         {
             $_SESSION['message'] = "Welcome to dashboard";
-            header("Location: admin/index.php");
-            exit(0);
-        } elseif ($_SESSION['auth_role'] == 0) // 0 = User
-        {
-            $_SESSION['message'] = "Your are Logged in ";
-            header("Location: index.php");
+            header("Location: admin\index.php");
             exit(0);
         } else {
             $_SESSION['message'] = "Your are Logged in ";
