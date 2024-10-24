@@ -3,10 +3,9 @@ session_start();
 include('authentication.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('config/dbcon.php'); // Ensure your DB connection file is included
 
 // Check if 'request_id' is present in the POST data (from blood_requests page)
-if (isset($_POST['request_id'])) {
+if (isset($_POST['dispatch_btn'])) {
     $request_id = $_POST['request_id'];
 
     // Fetch request details from the database

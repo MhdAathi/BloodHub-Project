@@ -17,7 +17,7 @@ include('includes/navbar.php');
 
 
             <div class="card">
-            <div class="card-header">
+                <div class="card-header">
                     <h4>All Blood Requests
                         <a href="../request-blood.php" class="btn btn-primary float-end">Request</a>
                     </h4>
@@ -77,7 +77,7 @@ include('includes/navbar.php');
                                                     <button type="submit" name="dispatch_btn" class="btn btn-primary btn-sm">Dispatch</button>
                                                 </form>
                                             <?php elseif ($row['status'] == 'dispatched'): ?>
-                                                <form action="dispatch_report.php" method="POST" style="display:inline;">
+                                                <form action="blood_dispatch_report.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
                                                     <button type="submit" name="dispatch_report_btn" class="btn btn-primary btn-sm">View Report</button>
                                                 </form>
