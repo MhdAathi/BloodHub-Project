@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2024 at 07:35 PM
+-- Generation Time: Nov 11, 2024 at 05:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -81,7 +81,8 @@ INSERT INTO `blood_requests` (`id`, `hospital_name`, `email`, `blood_group`, `qu
 (7, 'Osro', 'Mhdaathi124@gmail.com', 'O+', 100, 'routine', '2024-10-24', '!', '2024-10-22 16:17:12', '2024-10-22 16:18:02', 'dispatched'),
 (8, 'Asiri', 'Mhdaathi124@gmail.com', 'O+', 49, 'routine', '2024-10-19', '.', '2024-10-24 14:18:18', '2024-10-24 15:08:34', 'dispatched'),
 (9, 'osro', 'Mhdaathi124@gmail.com', 'O+', 10, 'routine', '2024-10-16', 'asa', '2024-10-24 14:41:33', '2024-10-24 15:07:48', 'dispatched'),
-(10, 'Asiri', 'Mhdaathi124@gmail.com', 'A+', 100, 'routine', '2024-10-25', '.', '2024-10-24 15:24:35', '2024-10-24 15:24:51', 'dispatched');
+(10, 'Asiri', 'Mhdaathi124@gmail.com', 'A+', 100, 'routine', '2024-10-25', '.', '2024-10-24 15:24:35', '2024-10-24 15:24:51', 'dispatched'),
+(11, 'Medi Sewana', 'kavinda.perera@gmail.com', 'O+', 100, 'routine', '2024-11-15', 'Surgery', '2024-11-11 15:55:00', '2024-11-11 15:55:18', 'accepted');
 
 -- --------------------------------------------------------
 
@@ -150,7 +151,7 @@ CREATE TABLE `users` (
   `lname` varchar(191) NOT NULL,
   `email` varchar(191) NOT NULL,
   `password` varchar(191) NOT NULL,
-  `role_as` tinyint(4) NOT NULL DEFAULT 0,
+  `role_as` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=user,1=admin,2=superadmin',
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -162,7 +163,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `role_as`, `status`, `created_at`) VALUES
 (1, 'Aathief', 'Asrak', 'Mhdaathi124@gmail.com', '111', 0, 0, '2024-07-14 10:49:22'),
 (2, 'Arshak', 'Asrak', 'Arshak@gmail.com', '111', 1, 0, '2024-07-14 13:09:22'),
-(3, 'Fathima', 'Fathi', 'fathi@gmail.com', '111', 0, 0, '2024-10-12 06:20:49');
+(3, 'Fathima', 'Fathi', 'fathi@gmail.com', '111', 2, 0, '2024-10-12 06:20:49');
 
 --
 -- Indexes for dumped tables
@@ -214,7 +215,7 @@ ALTER TABLE `blood_inventory`
 -- AUTO_INCREMENT for table `blood_requests`
 --
 ALTER TABLE `blood_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `donation_schedule`
