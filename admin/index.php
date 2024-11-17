@@ -1,5 +1,4 @@
 <?php
-session_start();
 include('authentication.php');
 include('includes/header.php');
 include('dashboard_fetching.php');
@@ -124,6 +123,8 @@ include('dashboard_fetching.php');
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">BloodHub Stock Levels</li>
     </ol>
+
+    <?php include('../message.php'); ?>
 
     <div class="row mb-3">
         <!-- A+ Blood Type -->

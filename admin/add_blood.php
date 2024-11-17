@@ -1,10 +1,8 @@
 <?php
 ob_start();
-session_start();
 include('authentication.php'); // Authentication check
 include('includes/header.php');
 include('includes/navbar.php');
-include('config/dbcon.php'); // Include the database connection
 
 // Check if the ID is provided via GET request
 if (isset($_GET['id'])) {

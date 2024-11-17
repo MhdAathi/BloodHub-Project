@@ -1,8 +1,10 @@
 <?php
-session_start();
-include('config/dbcon.php'); // Ensure your DB connection file is included
+include('config/dbcon.php');
+
+// Load Composer's autoload file to enable the use of external libraries
 require '../vendor/autoload.php';
 
+// Import PHPMailer classes for sending emails
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 

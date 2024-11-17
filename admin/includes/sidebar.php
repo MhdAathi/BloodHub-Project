@@ -25,24 +25,17 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-
+                <div class="sb-sidenav">
+                    <a class="nav-link" href="index.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tint"></i></div>
+                        Dashboard
+                    </a>
+                </div>
                 <!-- Admin Section -->
                 <div class="sb-sidenav-menu-heading">Admin Management</div>
-                <a class="nav-link" href="index.php">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tint"></i></div>
-                    Blood Inventory
-                </a>
                 <a class="nav-link" href="viewregister.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
                     Manage Users
-                </a>
-                <a class="nav-link" href="blood_requests.php">
-                    <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                    Blood Requests
-                </a>
-                <a class="nav-link" href="donor_history.php">
-                    <div class="sb-nav-link-icon"><i class="fas fa-book-medical"></i></div>
-                    Donor History
                 </a>
                 <a class="nav-link" href="driver_details.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>

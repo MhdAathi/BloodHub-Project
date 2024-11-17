@@ -1,11 +1,10 @@
 <?php
-session_start();
 include('authentication.php');
 include('includes/header.php');
 ?>
 
 <div class="container-fluid px-4">
-    <h3 class="mt-4">Blood Inventory</h3>
+    <h3 class="mt-4">Dispatched Blood</h3>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Dashboard</li>
         <li class="breadcrumb-item active">Blood Sent to Hospitals</li>
@@ -14,6 +13,9 @@ include('includes/header.php');
     <div class="row">
         <div class="col-md-12">
             <div class="card">
+
+                <?php include('../message.php'); ?>
+
                 <div class="card-header">
                     <h4>Blood Units Sent to Hospitals
                         <a href="../driver_register.php" class="btn btn-primary float-end">Generate Report</a>

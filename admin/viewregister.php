@@ -1,7 +1,6 @@
 <?php 
-session_start();
 include ('authentication.php');
-// include ('middleware/superadminAuth.php');
+include ('middleware/admin_auth.php');
 include ('includes/header.php');
 ?>
 
@@ -14,20 +13,17 @@ include ('includes/header.php');
 
     <div class="row">
         <div class="col-md-12">
-            <!-- <?php include('message.php'); ?>  -->
+            <?php include('../message.php'); ?>
             <div class="card">
                 <div class="card-header">
-                    <h4>Registered User
-                        <a href="register-add.php" class="btn btn-primary float-end">Add Admin</a>
-                    </h4>   
+                    <h4>Registered User</h4>   
                 </div>
                 <div class="card-body">
                     <table class="table table table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Edit</th>
@@ -36,7 +32,7 @@ include ('includes/header.php');
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM users";
+                            $query = "SELECT * FROM user";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -46,18 +42,9 @@ include ('includes/header.php');
                                     ?>
                                     <tr>
                                         <td><?= $row['id']; ?></td>
-                                        <td><?= $row['fname']; ?></td>
-                                        <td><?= $row['lname']; ?></td>
+                                        <td><?= $row['name']; ?></td>
                                         <td><?= $row['email']; ?></td>
-                                        <td>
-                                            <?php
-                                            if($row['role_as'] == '1'){
-                                                echo 'Admin';
-                                            }elseif($row['role_as'] == '0'){
-                                                echo 'User';
-                                            }
-                                            ?>
-                                        </td>
+                                        <td><?= $row['role']; ?></td>
                                         <td><a href="register-edit.php?id=<?=$row['id']; ?>" class="btn btn-success">Edit</a></td>
                                         <td>
                                             <form action="code.php" method="POST">

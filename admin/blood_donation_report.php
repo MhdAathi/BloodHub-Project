@@ -1,11 +1,10 @@
 <?php
-session_start();
 include('authentication.php');
 include('includes/header.php');
 ?>
 
 <div class="container-fluid px-4">
-    <h3 class="mt-4">Blood Inventory</h3>
+    <h3 class="mt-4">Received Blood</h3>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Dashboard</li>
         <li class="breadcrumb-item active">Blood Received from Donors</li>
@@ -14,9 +13,12 @@ include('includes/header.php');
     <div class="row">
         <div class="col-md-12">
             <div class="card">
+
+                <?php include('../message.php'); ?>
+
                 <div class="card-header">
                     <h4>Blood Received from Donors
-                    <a href="../driver_register.php" class="btn btn-primary float-end">Generate Report</a>
+                        <a href="../driver_register.php" class="btn btn-primary float-end">Generate Report</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -45,10 +47,10 @@ include('includes/header.php');
                                         <td><?= $row['blood_quantity']; ?></td>
                                         <td><?= $row['collection_date']; ?></td>
                                     </tr>
-                            <?php
+                                <?php
                                 }
                             } else {
-                            ?>
+                                ?>
                                 <tr>
                                     <td colspan="4">No Record Found!</td>
                                 </tr>

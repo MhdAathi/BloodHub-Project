@@ -1,8 +1,7 @@
 <?php
-session_start();
+include ('authentication.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('config/dbcon.php'); // Ensure your DB connection file is included
 
 // Check if 'id' is present in the query string
 if (isset($_GET['id'])) {

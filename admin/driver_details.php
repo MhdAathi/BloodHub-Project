@@ -1,6 +1,6 @@
 <?php
-session_start();
 include('authentication.php');
+include ('middleware/admin_auth.php');
 include('includes/header.php');
 ?>
 
@@ -13,7 +13,7 @@ include('includes/header.php');
 
     <div class="row">
         <div class="col-md-12">
-            <!-- <?php include('message.php'); ?>  -->
+            <!-- <?php include('../message.php'); ?>  -->
             <div class="card">
                 <div class="card-header">
                     <h4>Registered Drivers

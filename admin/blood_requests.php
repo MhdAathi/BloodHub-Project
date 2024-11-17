@@ -1,5 +1,4 @@
 <?php
-session_start();
 include('authentication.php');
 include('includes/header.php');
 include('includes/navbar.php');
@@ -14,8 +13,7 @@ include('includes/navbar.php');
 
     <div class="row">
         <div class="col-md-12">
-
-
+            <?php include('../message.php'); ?>
             <div class="card">
                 <div class="card-header">
                     <h4>All Blood Requests

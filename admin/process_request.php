@@ -1,6 +1,5 @@
 <?php
-session_start();
-include('authentication.php'); // Make sure to include your DB connection
+include('config/dbcon.php');
 
 if (isset($_POST['accept_btn'])) {
     $request_id = $_POST['request_id'];

@@ -14,7 +14,8 @@ include('includes/navbar.php');
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
 
     body {
-        background: linear-gradient(135deg, #b92b27, #4a0c0c);
+        background-color: #ecebf3;
+        /* Updated background color */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -30,7 +31,6 @@ include('includes/navbar.php');
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(185, 43, 39, 0.8), rgba(74, 12, 12, 0.8));
         z-index: -1;
         opacity: 0.9;
     }
@@ -38,12 +38,12 @@ include('includes/navbar.php');
     .login-card {
         width: 100%;
         max-width: 400px;
-        /* Lighter form background */
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         overflow: hidden;
         padding: 20px;
-        background: rgba(255, 255, 255, 0.45);
+        background:  #ffffff;
+        /* Updated form color */
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.225);
@@ -59,18 +59,18 @@ include('includes/navbar.php');
         text-align: center;
         margin-top: 20px;
         margin-bottom: 20px;
-        color: #b92b27;
-        /* Matching header color with the gradient */
+        color: #ffffff;
+        /* White text for better contrast */
     }
 
     .card-header h4 {
+        color: #c23321;
         margin: 0;
         font-size: 1.6rem;
     }
 
     .span-color {
         color: #000;
-        /* Set span text color to black */
     }
 
     .card-body {
@@ -80,7 +80,8 @@ include('includes/navbar.php');
     .form-group label {
         font-weight: bold;
         font-size: 16px;
-        color: #333;
+        color: #000;
+        /* White label text for better contrast */
     }
 
     .form-group input {
@@ -91,7 +92,6 @@ include('includes/navbar.php');
         margin-top: 5px;
         width: 100%;
         background-color: #f0f0f0;
-        /* Softer input background */
         color: #333;
     }
 
@@ -108,8 +108,7 @@ include('includes/navbar.php');
     }
 
     .btn-primary {
-        background-color: #db4437;
-        /* Updated button color */
+        background-color: transparent;
         color: #000;
         margin-bottom: 10px;
         transition: background-color 0.3s ease;
@@ -117,29 +116,8 @@ include('includes/navbar.php');
     }
 
     .btn-primary:hover {
-        background-color: #c23321;
-        border-color: #fff;
-        /* Slightly darker on hover */
-    }
-
-    .btn-google {
-        background-color: transparent;
-        /* Transparent background */
-        color: #000;
-        /* Black text */
-        border: 2px solid #000;
-        /* Black border */
-        margin-bottom: 20px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .btn-google:hover {
         background-color: #000;
-        /* White background on hover */
-        color: #fff;
-        /* Black text on hover */
-        border: 2px solid #fff;
-        /* Black border remains */
+        border-color: #fff;
     }
 
     .form-group a {
@@ -185,13 +163,14 @@ include('includes/navbar.php');
     }
 </style>
 
+
 <div class="login-container">
     <div class="login-card">
         <div class="card-header text-center">
             <h4>Login to <a class="navbar-brand" href="#"><span class="span-color">Blood</span>Hub</a></h4>
         </div>
         <div class="card-body">
-            
+
             <?php include('message.php'); ?>
 
             <form action="logincode.php" method="POST">
@@ -200,7 +179,7 @@ include('includes/navbar.php');
                     <input type="email" name="email" required placeholder="Enter Email Address" class="form-control">
                 </div>
 
-                <div class="form-group mb-3">
+                <div class="form-group">
                     <label>Password</label>
                     <input type="password" name="password" required placeholder="Enter Password" class="form-control">
                 </div>
@@ -211,14 +190,6 @@ include('includes/navbar.php');
 
                 <div class="form-group mb-3">
                     <button type="submit" name="login_btn" class="btn btn-primary btn-block">Login Now</button>
-                </div>
-
-                <div class="form-group mb-3 text-center">
-                    <span>or</span>
-                </div>
-
-                <div class="form-group mb-3">
-                    <button type="button" class="btn btn-google btn-block">Login with Google</button>
                 </div>
 
                 <div class="form-group text-center">
