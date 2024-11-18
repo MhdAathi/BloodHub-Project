@@ -8,7 +8,7 @@ include('includes/navbar.php');
     /* Form Section Styles */
     .form-section {
         padding: 40px 0;
-        background: linear-gradient(135deg, #b92b27, #4a0c0c);
+        background: #ecebf3;
     }
 
     .form-wrapper {
@@ -138,7 +138,6 @@ include('includes/navbar.php');
                 <label for="license-number">Emergency Contact Number</label>
                 <input type="text" id="emergency-contact-number" name="emergency_contact_number" required>
 
-                <!-- Work Days (5 Days Must) -->
                 <!-- Work Days (5 Days Must) -->
                 <label for="work-days">Work Days (5 Days Must)</label>
                 <div class="work-days-checkboxes">

@@ -8,27 +8,19 @@ include('includes/navbar.php');
     /* Form Section Styles */
     .form-section {
         padding: 40px 0;
-        /* Padding for top and bottom */
-        background: linear-gradient(135deg, #b92b27, #4a0c0c);
-        /* Light background color for the section */
+        background: #ecebf3;
     }
 
     .form-wrapper {
         max-width: 600px;
-        /* Maximum width of the form */
         margin: 0 auto;
-        /* Centering the form wrapper horizontally */
         background-color: #fff;
-        /* Background color of the form wrapper */
         padding: 20px;
-        /* Padding inside the form wrapper */
         border-radius: 8px;
-        /* Rounded corners */
         background: rgba(255, 255, 255, 0.95);
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.475);
-        /* Soft shadow for depth */
         -webkit-box-shadow: 1px 0.5px 31.5px -2.5px #333333;
         -moz-box-shadow: 1px 0.5px 31.5px -2.5px #333333;
         box-shadow: 1px 0.5px 31.5px -2.5px #333333;
@@ -37,72 +29,108 @@ include('includes/navbar.php');
     .form-wrapper h2 {
         text-transform: uppercase;
         text-align: center;
-        /* Center align the heading */
         margin-bottom: 20px;
-        /* Spacing below the heading */
         color: #333;
-        /* Dark color for the heading */
     }
 
     .form-wrapper label {
         display: block;
-        /* Block display for labels */
         margin-bottom: 5px;
-        /* Space between label and input */
         color: #555;
-        /* Slightly lighter color for labels */
     }
 
     .form-wrapper input,
     .form-wrapper select,
     .form-wrapper textarea {
         width: 100%;
-        /* Full width inputs and textarea */
         padding: 10px;
-        /* Padding inside the inputs and textarea */
         margin-bottom: 15px;
-        /* Space below inputs and textarea */
         border: 1px solid #ddd;
-        /* Light border color */
         border-radius: 4px;
-        /* Rounded corners for inputs and textarea */
         font-size: 16px;
-        /* Font size for readability */
-    }
-
-    .form-wrapper textarea {
-        height: 100px;
-        /* Set a fixed height for the textarea */
-        resize: vertical;
-        /* Allow vertical resizing only */
     }
 
     .form-wrapper button {
         display: block;
-        /* Block display for the button */
         width: 100%;
-        /* Full width button */
         padding: 12px;
-        /* Padding inside the button */
         font-size: 16px;
-        /* Font size for the button text */
         border: none;
-        /* Remove default border */
         border-radius: 5px;
-        /* Rounded corners */
         color: #fff;
-        /* White text color */
-        background-color: #dc3545;
-        /* Red background color */
+        background-color: #28a745;
         cursor: pointer;
-        /* Pointer cursor on hover */
         transition: background-color 0.3s ease;
-        /* Smooth transition for background color */
     }
 
     .form-wrapper button:hover {
-        background-color: #c82333;
-        /* Darker red on hover */
+        background-color: #218838;
+    }
+
+    /* Style the checkbox container */
+    .ec-checkboxes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* Custom label style for checkboxes */
+    .ec-checkboxes label {
+        display: inline-flex;
+        margin-right: 15px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Custom checkbox style */
+    .ec-checkboxes input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        margin-right: 10px;
+        position: relative;
+        cursor: pointer;
+        background-color: #fff;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        appearance: none;
+        /* Remove default checkbox style */
+    }
+
+    /* When the checkbox is checked, change the background and border color */
+    .ec-checkboxes input[type="checkbox"]:checked {
+        background-color: #2ecc71;
+        /* Green background when checked */
+        border-color: #2ecc71;
+        /* Green border when checked */
+    }
+
+    /* Add checkmark inside the checkbox when checked */
+    .ec-checkboxes input[type="checkbox"]:checked::after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        /* White checkmark */
+        border-radius: 50%;
+    }
+
+    /* Focus state when clicking on the checkbox */
+    .ec-checkboxes input[type="checkbox"]:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.5);
+        /* Soft green glow */
+    }
+
+    /* Error Message Style */
+    .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
     }
 </style>
 
@@ -112,7 +140,7 @@ include('includes/navbar.php');
         <?php include('message.php') ?>
         <div class="form-wrapper">
             <h2>Donate Blood</h2>
-            <form action="submit_donation.php" method="POST">
+            <form action="submit_donation.php" method="POST" id="donation-form">
 
                 <!-- Name -->
                 <label for="donor-name">Full Name</label>
@@ -148,13 +176,35 @@ include('includes/navbar.php');
                 <input type="tel" id="contact-number" name="contact-number" placeholder="Phone Number" required>
                 <input type="email" id="email" name="email" placeholder="Email Address" required>
 
-                <!-- Health History -->
-                <label for="health-history">Health History</label>
-                <textarea id="health-history" name="health-history" placeholder="Provide any relevant health history (e.g., previous illnesses, medications)" required></textarea>
+                <!-- Eligibility Criteria Section -->
+                <label for="eligibility-criteria">Eligibility Criteria</label>
+                <div class="ec-checkboxes">
+                    <label>
+                        <input type="checkbox" name="healthy">
+                        I am healthy and feeling well on the day of donation.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="weight-requirement">
+                        I meet the weight requirement for safe donation (at least 50 kg).
+                    </label>
+                    <label>
+                        <input type="checkbox" name="donation-frequency">
+                        I have not donated blood in the last 56 days.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="pregnancy-breastfeeding">
+                        I am not pregnant or breastfeeding.
+                    </label>
+                </div>
 
                 <!-- Last Donation Date -->
                 <label for="last-donation">Last Donation Date</label>
                 <input type="date" id="last-donation" name="last-donation">
+
+                <!-- Error Message -->
+                <div id="error-message" class="error-message" style="display:none;">
+                    Please ensure all eligibility criteria are met.
+                </div>
 
                 <!-- Submit Button -->
                 <button type="submit" name="submit_detail" class="btn btn-danger">Submit Donation</button>
@@ -163,6 +213,29 @@ include('includes/navbar.php');
     </div>
 </section>
 
+<script>
+    // JavaScript form validation
+    document.getElementById('donation-form').addEventListener('submit', function(event) {
+        // Get all the checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="healthy"], input[type="checkbox"][name="weight-requirement"], input[type="checkbox"][name="donation-frequency"], input[type="checkbox"][name="pregnancy-breastfeeding"]');
+        let allChecked = true;
+
+        // Check if all checkboxes are checked
+        checkboxes.forEach(function(checkbox) {
+            if (!checkbox.checked) {
+                allChecked = false;
+            }
+        });
+
+        // If not all checkboxes are checked, show error message and prevent form submission
+        if (!allChecked) {
+            document.getElementById('error-message').style.display = 'block';
+            event.preventDefault(); // Prevent form submission
+        } else {
+            document.getElementById('error-message').style.display = 'none';
+        }
+    });
+</script>
 
 <?php
 include('includes/footer.php');

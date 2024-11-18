@@ -9,7 +9,7 @@ include('includes/navbar.php');
     .form-section {
         padding: 40px 0;
         /* Padding for top and bottom */
-        background: linear-gradient(135deg, #b92b27, #4a0c0c);
+        background: #ecebf3;
         /* Light background color for the section */
     }
 
@@ -116,6 +116,11 @@ include('includes/navbar.php');
                 <!-- Hospital Name -->
                 <label">Hospital Details</label>
                     <input type="text" id="hospital-name" name="hospital_name" placeholder="Hospital Name" required>
+                    <input type="text" id="hospital-address" name="hospital_address" placeholder="Hospital Address" required>
+                    
+                    <label>Contact</label>
+                    <input type="tel" id="contact-number" name="contact_number" placeholder="Contact Number" required>
+
                     <input type="email" id="email" name="email" placeholder="Email Address" required>
 
                     <!-- Blood Group -->
@@ -132,7 +137,7 @@ include('includes/navbar.php');
                     </select>
 
                     <!-- Quantity -->
-                    <label>Quantity (units)</label>
+                    <label>Quantity (Unit 1 = 450mL)</label>
                     <input type="number" id="quantity" name="quantity" min="1" required>
 
                     <!-- Urgency Level -->

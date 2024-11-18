@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2024 at 05:33 PM
+-- Generation Time: Nov 18, 2024 at 06:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -88,6 +88,8 @@ INSERT INTO `blood_inventory` (`id`, `blood_type`, `blood_quantity`, `dispatch_u
 CREATE TABLE `blood_requests` (
   `id` int(11) NOT NULL,
   `hospital_name` varchar(255) NOT NULL,
+  `hospital_address` varchar(255) NOT NULL,
+  `contact_number` varchar(20) NOT NULL,
   `email` varchar(191) NOT NULL,
   `blood_group` varchar(10) NOT NULL,
   `quantity` int(11) NOT NULL,
@@ -103,16 +105,16 @@ CREATE TABLE `blood_requests` (
 -- Dumping data for table `blood_requests`
 --
 
-INSERT INTO `blood_requests` (`id`, `hospital_name`, `email`, `blood_group`, `quantity`, `urgency_level`, `date_needed`, `additional_info`, `created_at`, `updated_at`, `status`) VALUES
-(3, 'osro', '', 'AB+', 150, 'routine', '2024-10-15', 'operation', '2024-10-05 07:38:46', '2024-10-06 11:44:09', 'rejected'),
-(4, 'Asiri', 'Mhdaathi124@gmail.com', 'O+', 300, 'routine', '2024-02-10', 'For a Operation', '2024-10-08 16:03:18', '2024-10-22 16:04:24', 'dispatched'),
-(5, 'Medi Sewana', 'Medisewana@gmail.com', 'O+', 150, 'routine', '2024-10-17', 'For Surjery', '2024-10-22 14:54:03', '2024-10-22 15:34:14', 'dispatched'),
-(6, 'Medi Sewana', 'Mhdaathi124@gmail.com', 'A+', 100, 'routine', '2024-10-24', 'Surjery', '2024-10-22 16:09:26', '2024-10-22 16:10:10', 'dispatched'),
-(7, 'Osro', 'Mhdaathi124@gmail.com', 'O+', 100, 'routine', '2024-10-24', '!', '2024-10-22 16:17:12', '2024-10-22 16:18:02', 'dispatched'),
-(8, 'Asiri', 'Mhdaathi124@gmail.com', 'O+', 49, 'routine', '2024-10-19', '.', '2024-10-24 14:18:18', '2024-10-24 15:08:34', 'dispatched'),
-(9, 'osro', 'Mhdaathi124@gmail.com', 'O+', 10, 'routine', '2024-10-16', 'asa', '2024-10-24 14:41:33', '2024-10-24 15:07:48', 'dispatched'),
-(10, 'Asiri', 'Mhdaathi124@gmail.com', 'A+', 100, 'routine', '2024-10-25', '.', '2024-10-24 15:24:35', '2024-10-24 15:24:51', 'dispatched'),
-(11, 'Medi Sewana', 'kavinda.perera@gmail.com', 'O+', 100, 'routine', '2024-11-15', 'Surgery', '2024-11-11 15:55:00', '2024-11-11 15:55:18', 'accepted');
+INSERT INTO `blood_requests` (`id`, `hospital_name`, `hospital_address`, `contact_number`, `email`, `blood_group`, `quantity`, `urgency_level`, `date_needed`, `additional_info`, `created_at`, `updated_at`, `status`) VALUES
+(3, 'osro', '', '', '', 'AB+', 150, 'routine', '2024-10-15', 'operation', '2024-10-05 07:38:46', '2024-10-06 11:44:09', 'rejected'),
+(4, 'Asiri', '', '', 'Mhdaathi124@gmail.com', 'O+', 300, 'routine', '2024-02-10', 'For a Operation', '2024-10-08 16:03:18', '2024-10-22 16:04:24', 'dispatched'),
+(5, 'Medi Sewana', '', '', 'Medisewana@gmail.com', 'O+', 150, 'routine', '2024-10-17', 'For Surjery', '2024-10-22 14:54:03', '2024-10-22 15:34:14', 'dispatched'),
+(6, 'Medi Sewana', '', '', 'Mhdaathi124@gmail.com', 'A+', 100, 'routine', '2024-10-24', 'Surjery', '2024-10-22 16:09:26', '2024-10-22 16:10:10', 'dispatched'),
+(7, 'Osro', '', '', 'Mhdaathi124@gmail.com', 'O+', 100, 'routine', '2024-10-24', '!', '2024-10-22 16:17:12', '2024-10-22 16:18:02', 'dispatched'),
+(8, 'Asiri', '', '', 'Mhdaathi124@gmail.com', 'O+', 49, 'routine', '2024-10-19', '.', '2024-10-24 14:18:18', '2024-10-24 15:08:34', 'dispatched'),
+(9, 'osro', '', '', 'Mhdaathi124@gmail.com', 'O+', 10, 'routine', '2024-10-16', 'asa', '2024-10-24 14:41:33', '2024-10-24 15:07:48', 'dispatched'),
+(10, 'Asiri', '', '', 'Mhdaathi124@gmail.com', 'A+', 100, 'routine', '2024-10-25', '.', '2024-10-24 15:24:35', '2024-10-24 15:24:51', 'dispatched'),
+(11, 'Medi Sewana', '', '', 'kavinda.perera@gmail.com', 'O+', 100, 'routine', '2024-11-15', 'Surgery', '2024-11-11 15:55:00', '2024-11-11 15:55:18', 'accepted');
 
 -- --------------------------------------------------------
 
@@ -153,7 +155,6 @@ CREATE TABLE `donor_history` (
   `gender` enum('male','female','other') NOT NULL,
   `blood_group` varchar(10) NOT NULL,
   `contact_number` varchar(20) NOT NULL,
-  `health_history` text DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `last_donation_date` date DEFAULT NULL,
   `donation_status` tinyint(1) DEFAULT 0,
@@ -164,10 +165,12 @@ CREATE TABLE `donor_history` (
 -- Dumping data for table `donor_history`
 --
 
-INSERT INTO `donor_history` (`id`, `donor_name`, `dob`, `gender`, `blood_group`, `contact_number`, `health_history`, `email`, `last_donation_date`, `donation_status`, `date_of_collection`) VALUES
-(1, 'Arshak', '2003-12-25', 'male', 'O+', '0778211464', 'Fine', 'Arshak@gmail.com', '2024-10-10', 2, '2024-10-24 13:52:46'),
-(4, 'Ahamed', '1999-10-12', 'male', 'A+', '0775486211', 'Fine', 'ahamed@gmail.com', '2024-10-25', 2, '2024-10-24 13:52:46'),
-(5, 'Mohamed Aathif', '2001-07-16', 'male', 'O+', '0769183535', 'Fine!', 'Mhdaathi124@gmail.com', '2024-10-16', 2, '2024-10-24 13:52:46');
+INSERT INTO `donor_history` (`id`, `donor_name`, `dob`, `gender`, `blood_group`, `contact_number`, `email`, `last_donation_date`, `donation_status`, `date_of_collection`) VALUES
+(1, 'Arshak', '2003-12-25', 'male', 'O+', '0778211464', 'Arshak@gmail.com', '2024-10-10', 2, '2024-10-24 13:52:46'),
+(4, 'Ahamed', '1999-10-12', 'male', 'A+', '0775486211', 'ahamed@gmail.com', '2024-10-25', 2, '2024-10-24 13:52:46'),
+(5, 'Mohamed Aathif', '2001-07-16', 'male', 'O+', '0769183535', 'Mhdaathi124@gmail.com', '2024-10-16', 2, '2024-10-24 13:52:46'),
+(6, 'Aathief Asrak', '2024-11-19', 'male', 'A+', '0769183535', 'kavinda.perera@gmail.com', NULL, 0, '2024-11-18 15:53:53'),
+(7, 'Aathief Asrak', '0000-00-00', 'male', 'A+', '0769183535', 'kavinda.perera@gmail.com', NULL, 0, '2024-11-18 16:09:14');
 
 -- --------------------------------------------------------
 
@@ -304,7 +307,7 @@ ALTER TABLE `donation_schedule`
 -- AUTO_INCREMENT for table `donor_history`
 --
 ALTER TABLE `donor_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `driver_details`

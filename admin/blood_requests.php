@@ -26,9 +26,11 @@ include('includes/navbar.php');
                             <tr>
                                 <th>ID</th>
                                 <th>Hospital Name</th>
+                                <th>Hospital Address</th>
+                                <th>Contact Number</th>
                                 <th>Email</th>
                                 <th>Blood Group</th>
-                                <th>Quantity</th>
+                                <th>Quantity (Units)</th>
                                 <th>Urgency Level</th>
                                 <th>Date Needed</th>
                                 <th>Additional Information</th>
@@ -47,9 +49,11 @@ include('includes/navbar.php');
                                     <tr>
                                         <td><?= $row['id']; ?></td>
                                         <td><?= $row['hospital_name']; ?></td>
+                                        <td><?= $row['hospital_address']; ?></td>
+                                        <td><?= $row['contact_number']; ?></td>
                                         <td><?= $row['email']; ?></td>
                                         <td><?= $row['blood_group']; ?></td>
-                                        <td><?= $row['quantity']; ?></td>
+                                        <td><?= $row['quantity']; ?> Units</td>
                                         <td><?= $row['urgency_level']; ?></td>
                                         <td><?= $row['date_needed']; ?></td>
                                         <td><?= $row['additional_info']; ?></td>

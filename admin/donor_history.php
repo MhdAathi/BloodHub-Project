@@ -30,7 +30,6 @@ include('includes/navbar.php');
                                 <th>Gender</th>
                                 <th>Blood Group</th>
                                 <th>Contact Information</th>
-                                <th>Health History</th>
                                 <th>Last Donation Date</th>
                                 <th>Donation Status</th>
                                 <th>Action</th>
@@ -45,16 +44,20 @@ include('includes/navbar.php');
                             if ($query_run) {
                                 if (mysqli_num_rows($query_run) > 0) {
                                     foreach ($query_run as $row) {
-                                        ?>
+                            ?>
                                         <tr>
                                             <td><?= htmlspecialchars($row['id']); ?></td>
                                             <td><?= htmlspecialchars($row['donor_name']); ?></td>
-                                            <td><?= htmlspecialchars($row['dob']); ?></td>
+                                            <?php
+                                            $dob = new DateTime($row['dob']);
+                                            $today = new DateTime();
+                                            $age = $today->diff($dob)->y; // Calculate age in years
+                                            ?>
+                                            <td><?= htmlspecialchars($row['dob']); ?> (<?= $age; ?> years)</td>
                                             <td><?= ucfirst(htmlspecialchars($row['gender'])); ?></td>
                                             <td><?= htmlspecialchars($row['blood_group']); ?></td>
                                             <td><?= htmlspecialchars($row['contact_number']); ?><br><?= htmlspecialchars($row['email']); ?>
                                             </td>
-                                            <td><?= htmlspecialchars($row['health_history']); ?></td>
                                             <td><?= htmlspecialchars($row['last_donation_date']); ?></td>
 
                                             <!-- Show human-readable donation status -->
@@ -94,7 +97,7 @@ include('includes/navbar.php');
                                             </td>
 
                                         </tr>
-                                        <?php
+                            <?php
                                     }
                                 } else {
                                     // If no records found

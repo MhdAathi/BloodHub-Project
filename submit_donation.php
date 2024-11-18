@@ -8,13 +8,12 @@ if (isset($_POST['submit_detail'])) {
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
     $blood_group = mysqli_real_escape_string($con, $_POST['blood-type']);
     $contact_number = mysqli_real_escape_string($con, $_POST['contact-number']);
-    $health_history = mysqli_real_escape_string($con, $_POST['health-history']);
     $last_donation_date = mysqli_real_escape_string($con, $_POST['last-donation']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
 
     // Insert the data into the donor_history table
-    $query = "INSERT INTO donor_history (donor_name, dob, gender, blood_group, contact_number, health_history, email, last_donation_date, donation_status) 
-    VALUES ('$donor_name', '$dob', '$gender', '$blood_group', '$contact_number', '$health_history', '$email', NULL, 0)";
+    $query = "INSERT INTO donor_history (donor_name, dob, gender, blood_group, contact_number, email, last_donation_date, donation_status) 
+    VALUES ('$donor_name', '$dob', '$gender', '$blood_group', '$contact_number', '$email', NULL, 0)";
 
 
     if (mysqli_query($con, $query)) {
