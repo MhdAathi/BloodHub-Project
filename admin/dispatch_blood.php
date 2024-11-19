@@ -53,6 +53,18 @@ if (isset($_POST['dispatch_btn'])) {
                         </div>
 
                         <div class="form-group mb-3">
+                            <label for="hospital_address">Hospital Address:</label>
+                            <input type="text" id="hospital_address" name="hospital_address" class="form-control"
+                                value="<?= htmlspecialchars($request['hospital_address']); ?>" readonly>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="contact_number">Contact Number:</label>
+                            <input type="text" id="contact_number" name="contact_number" class="form-control"
+                                value="<?= htmlspecialchars($request['contact_number']); ?>" readonly>
+                        </div>
+
+                        <div class="form-group mb-3">
                             <label for="blood_group">Blood Group:</label>
                             <input type="text" id="blood_group" name="blood_group" class="form-control"
                                 value="<?= htmlspecialchars($request['blood_group']); ?>" readonly>

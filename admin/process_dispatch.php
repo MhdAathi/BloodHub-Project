@@ -10,6 +10,8 @@ if (isset($_POST['dispatch_blood_btn'])) {
     // Step 1: Retrieve and sanitize form data
     $request_id = intval($_POST['request_id']); // Blood request ID
     $hospital_name = htmlspecialchars($_POST['hospital_name']); // Hospital name
+    $hospital_address = htmlspecialchars($_POST['hospital_address']);
+    $contact_number = htmlspecialchars($_POST['contact_number']); // Hospital name
     $blood_group = htmlspecialchars($_POST['blood_group']); // Blood group
     $quantity = intval($_POST['quantity']); // Quantity requested
     $dispatch_date = $_POST['dispatch_date']; // Dispatch date
@@ -84,9 +86,9 @@ if (isset($_POST['dispatch_blood_btn'])) {
     }
 
     // Step 6: Insert the dispatch details into the database
-    $query = "INSERT INTO blood_dispatches (request_id, driver_id, hospital_name, blood_group, dispatch_units, dispatch_date) VALUES (?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO blood_dispatches (request_id, driver_id, hospital_name, hospital_address, contact_number, blood_group, dispatch_units, dispatch_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $con->prepare($query);
-    $stmt->bind_param("iissis", $request_id, $driver_id, $hospital_name, $blood_group, $quantity, $dispatch_date);
+    $stmt->bind_param("iissssis", $request_id, $driver_id, $hospital_name, $hospital_address, $contact_number, $blood_group, $quantity, $dispatch_date);
 
     if ($stmt->execute()) {
         // Step 7: Update blood request status to dispatched
@@ -137,15 +139,30 @@ if (isset($_POST['dispatch_blood_btn'])) {
 
                 // Content
                 $mail->isHTML(true); // Set email format to HTML
-                $mail->Subject = 'Blood Dispatch Confirmation';
+                $mail->Subject = 'Blood Dispatch Confirmation - Order ID: ' . $request_id; // Subject line with Order ID
                 $mail->Body    = "
-                    <h3>Dear $hospital_name,</h3>
-                    <p>Your requested blood group <strong>$blood_group</strong> (Quantity: <strong>$quantity units</strong>) has been dispatched on <strong>$dispatch_date</strong>.</p>
-                    <p>Driver Details:<br>
-                    Driver ID: $driver_id</p>
-                    <p>Thank you for trusting BloodHub for your blood supply needs.</p>
-                    <p>Best regards,<br>BloodHub Dispatch Center</p>
-                ";
+                <h3>Dear $hospital_name,</h3>
+                <p>We are pleased to inform you that your recent request for blood has been successfully processed.</p>
+                
+                <h4>Dispatch Details:</h4>
+                <ul>
+                    <li><strong>Blood Group:</strong> $blood_group</li>
+                    <li><strong>Quantity Dispatched:</strong> $quantity units</li>
+                    <li><strong>Dispatch Date:</strong> $dispatch_date</li>
+                    <li><strong>Driver ID:</strong> $driver_id</li>
+                    <li><strong>Hospital Address:</strong> $hospital_address</li>
+                    <li><strong>Contact Number:</strong> $contact_number</li>
+                </ul>
+
+                <p>Thank you for choosing BloodHub for your blood supply needs. We are committed to providing you with the highest level of service. If you have any questions or require further assistance, please do not hesitate to contact us.</p>
+
+                <p>Best regards,<br>
+                <strong>BloodHub Dispatch Center</strong><br>
+                Email: support@bloodhub.com<br>
+                Phone: +1 (800) 123-4567<br>
+                Website: <a href='http://www.bloodhub.com'>www.bloodhub.com</a>
+                </p>
+            ";
 
                 // Send the email
                 $mail->send();

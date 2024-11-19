@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2024 at 06:00 PM
+-- Generation Time: Nov 19, 2024 at 08:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,6 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `blood_dispatches` (
   `id` int(11) NOT NULL,
   `hospital_name` varchar(255) DEFAULT NULL,
+  `hospital_address` varchar(255) DEFAULT NULL,
+  `contact_number` varchar(15) DEFAULT NULL,
   `blood_group` varchar(10) DEFAULT NULL,
   `dispatch_units` int(11) DEFAULT NULL,
   `request_id` int(11) NOT NULL,
@@ -41,15 +43,27 @@ CREATE TABLE `blood_dispatches` (
 -- Dumping data for table `blood_dispatches`
 --
 
-INSERT INTO `blood_dispatches` (`id`, `hospital_name`, `blood_group`, `dispatch_units`, `request_id`, `driver_id`, `dispatch_date`) VALUES
-(1, NULL, NULL, NULL, 5, 6, '2024-10-22 00:00:00'),
-(2, NULL, NULL, NULL, 5, 6, '2024-10-22 00:00:00'),
-(3, NULL, NULL, NULL, 4, 6, '2024-10-22 00:00:00'),
-(4, NULL, NULL, NULL, 6, 6, '2024-10-22 00:00:00'),
-(5, NULL, NULL, NULL, 7, 6, '2024-10-22 00:00:00'),
-(6, 'osro', 'O+', 10, 9, 6, '2024-10-24 00:00:00'),
-(7, 'Asiri', 'O+', 49, 8, 6, '2024-10-24 00:00:00'),
-(8, 'Asiri', 'A+', 100, 10, 6, '2024-10-24 00:00:00');
+INSERT INTO `blood_dispatches` (`id`, `hospital_name`, `hospital_address`, `contact_number`, `blood_group`, `dispatch_units`, `request_id`, `driver_id`, `dispatch_date`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, 5, 6, '2024-10-22 00:00:00'),
+(2, NULL, NULL, NULL, NULL, NULL, 5, 6, '2024-10-22 00:00:00'),
+(3, NULL, NULL, NULL, NULL, NULL, 4, 6, '2024-10-22 00:00:00'),
+(4, NULL, NULL, NULL, NULL, NULL, 6, 6, '2024-10-22 00:00:00'),
+(5, NULL, NULL, NULL, NULL, NULL, 7, 6, '2024-10-22 00:00:00'),
+(6, 'osro', NULL, NULL, 'O+', 10, 9, 6, '2024-10-24 00:00:00'),
+(7, 'Asiri', NULL, NULL, 'O+', 49, 8, 6, '2024-10-24 00:00:00'),
+(8, 'Asiri', NULL, NULL, 'A+', 100, 10, 6, '2024-10-24 00:00:00'),
+(9, 'Medi Sewana', 'kandyroad, 10 ,medisewana', '035123546', 'O+', NULL, 11, 6, '2024-11-19 17:47:35'),
+(10, 'Medi Sewana', 'kandyroad, 10 ,medisewana', '035123546', 'O+', NULL, 11, 6, '2024-11-19 17:48:48'),
+(11, 'Medi Sewana', 'kandyroad, 10 ,medisewana', '035123546', 'O+', 10, 11, 6, '2024-11-19 17:49:38'),
+(12, 'Asiri', '34/A,Kandy Colombo Main Road, Kandy', '0351234353', 'O+', 10, 12, 6, '2024-11-19 17:49:51'),
+(13, 'Medi Sewana', NULL, NULL, 'O+', 10, 11, 6, '2024-11-19 00:00:00'),
+(14, 'Asiri', '34/A,Kandy Colombo Main Road, Kandy', '0351234353', 'O+', 10, 12, 6, '2024-11-19 18:33:16'),
+(15, 'Asiri', 'asdsad', '0769183535', 'A+', 50, 13, 6, '2024-11-19 18:37:44'),
+(16, 'Mawanella GH', '34,danagama,mawanella', '0769183535', 'O+', 10, 14, 6, '2024-11-19 18:39:08'),
+(17, 'Osro', '34/A,danagam', '0769183535', 'O+', 10, 15, 6, '2024-11-19 18:43:59'),
+(18, 'Mawanella GH', NULL, NULL, 'O+', 20, 16, 6, '2024-11-19 00:00:00'),
+(19, 'Mawanella GH', NULL, NULL, 'O+', 3, 17, 6, '2024-11-19 00:00:00'),
+(20, 'Asiri', '34/A,danagama,mawanella', '0769183535', 'O+', 1, 18, 6, '2024-11-19 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -73,11 +87,12 @@ CREATE TABLE `blood_inventory` (
 --
 
 INSERT INTO `blood_inventory` (`id`, `blood_type`, `blood_quantity`, `dispatch_units`, `collection_date`, `expiry_date`, `donor_id`, `donor_name`) VALUES
-(1, 'O+', 0, 0, '2024-10-10', '2024-11-17', 1, 'Arshak'),
-(2, 'A+', 0, 0, '2024-10-25', '2024-11-20', 4, 'Ahamed'),
-(3, 'O+', 150, 150, '2024-10-16', '2024-12-03', 5, 'Mohamed Aathif'),
-(4, 'O+', 41, 41, '2024-10-10', '2024-12-05', 1, 'Arshak'),
-(5, 'A+', 200, 100, '2024-10-25', '2024-12-05', 4, 'Ahamed');
+(3, 'O+', 1, 0, '2024-10-16', '2024-12-03', 5, 'Mohamed Aathif'),
+(4, 'O+', 0, 1, '2024-10-10', '2024-12-05', 1, 'Arshak'),
+(5, 'A+', 1, 0, '2024-10-25', '2024-12-05', 4, 'Ahamed'),
+(7, 'O+', 0, 0, '2024-11-22', '2024-12-31', 8, 'Fathima Sarmilla'),
+(8, 'O+', 0, 0, '2024-11-20', '2024-12-31', 9, 'Ahamed Asrak'),
+(9, 'O+', 1, 1, '2024-11-28', '2024-12-31', 10, 'Mohamed Ijlan');
 
 -- --------------------------------------------------------
 
@@ -114,7 +129,14 @@ INSERT INTO `blood_requests` (`id`, `hospital_name`, `hospital_address`, `contac
 (8, 'Asiri', '', '', 'Mhdaathi124@gmail.com', 'O+', 49, 'routine', '2024-10-19', '.', '2024-10-24 14:18:18', '2024-10-24 15:08:34', 'dispatched'),
 (9, 'osro', '', '', 'Mhdaathi124@gmail.com', 'O+', 10, 'routine', '2024-10-16', 'asa', '2024-10-24 14:41:33', '2024-10-24 15:07:48', 'dispatched'),
 (10, 'Asiri', '', '', 'Mhdaathi124@gmail.com', 'A+', 100, 'routine', '2024-10-25', '.', '2024-10-24 15:24:35', '2024-10-24 15:24:51', 'dispatched'),
-(11, 'Medi Sewana', '', '', 'kavinda.perera@gmail.com', 'O+', 100, 'routine', '2024-11-15', 'Surgery', '2024-11-11 15:55:00', '2024-11-11 15:55:18', 'accepted');
+(11, 'Medi Sewana', 'kandyroad, 10 ,medisewana', '035123546', 'kavinda.perera@gmail.com', 'O+', 10, 'routine', '2024-11-15', 'Surgery', '2024-11-11 15:55:00', '2024-11-19 17:19:32', 'dispatched'),
+(12, 'Asiri', '34/A,Kandy Colombo Main Road, Kandy', '0351234353', 'Mhdaathi124@gmail.com', 'O+', 10, 'routine', '2024-11-21', 'for surjery', '2024-11-19 15:39:54', '2024-11-19 17:33:16', 'dispatched'),
+(13, 'Asiri', 'asdsad', '0769183535', 'Mhdaathi124@gmail.com', 'A+', 50, 'routine', '2024-11-21', 'a', '2024-11-19 16:24:50', '2024-11-19 17:37:44', 'dispatched'),
+(14, 'Mawanella GH', '34,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 10, 'routine', '2024-11-23', '.', '2024-11-19 17:38:50', '2024-11-19 17:39:08', 'dispatched'),
+(15, 'Osro', '34/A,danagam', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 10, 'routine', '2024-11-23', '.', '2024-11-19 17:43:45', '2024-11-19 17:43:59', 'dispatched'),
+(16, 'Mawanella GH', '34/A,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 20, 'routine', '2024-11-22', '.', '2024-11-19 17:47:51', '2024-11-19 17:48:02', 'dispatched'),
+(17, 'Mawanella GH', '34/A,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 3, 'routine', '2024-11-22', '.', '2024-11-19 17:50:11', '2024-11-19 17:50:20', 'dispatched'),
+(18, 'Asiri', '34/A,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 1, 'routine', '2024-11-21', '.', '2024-11-19 17:54:54', '2024-11-19 18:00:05', 'dispatched');
 
 -- --------------------------------------------------------
 
@@ -126,6 +148,7 @@ CREATE TABLE `donation_schedule` (
   `id` int(11) NOT NULL,
   `donor_id` int(11) NOT NULL,
   `scheduled_date` date NOT NULL,
+  `time_slot_category` varchar(50) DEFAULT NULL,
   `time_slot` time NOT NULL,
   `location` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -134,13 +157,17 @@ CREATE TABLE `donation_schedule` (
 -- Dumping data for table `donation_schedule`
 --
 
-INSERT INTO `donation_schedule` (`id`, `donor_id`, `scheduled_date`, `time_slot`, `location`) VALUES
-(1, 1, '2024-10-10', '11:20:00', 'Center 1'),
-(2, 4, '2024-10-25', '10:15:00', 'Center 1'),
-(3, 1, '2024-10-24', '16:23:00', 'Center 1'),
-(4, 4, '2024-10-17', '17:00:00', 'Center 1'),
-(5, 4, '2024-10-17', '17:00:00', 'Center 1'),
-(6, 5, '2024-10-16', '16:23:00', 'Center 1');
+INSERT INTO `donation_schedule` (`id`, `donor_id`, `scheduled_date`, `time_slot_category`, `time_slot`, `location`) VALUES
+(1, 1, '2024-10-10', NULL, '11:20:00', 'Center 1'),
+(2, 4, '2024-10-25', NULL, '10:15:00', 'Center 1'),
+(3, 1, '2024-10-24', NULL, '16:23:00', 'Center 1'),
+(4, 4, '2024-10-17', NULL, '17:00:00', 'Center 1'),
+(5, 4, '2024-10-17', NULL, '17:00:00', 'Center 1'),
+(6, 5, '2024-10-16', NULL, '16:23:00', 'Center 1'),
+(7, 6, '2024-11-20', NULL, '09:38:00', 'Center 1'),
+(8, 8, '2024-11-22', NULL, '10:15:00', 'Kandy Central Blood Donation Center'),
+(9, 9, '2024-11-20', NULL, '09:00:00', 'Peradeniya Blood Donation Hub'),
+(10, 10, '2024-11-28', '', '10:00:00', 'Peradeniya Blood Donation Hub');
 
 -- --------------------------------------------------------
 
@@ -169,8 +196,11 @@ INSERT INTO `donor_history` (`id`, `donor_name`, `dob`, `gender`, `blood_group`,
 (1, 'Arshak', '2003-12-25', 'male', 'O+', '0778211464', 'Arshak@gmail.com', '2024-10-10', 2, '2024-10-24 13:52:46'),
 (4, 'Ahamed', '1999-10-12', 'male', 'A+', '0775486211', 'ahamed@gmail.com', '2024-10-25', 2, '2024-10-24 13:52:46'),
 (5, 'Mohamed Aathif', '2001-07-16', 'male', 'O+', '0769183535', 'Mhdaathi124@gmail.com', '2024-10-16', 2, '2024-10-24 13:52:46'),
-(6, 'Aathief Asrak', '2024-11-19', 'male', 'A+', '0769183535', 'kavinda.perera@gmail.com', NULL, 0, '2024-11-18 15:53:53'),
-(7, 'Aathief Asrak', '0000-00-00', 'male', 'A+', '0769183535', 'kavinda.perera@gmail.com', NULL, 0, '2024-11-18 16:09:14');
+(6, 'Aathief Asrak', '2024-11-19', 'male', 'A+', '0769183535', 'kavinda.perera@gmail.com', '2024-11-20', 2, '2024-11-18 15:53:53'),
+(7, 'Aathief Asrak', '0000-00-00', 'male', 'A+', '0769183535', 'kavinda.perera@gmail.com', NULL, 0, '2024-11-18 16:09:14'),
+(8, 'Fathima Sarmilla', '1980-10-28', 'female', 'O+', '0763944490', 'Mhdaathi124@gmail.com', '2024-11-22', 2, '2024-11-19 14:41:21'),
+(9, 'Ahamed Asrak', '1969-12-15', 'male', 'O+', '0770543928', 'Mhdaathi124@gmail.com', '2024-11-20', 2, '2024-11-19 15:00:23'),
+(10, 'Mohamed Ijlan', '2002-11-02', 'male', 'O+', '0776778795', 'clownnobody9@gmail.com', '2024-11-28', 2, '2024-11-19 15:07:08');
 
 -- --------------------------------------------------------
 
@@ -283,31 +313,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `blood_dispatches`
 --
 ALTER TABLE `blood_dispatches`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `blood_inventory`
 --
 ALTER TABLE `blood_inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `blood_requests`
 --
 ALTER TABLE `blood_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `donation_schedule`
 --
 ALTER TABLE `donation_schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `donor_history`
 --
 ALTER TABLE `donor_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `driver_details`

@@ -12,13 +12,15 @@ if (isset($_POST['schedule_btn'])) {
     // Retrieve and sanitize form data
     $donor_id = intval($_POST['donor_id']);
     $scheduled_date = $_POST['scheduled_date'];
+    $time_slot_category = htmlspecialchars($_POST['time_slot_category']);
     $time_slot = $_POST['time_slot'];
     $location = htmlspecialchars($_POST['location']);
 
-    // Insert schedule details into donation_schedule table
-    $query = "INSERT INTO donation_schedule (donor_id, scheduled_date, time_slot, location) VALUES (?, ?, ?, ?)";
+    // Insert schedule details into the donation_schedule table
+    $query = "INSERT INTO donation_schedule (donor_id, scheduled_date, time_slot_category, time_slot,  location) VALUES (?, ?, ?, ?, ?)";
     $stmt = $con->prepare($query);
-    $stmt->bind_param("isss", $donor_id, $scheduled_date, $time_slot, $location);
+    $stmt->bind_param("issss", $donor_id, $scheduled_date, $time_slot_category, $time_slot,  $location);
+
 
     if ($stmt->execute()) {
         // Update donation status in donor_history table
@@ -45,29 +47,47 @@ if (isset($_POST['schedule_btn'])) {
                 try {
                     // Server settings
                     $mail->isSMTP();                                            // Send using SMTP
-                    $mail->SMTPAuth   = true;
-                                                       // Enable SMTP authentication
+                    $mail->SMTPAuth   = true;                                 // Enable SMTP authentication
                     $mail->Host       = 'smtp.gmail.com';                     // Set the SMTP server
                     $mail->Username   = 'aathief01@gmail.com';               // SMTP username
-                    $mail->Password   = 'fhkbwdzlzqipbhea';  
-                                          // SMTP password
-                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            // Enable SSL encryption
-                    $mail->Port       = 587;                                    // TCP port to connect to
+                    $mail->Password   = 'fhkbwdzlzqipbhea';                  // SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;      // Enable SSL encryption
+                    $mail->Port       = 587;                                  // TCP port to connect to
 
                     // Recipients
-                    $mail->setFrom('aathief01@gmail.com', 'Blood Donation Center');
-                    $mail->addAddress($donor_email, $donor_name);               // Add the donor's email
+                    $mail->setFrom('aathief01@gmail.com', 'BloodHub Donation Center');
+                    $mail->addAddress($donor_email, $donor_name);             // Add the donor's email
 
                     // Content
-                    $mail->isHTML(true);                                        // Set email format to HTML
+                    $mail->isHTML(true);                                      // Set email format to HTML
                     $mail->Subject = 'Donation Schedule Confirmation';
                     $mail->Body    = "
-                        <h3>Dear $donor_name,</h3>
-                        <p>Thank you for your willingness to donate blood.</p>
-                        <p>Your donation has been scheduled on <strong>$scheduled_date</strong> at <strong>$time_slot</strong> at <strong>$location</strong>.</p>
-                        <p>We look forward to your donation and greatly appreciate your contribution!</p>
-                        <p>Best regards,<br>Blood Donation Center</p>
-                    ";
+                    <h3>Dear $donor_name,</h3>
+                    <p>We are pleased to confirm your blood donation appointment.</p>
+                    
+                    <p><strong>Appointment Details:</strong></p>
+                    <ul>
+                        <li><strong>Date:</strong> $scheduled_date</li>
+                        <li><strong>Time Slot:</strong> $time_slot</li>
+                        <li><strong>Time Slot Category:</strong> $time_slot_category</li>
+                        <li><strong>Location:</strong> $location</li>
+                    </ul>
+                    
+                    <p>You can view the location on Google Maps by clicking the link below:</p>
+                    <p><a href='https://www.google.com/maps/search/?api=1&query=$map_location' target='_blank'>View Location on Google Maps</a></p>
+                    
+                    <p>Your generous contribution is vital in saving lives, and we greatly appreciate your commitment to helping those in need.</p>
+                    
+                    <p>If you have any questions or need to reschedule your appointment, please do not hesitate to contact us.</p>
+                    
+                    <p>Thank you once again for your willingness to donate blood. We look forward to seeing you!</p>
+                    
+                    <p>Best regards,<br>
+                    <strong>Blood Donation Center</strong><br>
+                    Phone: (012) 345-6789<br>
+                    Email: contact@blooddonationcenter.com<br>
+                    Website: www.blooddonationcenter.com
+                    </p> ";
 
                     // Send the email
                     $mail->send();
