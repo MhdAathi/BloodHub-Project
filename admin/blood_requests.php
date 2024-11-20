@@ -21,7 +21,44 @@ include('includes/navbar.php');
                     </h4>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <!-- Search Filter -->
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <input type="text" id="hospitalNameFilter" class="form-control" placeholder="Search by Hospital Name">
+                        </div>
+                        <div class="col-md-2">
+                            <select id="bloodTypeFilter" class="form-select">
+                                <option value="">Select Blood Type</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select id="urgencyLevelFilter" class="form-select">
+                                <option value="">Select Urgency Level</option>
+                                <option value="routine">Routine</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="emergency">Emergency</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <select id="statusFilter" class="form-select">
+                                <option value="">Select Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="dispatched">Dispatched</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered" id="bloodRequestTable">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -92,7 +129,7 @@ include('includes/navbar.php');
                             } else {
                                 ?>
                                 <tr>
-                                    <td colspan="9">No Record Found!</td>
+                                    <td colspan="12">No Record Found!</td>
                                 </tr>
                             <?php
                             }
@@ -104,6 +141,33 @@ include('includes/navbar.php');
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript for Filtering the Table
+    document.addEventListener('input', function () {
+        const hospitalFilter = document.getElementById('hospitalNameFilter').value.toLowerCase();
+        const bloodTypeFilter = document.getElementById('bloodTypeFilter').value;
+        const urgencyFilter = document.getElementById('urgencyLevelFilter').value;
+        const statusFilter = document.getElementById('statusFilter').value;
+        
+        const rows = document.querySelectorAll('#bloodRequestTable tbody tr');
+
+        rows.forEach(row => {
+            const hospitalName = row.children[1].textContent.toLowerCase();
+            const bloodType = row.children[5].textContent;
+            const urgency = row.children[7].textContent;
+            const status = row.children[10].textContent.toLowerCase();
+
+            row.style.display =
+                (hospitalName.includes(hospitalFilter) || !hospitalFilter) &&
+                (bloodType === bloodTypeFilter || !bloodTypeFilter) &&
+                (urgency === urgencyFilter || !urgencyFilter) &&
+                (status.includes(statusFilter) || !statusFilter)
+                    ? ''
+                    : 'none';
+        });
+    });
+</script>
 
 <?php
 include('includes/footer.php');

@@ -85,11 +85,11 @@ body {
   }
 
   .btn {
-    padding: 10px 18px; /* Increase padding for a larger button */
+    padding: 8px 16px; /* Increase padding for a larger button */
     border: none; /* Remove default border */
     border-radius: 30px; /* Fully rounded corners for a pill shape */
     font-size: 14px; /* Font size */
-    font-weight: 500; /* Semi-bold text */
+    font-weight: 400; /* Semi-bold text */
     color: #fff; /* White text color */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */

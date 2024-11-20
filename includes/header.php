@@ -17,4 +17,10 @@
     <!-- Custom Link Styles Files -->
     <link rel="stylesheet" href="assets\css\styles.css">
     <script defer src="assets\js\script.js"></script>
+
+    <!-- Include Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Include Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2024 at 08:57 PM
+-- Generation Time: Nov 20, 2024 at 06:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -87,8 +87,8 @@ CREATE TABLE `blood_inventory` (
 --
 
 INSERT INTO `blood_inventory` (`id`, `blood_type`, `blood_quantity`, `dispatch_units`, `collection_date`, `expiry_date`, `donor_id`, `donor_name`) VALUES
-(3, 'O+', 1, 0, '2024-10-16', '2024-12-03', 5, 'Mohamed Aathif'),
-(4, 'O+', 0, 1, '2024-10-10', '2024-12-05', 1, 'Arshak'),
+(3, 'O+', 1, 1, '2024-10-16', '2024-12-03', 5, 'Mohamed Aathif'),
+(4, 'O+', 0, 0, '2024-10-10', '2024-12-05', 1, 'Arshak'),
 (5, 'A+', 1, 0, '2024-10-25', '2024-12-05', 4, 'Ahamed'),
 (7, 'O+', 0, 0, '2024-11-22', '2024-12-31', 8, 'Fathima Sarmilla'),
 (8, 'O+', 0, 0, '2024-11-20', '2024-12-31', 9, 'Ahamed Asrak'),
@@ -136,7 +136,8 @@ INSERT INTO `blood_requests` (`id`, `hospital_name`, `hospital_address`, `contac
 (15, 'Osro', '34/A,danagam', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 10, 'routine', '2024-11-23', '.', '2024-11-19 17:43:45', '2024-11-19 17:43:59', 'dispatched'),
 (16, 'Mawanella GH', '34/A,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 20, 'routine', '2024-11-22', '.', '2024-11-19 17:47:51', '2024-11-19 17:48:02', 'dispatched'),
 (17, 'Mawanella GH', '34/A,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 3, 'routine', '2024-11-22', '.', '2024-11-19 17:50:11', '2024-11-19 17:50:20', 'dispatched'),
-(18, 'Asiri', '34/A,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 1, 'routine', '2024-11-21', '.', '2024-11-19 17:54:54', '2024-11-19 18:00:05', 'dispatched');
+(18, 'Asiri', '34/A,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 1, 'routine', '2024-11-21', '.', '2024-11-19 17:54:54', '2024-11-19 18:00:05', 'dispatched'),
+(19, 'Asiri', '34/A,danagama,mawanella', '0769183535', 'Mhdaathi124@gmail.com', 'O+', 1, 'routine', '2024-11-21', '.', '2024-11-20 15:56:09', '2024-11-20 15:56:15', 'accepted');
 
 -- --------------------------------------------------------
 
@@ -325,7 +326,7 @@ ALTER TABLE `blood_inventory`
 -- AUTO_INCREMENT for table `blood_requests`
 --
 ALTER TABLE `blood_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `donation_schedule`

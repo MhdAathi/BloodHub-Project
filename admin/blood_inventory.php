@@ -28,7 +28,27 @@ $blood_type = isset($_GET['blood_type']) ? $_GET['blood_type'] : null; // Use nu
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-striped">
+                    <!-- Search Filters -->
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <input type="text" id="searchDonorName" class="form-control me-2" placeholder="Search by Donor Name" onkeyup="filterTable()">
+                        </div>
+                        <div class="col-md-2">
+                            <select id="searchBloodType" class="form-control" onchange="filterTable()">
+                                <option value="">Select Blood Type</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered table-striped" id="bloodInventoryTable">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -100,6 +120,31 @@ $blood_type = isset($_GET['blood_type']) ? $_GET['blood_type'] : null; // Use nu
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript function for automatic search filter
+    function filterTable() {
+        const searchDonorName = document.getElementById('searchDonorName').value.toLowerCase();
+        const searchBloodType = document.getElementById('searchBloodType').value.toLowerCase();
+        const table = document.getElementById('bloodInventoryTable');
+        const rows = table.getElementsByTagName('tr');
+
+        // Loop through all table rows (skip the header row)
+        for (let i = 1; i < rows.length; i++) {
+            let row = rows[i];
+            const donorName = row.cells[1].textContent.toLowerCase();
+            const bloodType = row.cells[2].textContent.toLowerCase();
+
+            // Show the row if it matches the search criteria
+            if ((donorName.includes(searchDonorName) || searchDonorName === '') &&
+                (bloodType.includes(searchBloodType) || searchBloodType === '')) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
+</script>
 
 <?php
 include('includes/footer.php');

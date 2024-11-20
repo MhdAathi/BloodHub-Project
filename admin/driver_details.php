@@ -1,6 +1,6 @@
 <?php
 include('authentication.php');
-include ('middleware/admin_auth.php');
+include('middleware/admin_auth.php');
 include('includes/header.php');
 ?>
 
@@ -13,7 +13,7 @@ include('includes/header.php');
 
     <div class="row">
         <div class="col-md-12">
-            <!-- <?php include('../message.php'); ?>  -->
+
             <div class="card">
                 <div class="card-header">
                     <h4>Registered Drivers
@@ -21,7 +21,23 @@ include('includes/header.php');
                     </h4>
                 </div>
                 <div class="card-body">
-                    <table class="table table table-bordered">
+                    <div class="row mb-3">
+                        <!-- Driver Name Filter -->
+                        <div class="col-md-2">
+                            <input type="text" id="driverNameFilter" class="form-control" style="max-width: 300px;" placeholder="Search by Driver Name">
+                        </div>
+
+                        <!-- Status Filter -->
+                        <div class="col-md-2">
+                            <select id="statusFilter" class="form-control" style="max-width: 300px;">
+                                <option value="">Select Status</option>
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered" id="driverTable">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -44,28 +60,21 @@ include('includes/header.php');
                                 foreach ($query_run as $row) {
                             ?>
                                     <tr>
-                                        <td><?= $row['driver_id']; ?></td>
-                                        <td><?= $row['driver_name']; ?></td>
-                                        <td><?= $row['contact_number']; ?></td>
-                                        <td><?= $row['email']; ?></td>
-                                        <td><?= $row['license_number']; ?></td>
-                                        <td><?= $row['emergency_contact_number']; ?></td>
+                                        <td><?= htmlspecialchars($row['driver_id']); ?></td>
+                                        <td><?= htmlspecialchars($row['driver_name']); ?></td>
+                                        <td><?= htmlspecialchars($row['contact_number']); ?></td>
+                                        <td><?= htmlspecialchars($row['email']); ?></td>
+                                        <td><?= htmlspecialchars($row['license_number']); ?></td>
+                                        <td><?= htmlspecialchars($row['emergency_contact_number']); ?></td>
                                         <td style="word-wrap: break-word; white-space: normal; max-width: 200px;">
-                                            <?= $row['work_days']; ?>
+                                            <?= htmlspecialchars($row['work_days']); ?>
                                         </td>
                                         <td>
-                                            <?php
-                                            if ($row['status'] == 1) {
-                                                echo "Active";
-                                            } else {
-                                                echo "Inactive";
-                                            }
-                                            ?>
+                                            <?= $row['status'] == 1 ? "Active" : "Inactive"; ?>
                                         </td>
                                         <td>
-                                            <!-- Provide action buttons for managing blood inventory -->
-                                            <a href="edit_driver.php=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="delete_driver.php=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
+                                            <a href="edit_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="delete_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
                                         </td>
                                     </tr>
                                 <?php
@@ -73,7 +82,7 @@ include('includes/header.php');
                             } else {
                                 ?>
                                 <tr>
-                                    <td colspan="9"> No Record Found!</td>
+                                    <td colspan="9" class="text-center">No Record Found!</td>
                                 </tr>
                             <?php
                             }
@@ -85,6 +94,27 @@ include('includes/header.php');
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript for Filtering the Table
+    document.addEventListener('input', function() {
+        const driverNameFilter = document.getElementById('driverNameFilter').value.toLowerCase();
+        const statusFilter = document.getElementById('statusFilter').value;
+
+        const rows = document.querySelectorAll('#driverTable tbody tr');
+
+        rows.forEach(row => {
+            const driverName = row.children[1].textContent.toLowerCase();
+            const status = row.children[7].textContent.toLowerCase();
+
+            row.style.display =
+                (driverName.includes(driverNameFilter) || !driverNameFilter) &&
+                (status.includes(statusFilter) || !statusFilter) ?
+                '' :
+                'none';
+        });
+    });
+</script>
 
 <?php
 include('includes/footer.php');

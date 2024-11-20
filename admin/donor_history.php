@@ -34,6 +34,65 @@ if ($date_from && $date_to) {
 $query_run = mysqli_query($con, $query);
 ?>
 
+<style>
+    /* Container for the form */
+    .form-container {
+        background-color: #f8f9fa;
+        /* Light gray background */
+        border-radius: 8px;
+        /* Rounded corners */
+        padding: 20px;
+        /* Padding around the form */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow */
+        margin-bottom: 20px;
+        /* Space below the form */
+    }
+
+    /* Form header */
+    .form-header {
+        margin-bottom: 20px;
+        /* Space below the header */
+    }
+
+    /* Styling for input fields and select elements */
+    .form-control {
+        border: 1px solid #ced4da;
+        /* Light border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 8px;
+        /* Reduced padding for smaller size */
+        font-size: 14px;
+        /* Reduced font size */
+        transition: border-color 0.3s;
+        /* Smooth transition for border color */
+    }
+
+    /* Focus state for input fields */
+    .form-control:focus {
+        border-color: #007bff;
+        /* Change border color on focus */
+        outline: none;
+        /* Remove default outline */
+    }
+
+    /* Styling for labels */
+    label {
+        font-size: 14px;
+        /* Reduced font size for labels */
+        margin-right: 10px;
+        /* Space between label and input */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .form-control {
+            font-size: 12px;
+            /* Further reduce font size on smaller screens */
+        }
+    }
+</style>
 
 <div class="container-fluid px-4">
     <h3 class="mt-4">Donor History</h3>
@@ -48,133 +107,125 @@ $query_run = mysqli_query($con, $query);
             <?php include('../message.php'); ?>
 
             <!-- Filter Form -->
-            <form method="POST" class="mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <button type="submit" class="btn btn-primary">Search</button> <!-- Search Button -->
-                </div>
+            <form method="POST" class="card-header d-flex align-items-center">
 
-                <div class="row mt-3"> <!-- Add margin top for spacing -->
-                    <!-- Donor Name Filter -->
-                    <div class="col-md-3">
-                        <input type="text" name="donor_name" class="form-control" placeholder="Donor Name" value="<?= htmlspecialchars($donor_name); ?>">
-                    </div>
+                <input type="text" name="donor_name" class="form-control me-2" style="max-width: 200px;" placeholder="Donor Name" value="<?= htmlspecialchars($donor_name); ?>">
 
-                    <!-- Blood Group Filter -->
-                    <div class="col-md-3">
-                        <select name="blood_group" class="form-control">
-                            <option value="">Select Blood Group</option>
-                            <option value="A+" <?= ($blood_group == 'A+') ? 'selected' : ''; ?>>A+</option>
-                            <option value="B+" <?= ($blood_group == 'B+') ? 'selected' : ''; ?>>B+</option>
-                            <option value="O+" <?= ($blood_group == 'O+') ? 'selected' : ''; ?>>O+</option>
-                            <option value="AB+" <?= ($blood_group == 'AB+') ? 'selected' : ''; ?>>AB+</option>
-                            <option value="A-" <?= ($blood_group == 'A-') ? 'selected' : ''; ?>>A-</option>
-                            <option value="B-" <?= ($blood_group == 'B-') ? 'selected' : ''; ?>>B-</option>
-                            <option value="O-" <?= ($blood_group == 'O-') ? 'selected' : ''; ?>>O-</option>
-                            <option value="AB-" <?= ($blood_group == 'AB-') ? 'selected' : ''; ?>>AB-</option>
-                        </select>
-                    </div>
+                <select name="blood_group" class="form-control me-2" style="max-width: 200px;">
+                    <option value="">Select Blood Group</option>
+                    <option value="A+" <?= ($blood_group == 'A+') ? 'selected' : ''; ?>>A+</option>
+                    <option value="B+" <?= ($blood_group == 'B+') ? 'selected' : ''; ?>>B+</option>
+                    <option value="O+" <?= ($blood_group == 'O+') ? 'selected' : ''; ?>>O+</option>
+                    <option value="AB+" <?= ($blood_group == 'AB+') ? 'selected' : ''; ?>>AB+</option>
+                    <option value="A-" <?= ($blood_group == 'A-') ? 'selected' : ''; ?>>A-</option>
+                    <option value="B-" <?= ($blood_group == 'B-') ? 'selected' : ''; ?>>B-</option>
+                    <option value="O-" <?= ($blood_group == 'O-') ? 'selected' : ''; ?>>O-</option>
+                    <option value="AB-" <?= ($blood_group == 'AB-') ? 'selected' : ''; ?>>AB-</option>
 
-                    <!-- Date Range Filter -->
-                    <div class="col-md-3">
-                        <input type="date" name="date_from" class="form-control" placeholder="From Date" value="<?= htmlspecialchars($date_from); ?>">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="date" name="date_to" class="form-control" placeholder="To Date" value="<?= htmlspecialchars($date_to); ?>">
-                    </div>
-                </div>
+                    <input type="text" name="date_from" class="form-control datepicker me-2" style="max-width: 200px;" placeholder="From Date" value="<?= htmlspecialchars($date_from); ?>">
+                    <input type="text" name="date_to" class="form-control datepicker me-2" style="max-width: 200px;" placeholder="To Date" value="<?= htmlspecialchars($date_to); ?>">
+
+                    <button type="submit" class="btn btn-primary me-2">Search</button> <!-- Search Button -->
             </form>
-        </div>
-    </div>
 
-
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h4 class="ml-auto">All Donor Details</h4>
-
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Donor Name</th>
-                        <th>Date of Birth</th>
-                        <th>Gender</th>
-                        <th>Blood Group</th>
-                        <th>Contact Information</th>
-                        <th>Last Donation Date</th>
-                        <th>Donation Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if ($query_run) {
-                        if (mysqli_num_rows($query_run) > 0) {
-                            foreach ($query_run as $row) {
-                    ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($row['id']); ?></td>
-                                    <td><?= htmlspecialchars($row['donor_name']); ?></td>
-                                    <?php
-                                    $dob = new DateTime($row['dob']);
-                                    $today = new DateTime();
-                                    $age = $today->diff($dob)->y; // Calculate age in years
-                                    ?>
-                                    <td><?= htmlspecialchars($row['dob']); ?> (<?= $age; ?> years)</td>
-                                    <td><?= ucfirst(htmlspecialchars($row['gender'])); ?></td>
-                                    <td><?= htmlspecialchars($row['blood_group']); ?></td>
-                                    <td><?= htmlspecialchars($row['contact_number']); ?><br><?= htmlspecialchars($row['email']); ?>
-                                    </td>
-                                    <td><?= htmlspecialchars($row['last_donation_date']); ?></td>
-
-                                    <!-- Show human-readable donation status -->
-                                    <td>
-                                        <?php
-                                        if ($row['donation_status'] == 0) {
-                                            echo '<span class="badge bg-warning">Pending</span>';
-                                        } elseif ($row['donation_status'] == 1) {
-                                            echo '<span class="badge bg-info">Scheduled</span>';
-                                        } elseif ($row['donation_status'] == 2) {
-                                            echo '<span class="badge bg-success">Donated</span>';
-                                        } elseif ($row['donation_status'] == 3) {
-                                            echo '<span class="badge bg-danger">Canceled</span>';
-                                        }
-                                        ?>
-                                    </td>
-
-                                    <td>
-                                        <?php if ($row['donation_status'] == 0): ?>
-                                            <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
-                                                class="btn btn-primary btn-sm">Schedule</a>
-                                        <?php elseif ($row['donation_status'] == 1): ?>
-                                            <a href="add_blood.php?id=<?= htmlspecialchars($row['id']); ?>"
-                                                class="btn btn-success btn-sm">Add Blood</a>
-                                        <?php elseif ($row['donation_status'] == 2): ?>
-                                            <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
-                                                class="btn btn-primary btn-sm">Schedule</a>
-                                        <?php elseif ($row['donation_status'] == 3): ?>
-                                            <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
-                                                class="btn btn-primary btn-sm">Schedule</a>
-                                        <?php endif; ?>
-                                    </td>
-
-                                </tr>
-                    <?php
-                            }
-                        } else {
-                            echo '<tr><td colspan="10">No Record Found!</td></tr>';
-                        }
-                    } else {
-                        echo '<tr><td colspan="10">Error fetching records: ' . htmlspecialchars(mysqli_error($con)) . '</td></tr>';
+            <script>
+                // Initialize Flatpickr on the input fields
+                flatpickr(".datepicker", {
+                    dateFormat: "Y-m-d", // Set the date format
+                    allowInput: true, // Allow manual input
+                    onReady: function(selectedDates, dateStr, instance) {
+                        instance.input.setAttribute('placeholder', 'Select Date'); // Set placeholder
                     }
-                    ?>
-                </tbody>
-            </table>
+                });
+            </script>
+
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h4>All Donor Details</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Donor Name</th>
+                                <th>Date of Birth</th>
+                                <th>Gender</th>
+                                <th>Blood Group</th>
+                                <th>Contact Information</th>
+                                <th>Last Donation Date</th>
+                                <th>Donation Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($query_run) {
+                                if (mysqli_num_rows($query_run) > 0) {
+                                    foreach ($query_run as $row) {
+                            ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars($row['id']); ?></td>
+                                            <td><?= htmlspecialchars($row['donor_name']); ?></td>
+                                            <?php
+                                            $dob = new DateTime($row['dob']);
+                                            $today = new DateTime();
+                                            $age = $today->diff($dob)->y; // Calculate age in years
+                                            ?>
+                                            <td><?= htmlspecialchars($row['dob']); ?> (<?= $age; ?> years)</td>
+                                            <td><?= ucfirst(htmlspecialchars($row['gender'])); ?></td>
+                                            <td><?= htmlspecialchars($row['blood_group']); ?></td>
+                                            <td><?= htmlspecialchars($row['contact_number']); ?><br><?= htmlspecialchars($row['email']); ?>
+                                            </td>
+                                            <td><?= htmlspecialchars($row['last_donation_date']); ?></td>
+
+                                            <!-- Show human-readable donation status -->
+                                            <td>
+                                                <?php
+                                                if ($row['donation_status'] == 0) {
+                                                    echo '<span class="badge bg-warning">Pending</span>';
+                                                } elseif ($row['donation_status'] == 1) {
+                                                    echo '<span class="badge bg-info">Scheduled</span>';
+                                                } elseif ($row['donation_status'] == 2) {
+                                                    echo '<span class="badge bg-success">Donated</span>';
+                                                } elseif ($row['donation_status'] == 3) {
+                                                    echo '<span class="badge bg-danger">Canceled</span>';
+                                                }
+                                                ?>
+                                            </td>
+
+                                            <td>
+                                                <?php if ($row['donation_status'] == 0): ?>
+                                                    <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
+                                                        class="btn btn-primary btn-sm">Schedule</a>
+                                                <?php elseif ($row['donation_status'] == 1): ?>
+                                                    <a href="add_blood.php?id=<?= htmlspecialchars($row['id']); ?>"
+                                                        class="btn btn-success btn-sm">Add Blood</a>
+                                                <?php elseif ($row['donation_status'] == 2): ?>
+                                                    <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
+                                                        class="btn btn-primary btn-sm">Schedule</a>
+                                                <?php elseif ($row['donation_status'] == 3): ?>
+                                                    <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
+                                                        class="btn btn-primary btn-sm">Schedule</a>
+                                                <?php endif; ?>
+                                            </td>
+
+                                        </tr>
+                            <?php
+                                    }
+                                } else {
+                                    echo '<tr><td colspan="10">No Record Found!</td></tr>';
+                                }
+                            } else {
+                                echo '<tr><td colspan="10">Error fetching records: ' . htmlspecialchars(mysqli_error($con)) . '</td></tr>';
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 
 <?php
