@@ -185,7 +185,7 @@ $query_run = mysqli_query($con, $query);
                                                 if ($row['donation_status'] == 0) {
                                                     echo '<span class="badge bg-warning">Pending</span>';
                                                 } elseif ($row['donation_status'] == 1) {
-                                                    echo '<span class="badge bg-info">Scheduled</span>';
+                                                    echo '<span class="badge bg-secondary">Scheduled</span>';
                                                 } elseif ($row['donation_status'] == 2) {
                                                     echo '<span class="badge bg-success">Donated</span>';
                                                 } elseif ($row['donation_status'] == 3) {
@@ -195,19 +195,25 @@ $query_run = mysqli_query($con, $query);
                                             </td>
 
                                             <td>
-                                                <?php if ($row['donation_status'] == 0): ?>
-                                                    <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
-                                                        class="btn btn-primary btn-sm">Schedule</a>
-                                                <?php elseif ($row['donation_status'] == 1): ?>
-                                                    <a href="add_blood.php?id=<?= htmlspecialchars($row['id']); ?>"
-                                                        class="btn btn-success btn-sm">Add Blood</a>
-                                                <?php elseif ($row['donation_status'] == 2): ?>
-                                                    <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
-                                                        class="btn btn-primary btn-sm">Schedule</a>
-                                                <?php elseif ($row['donation_status'] == 3): ?>
-                                                    <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>"
-                                                        class="btn btn-primary btn-sm">Schedule</a>
-                                                <?php endif; ?>
+                                                <div class="action-buttons">
+                                                    <?php if ($row['donation_status'] == 0): ?>
+                                                        <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>" class="btn btn-primary btn-sm" title="Schedule Donation">
+                                                            <i class="fas fa-calendar-alt"></i>
+                                                        </a>
+                                                    <?php elseif ($row['donation_status'] == 1): ?>
+                                                        <a href="add_blood.php?id=<?= htmlspecialchars($row['id']); ?>" class="btn btn-success btn-sm" title="Add Blood">
+                                                            <i class="fas fa-plus"></i>
+                                                        </a>
+                                                    <?php elseif ($row['donation_status'] == 2): ?>
+                                                        <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>" class="btn btn-warning btn-sm" title="Reschedule Donation">
+                                                            <i class="fas fa-calendar-alt"></i>
+                                                        </a>
+                                                    <?php elseif ($row['donation_status'] == 3): ?>
+                                                        <a href="schedule.php?id=<?= htmlspecialchars($row['id']); ?>" class="btn btn-info btn-sm" title="View Donation Status">
+                                                            <i class="fas fa-calendar-alt"></i>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                </div>
                                             </td>
 
                                         </tr>

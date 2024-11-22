@@ -96,10 +96,10 @@ $blood_type = isset($_GET['blood_type']) ? $_GET['blood_type'] : null; // Use nu
                                                 ?>
                                             </td>
 
-                                            <td>
-                                                <!-- Provide action buttons for managing blood inventory -->
-                                                <a href="edit_blood.php?id=<?= htmlspecialchars($row['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="delete_blood.php?id=<?= htmlspecialchars($row['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
+                                            <td class="text-center"><a href="#" class="btn btn-success" title="Edit"><i class="fas fa-edit"></i></a>
+                                                <form action="code.php" method="POST">
+                                                    <button type="submit" name="user_delete" value="" class="btn btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                             <?php

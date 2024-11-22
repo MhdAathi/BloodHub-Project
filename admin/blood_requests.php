@@ -96,7 +96,7 @@ include('includes/navbar.php');
                                         <td><?= $row['additional_info']; ?></td>
                                         <td>
                                             <span class="badge 
-    <?= $row['status'] == 'pending' ? 'bg-warning text-dark' : ($row['status'] == 'accepted' ? 'bg-success text-white' : ($row['status'] == 'dispatched' ? 'bg-info text-white' : 'bg-danger text-white')) ?>">
+    <?= $row['status'] == 'pending' ? 'bg-warning text-dark' : ($row['status'] == 'accepted' ? 'bg-success text-white' : ($row['status'] == 'dispatched' ? 'bg-secondary text-white' : 'bg-danger text-white')) ?>">
                                                 <?= ucfirst($row['status']); ?>
                                             </span>
                                         </td>
@@ -104,24 +104,31 @@ include('includes/navbar.php');
                                             <?php if ($row['status'] == 'pending'): ?>
                                                 <form action="process_request.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="accept_btn" class="btn btn-success btn-sm">Accept</button>
+                                                    <button type="submit" name="accept_btn" class="btn btn-success" title="Accept Request">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
                                                 </form>
                                                 <form action="process_request.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="reject_btn" class="btn btn-danger btn-sm">Reject</button>
+                                                    <button type="submit" name="reject_btn" class="btn btn-danger" title="Reject Request">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
                                                 </form>
                                             <?php elseif ($row['status'] == 'accepted'): ?>
                                                 <form action="dispatch_blood.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="dispatch_btn" class="btn btn-primary btn-sm">Dispatch</button>
+                                                    <button type="submit" name="dispatch_btn" class="btn btn-warning" title="Dispatch Blood">
+                                                        <i class="fas fa-truck"></i>
+                                                    </button>
                                                 </form>
                                             <?php elseif ($row['status'] == 'dispatched'): ?>
                                                 <form action="blood_dispatch_report.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="dispatch_report_btn" class="btn btn-primary btn-sm">View Report</button>
+                                                    <button type="submit" name="dispatch_report_btn" class="btn btn-primary" title="View Dispatch Report">
+                                                        <i class="fas fa-file-alt"></i>
+                                                    </button>
                                                 </form>
                                             <?php endif; ?>
-
                                         </td>
                                     </tr>
                                 <?php
@@ -144,12 +151,12 @@ include('includes/navbar.php');
 
 <script>
     // JavaScript for Filtering the Table
-    document.addEventListener('input', function () {
+    document.addEventListener('input', function() {
         const hospitalFilter = document.getElementById('hospitalNameFilter').value.toLowerCase();
         const bloodTypeFilter = document.getElementById('bloodTypeFilter').value;
         const urgencyFilter = document.getElementById('urgencyLevelFilter').value;
         const statusFilter = document.getElementById('statusFilter').value;
-        
+
         const rows = document.querySelectorAll('#bloodRequestTable tbody tr');
 
         rows.forEach(row => {
@@ -162,9 +169,9 @@ include('includes/navbar.php');
                 (hospitalName.includes(hospitalFilter) || !hospitalFilter) &&
                 (bloodType === bloodTypeFilter || !bloodTypeFilter) &&
                 (urgency === urgencyFilter || !urgencyFilter) &&
-                (status.includes(statusFilter) || !statusFilter)
-                    ? ''
-                    : 'none';
+                (status.includes(statusFilter) || !statusFilter) ?
+                '' :
+                'none';
         });
     });
 </script>

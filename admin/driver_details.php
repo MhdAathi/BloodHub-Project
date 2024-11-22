@@ -72,9 +72,9 @@ include('includes/header.php');
                                         <td>
                                             <?= $row['status'] == 1 ? "Active" : "Inactive"; ?>
                                         </td>
-                                        <td>
-                                            <a href="edit_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="delete_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
+                                        <td class="text-center">
+                                            <a href="edit_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-success btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <a href="delete_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete this record?');"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 <?php

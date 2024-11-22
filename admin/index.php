@@ -28,11 +28,12 @@ include('dashboard_fetching.php');
         border-radius: 10px;
         background: linear-gradient(to bottom, #780606, #b92b27);
         color: #fff;
-        transition: transform 0.5s ease-in-out;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
 
     .card:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .card-total {
@@ -41,11 +42,12 @@ include('dashboard_fetching.php');
         border: 1px solid #ccc;
         background: linear-gradient(to bottom, #b92b27, #780606);
         color: #fff;
-        transition: transform 0.5s ease-in-out;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
 
     .card-total:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
 
@@ -259,7 +261,7 @@ include('dashboard_fetching.php');
         </div>
     </div>
 
-    <div class="row mb-3">
+    <div class="row mb-4 mt-4">
         <!-- Total Donors -->
         <div class="col-xl-3 col-md-6">
             <a href="donor_history.php" style="text-decoration: none; color: #fff;">

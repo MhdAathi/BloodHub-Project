@@ -8,11 +8,11 @@ use PHPMailer\PHPMailer\Exception;
 
 if (isset($_POST['dispatch_blood_btn'])) {
     // Step 1: Retrieve and sanitize form data
-    $request_id = intval($_POST['request_id']); // Blood request ID
-    $hospital_name = htmlspecialchars($_POST['hospital_name']); // Hospital name
+    $request_id = intval($_POST['request_id']);
+    $hospital_name = htmlspecialchars($_POST['hospital_name']);
     $hospital_address = htmlspecialchars($_POST['hospital_address']);
-    $contact_number = htmlspecialchars($_POST['contact_number']); // Hospital name
-    $blood_group = htmlspecialchars($_POST['blood_group']); // Blood group
+    $contact_number = htmlspecialchars($_POST['contact_number']);
+    $blood_group = htmlspecialchars($_POST['blood_group']);
     $quantity = intval($_POST['quantity']); // Quantity requested
     $dispatch_date = $_POST['dispatch_date']; // Dispatch date
     $driver_id = intval($_POST['driver']); // Driver ID
@@ -34,7 +34,8 @@ if (isset($_POST['dispatch_blood_btn'])) {
     }
 
     // Step 3: Fetch blood inventory sorted by collection date (FIFO)
-    $inventory_query = "SELECT id, blood_quantity, dispatch_units, collection_date FROM blood_inventory WHERE blood_type = ? ORDER BY collection_date ASC";
+    $inventory_query = "SELECT id, blood_quantity, dispatch_units, collection_date FROM blood_inventory 
+    WHERE blood_type = ? ORDER BY collection_date ASC";
     $inventory_stmt = $con->prepare($inventory_query);
     $inventory_stmt->bind_param("s", $blood_group);
     $inventory_stmt->execute();

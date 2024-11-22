@@ -515,7 +515,7 @@ include('includes/navbar.php');
     /* Media Queries End*/
 </style>
 
-<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
+<section class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
     <div class="carousel-indicators">
         <button aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators"
             type="button"></button> <button aria-label="Slide 2" data-bs-slide-to="1"
@@ -553,7 +553,7 @@ include('includes/navbar.php');
             class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next"
         data-bs-target="#carouselExampleIndicators" type="button"><span aria-hidden="true"
             class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button>
-</div>
+</section>
 
 <!-- About Section Starts -->
 <section class="about section-padding" id="about">

@@ -100,7 +100,7 @@ $scheduled_date = $row['scheduled_date'];
                 <div class="card-body">
                     <form action="add_blood.php?id=<?= htmlspecialchars($donor['id']); ?>" method="POST">
                         <div class="form-group mb-3">
-                            <label for="blood_quantity">Blood Quantity (in mL)</label>
+                            <label for="blood_quantity">Blood Quantity (in Unit)</label>
                             <input type="number" name="blood_quantity" class="form-control" required placeholder="Enter Blood Quantity">
                         </div>
 

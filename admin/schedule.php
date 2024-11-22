@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
             $lastDonationDate = new DateTime($donor['last_donation_date']);
             $nextEligibleDate = $lastDonationDate->modify('+56 days');
 
-            $_SESSION['message'] = "Donor is not eligible to donate blood yet. Next eligible date: " . $nextEligibleDate->format('Y-m-d') . ".";
+            $_SESSION['message'] = "Donor is not eligible to donate blood yet. Next eligible date: ". $nextEligibleDate->format('Y-m-d') . ".";
             header("Location: donor_history.php");
             exit(0);
         }
