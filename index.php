@@ -685,7 +685,7 @@ include('includes/navbar.php');
 </section>
 <!-- Contact ends -->
 
-<!-- donate section -->
+<!-- Donate section -->
 <section class="cta-section mb-3" id="cta">
     <div class="container">
         <h2>Make a Difference Today</h2>
@@ -711,7 +711,7 @@ include('includes/navbar.php');
         </div>
     </div>
 </section>
-<!-- end donate section -->
+<!-- Donate section end -->
 
 <!-- Driver Section starts -->
 <section class="driver-section section-padding" id="drivers">

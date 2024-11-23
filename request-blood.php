@@ -117,7 +117,7 @@ include('includes/navbar.php');
                 <label">Hospital Details</label>
                     <input type="text" id="hospital-name" name="hospital_name" placeholder="Hospital Name" required>
                     <input type="text" id="hospital-address" name="hospital_address" placeholder="Hospital Address" required>
-                    
+
                     <label>Contact</label>
                     <input type="tel" id="contact-number" name="contact_number" placeholder="Contact Number" required>
 
@@ -153,8 +153,15 @@ include('includes/navbar.php');
                     <input type="date" id="date-needed" name="date_needed" required>
 
                     <!-- Additional Information -->
-                    <label>Additional Information</label>
-                    <textarea id="additional-info" name="additional_info"></textarea>
+                    <label for="additional-info">Additional Information</label>
+                    <select id="additional-info" name="additional_info">
+                        <option value="">Select an option...</option>
+                        <option value="major_surgeries">Major Surgeries</option>
+                        <option value="trauma_cases">Trauma Cases</option>
+                        <option value="cancer_treatments">Cancer Treatments</option>
+                        <option value="obstetric_emergencies">Obstetric Emergencies</option>
+                        <option value="gastrointestinal_bleeding">Gastrointestinal Bleeding</option>
+                    </select>
 
                     <!-- Submit Button -->
                     <button type="submit" name="submit_btn" class="btn btn-success">Submit Request</button>

@@ -17,15 +17,22 @@ if (isset($_GET['id'])) {
     if ($result->num_rows > 0) {
         $donor = $result->fetch_assoc();
 
-        // Check if the donation status is 'Donated'
-        if ($donor['donation_status'] == 2) {
+        // Check if last donation date is empty
+        if (empty($donor['last_donation_date'])) {
+            // Allow scheduling since the donor has never donated before
+            // Optionally, you can set a message indicating that this is the first donation
+            $_SESSION['message'] = "Donor is eligible to schedule a donation as this is their first donation.";
+        } else {
             // Calculate the next eligible date
             $lastDonationDate = new DateTime($donor['last_donation_date']);
             $nextEligibleDate = $lastDonationDate->modify('+56 days');
 
-            $_SESSION['message'] = "Donor is not eligible to donate blood yet. Next eligible date: ". $nextEligibleDate->format('Y-m-d') . ".";
-            header("Location: donor_history.php");
-            exit(0);
+            // Check if the donor is eligible to donate blood
+            if (new DateTime() < $nextEligibleDate) {
+                $_SESSION['message'] = "Donor is not eligible to donate blood yet. Next eligible date: " . $nextEligibleDate->format('Y-m-d') . ".";
+                header("Location: donor_history.php");
+                exit(0);
+            }
         }
     } else {
         $_SESSION['message'] = "Donor not found.";
@@ -38,7 +45,6 @@ if (isset($_GET['id'])) {
     exit(0);
 }
 ?>
-
 
 
 <div class="container-fluid px-4">

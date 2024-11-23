@@ -12,7 +12,7 @@ $total_donors_data = mysqli_fetch_assoc($total_donors_result);
 $total_donors = $total_donors_data['total_donors'];
 
 // Fetch total number of approved requests
-$total_approved_query = "SELECT COUNT(*) AS total_approved FROM blood_requests WHERE status = 'dispatched'";
+$total_approved_query = "SELECT COUNT(*) AS total_approved FROM blood_requests WHERE status IN ('dispatched', 'accepted')";
 $total_approved_result = mysqli_query($con, $total_approved_query);
 $total_approved_data = mysqli_fetch_assoc($total_approved_result);
 $total_approved = $total_approved_data['total_approved'];

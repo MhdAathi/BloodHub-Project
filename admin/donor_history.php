@@ -180,7 +180,7 @@ $query_run = mysqli_query($con, $query);
                                             <td><?= htmlspecialchars($row['last_donation_date']); ?></td>
 
                                             <!-- Show human-readable donation status -->
-                                            <td>
+                                            <td class="text-center">
                                                 <?php
                                                 if ($row['donation_status'] == 0) {
                                                     echo '<span class="badge bg-warning">Pending</span>';

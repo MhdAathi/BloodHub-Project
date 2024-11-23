@@ -53,11 +53,20 @@ include('includes/header.php');
                         </thead>
                         <tbody>
                             <?php
+                            // Fetch drivers from database
                             $query = "SELECT * FROM driver_details";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
                                 foreach ($query_run as $row) {
+                                    // Check if the driver is inactive and if 30 minutes have passed since the last status change
+                                    if ($row['status'] == 0 && strtotime($row['status_change_timestamp']) < strtotime('-30 minutes')) {
+                                        // Revert the status to active if more than 30 minutes have passed
+                                        $update_query = "UPDATE driver_details SET status = 1 WHERE driver_id = ?";
+                                        $stmt = mysqli_prepare($con, $update_query);
+                                        mysqli_stmt_bind_param($stmt, "i", $row['driver_id']);
+                                        mysqli_stmt_execute($stmt);
+                                    }
                             ?>
                                     <tr>
                                         <td><?= htmlspecialchars($row['driver_id']); ?></td>
@@ -70,7 +79,11 @@ include('includes/header.php');
                                             <?= htmlspecialchars($row['work_days']); ?>
                                         </td>
                                         <td>
-                                            <?= $row['status'] == 1 ? "Active" : "Inactive"; ?>
+                                            <?php if ($row['status'] == 1): ?>
+                                                <span class="badge bg-success">Active</span>
+                                            <?php else: ?>
+                                                <span class="badge bg-danger">Inactive</span>
+                                            <?php endif; ?>
                                         </td>
                                         <td class="text-center">
                                             <a href="edit_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-success btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
