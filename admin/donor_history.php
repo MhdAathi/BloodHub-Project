@@ -141,7 +141,9 @@ $query_run = mysqli_query($con, $query);
 
             <div class="card mt-3">
                 <div class="card-header">
-                    <h4>All Donor Details</h4>
+                    <h4>All Donor Details
+                        <a href="../donate-blood.php" class="btn btn-primary float-end">Add Donor</a>
+                    </h4>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">

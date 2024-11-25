@@ -17,7 +17,7 @@ if (isset($_POST['submit_detail'])) {
 
 
     if (mysqli_query($con, $query)) {
-        $_SESSION['message'] = "Donation information has been submitted successfully!";
+        $_SESSION['message'] = "Donor information has been submitted successfully!";
         header('Location: donate-blood.php');
         exit(0);
     } else {

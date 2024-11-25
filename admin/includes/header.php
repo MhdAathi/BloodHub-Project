@@ -27,17 +27,126 @@
     <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
 
     <style>
-        /* Custom styles can be added here */
-        body {
-            background-color: #f8f9fa;
-            /* Light background for better readability */
+        /* Full-page Loader Styles */
+        .full-page-loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
+        }
+
+        .full-page-loader.active {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        /* Flipping Loader Animation */
+        .flipping {
+            height: 22.4px;
+            display: grid;
+            grid-template-columns: repeat(5, 22.4px);
+            grid-gap: 5.6px;
+        }
+
+        .flipping div {
+            animation: flipping-owie1ymd 0.75s calc(var(--delay) * 0.6s) infinite ease;
+            background-color: #c20114;
+        }
+
+        .flipping div:nth-of-type(1) {
+            --delay: 0.15;
+        }
+
+        .flipping div:nth-of-type(2) {
+            --delay: 0.3;
+        }
+
+        .flipping div:nth-of-type(3) {
+            --delay: 0.45;
+        }
+
+        .flipping div:nth-of-type(4) {
+            --delay: 0.6;
+        }
+
+        .flipping div:nth-of-type(5) {
+            --delay: 0.75;
+        }
+
+        @keyframes flipping-owie1ymd {
+            0% {
+                transform: perspective(44.8px) rotateY(-180deg);
+            }
+
+            50% {
+                transform: perspective(44.8px) rotateY(0deg);
+            }
         }
     </style>
+
 </head>
 
 <body class="sb-nav-fixed">
+
+    <!-- Full-page loader -->
+    <div class="full-page-loader" id="fullPageLoader">
+        <div class="flipping">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Include Navbar and Sidebar -->
     <?php include('includes/navbar-top.php'); ?>
     <div id="layoutSidenav">
         <?php include('includes/sidebar.php'); ?>
         <div id="layoutSidenav_content">
             <main>
+                <!-- Script to manage page loader visibility -->
+                <script>
+                    // Page loader logic
+                    window.addEventListener("load", function() {
+                        const pageLoader = document.getElementById("fullPageLoader");
+
+                        // Show loader when the page is loading
+                        pageLoader.classList.add("active");
+
+                        // Hide the loader after 1 second (you can adjust this value for a quicker or slower load)
+                        setTimeout(() => {
+                            pageLoader.classList.remove("active");
+                        }, 1500); // Adjust timeout as necessary
+                    });
+
+                    // Functions to handle loader during AJAX requests
+                    function showLoader() {
+                        const loader = document.getElementById("fullPageLoader");
+                        loader.classList.remove("hidden");
+                    }
+
+                    function hideLoader() {
+                        const loader = document.getElementById("fullPageLoader");
+                        loader.classList.add("hidden");
+                    }
+
+                    // Example AJAX request simulation
+                    function simulateAjaxRequest() {
+                        showLoader();
+                        setTimeout(() => {
+                            hideLoader();
+                            alert("AJAX content loaded!");
+                        }, 1500); // Simulate a 2-second delay for the AJAX request
+                    }
+                </script>

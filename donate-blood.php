@@ -189,7 +189,7 @@ include('includes/navbar.php');
                     </label>
                     <label>
                         <input type="checkbox" name="donation-frequency">
-                        I have not donated blood in the last 56 days.
+                        I am over 17 years old.
                     </label>
                     <label>
                         <input type="checkbox" name="pregnancy-breastfeeding">
@@ -198,12 +198,12 @@ include('includes/navbar.php');
                 </div>
 
                 <!-- Last Donation Date -->
-                <label for="last-donation">Last Donation Date</label>
+                <label for="last-donation">Last Donation Date (Optional)</label>
                 <input type="date" id="last-donation" name="last-donation">
 
                 <!-- Error Message -->
                 <div id="error-message" class="error-message" style="display:none;">
-                    Please ensure all eligibility criteria are met.
+                    You are Not Eligible to Donate Blood.
                 </div>
 
                 <!-- Submit Button -->

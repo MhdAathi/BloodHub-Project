@@ -119,7 +119,6 @@
                 <li>
                     <form action="../all_code.php" method="POST">
                         <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>
-                        
                     </form>
                 </li>
             </ul>

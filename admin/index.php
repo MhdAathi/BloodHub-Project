@@ -129,6 +129,22 @@ include('dashboard_fetching.php');
     <?php include('../message.php'); ?>
 
     <div class="row mb-3">
+        <!-- O+ Blood Type -->
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><i class="fas fa-tint"></i> O+ Blood</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                    </div>
+                    <p><?= $o_plus_units ?> units available</p>
+                </div>
+                <div class="card-footer">
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('O+') ?>">View Details <i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+
         <!-- A+ Blood Type -->
         <div class="col-xl-3 col-md-6 ">
             <div class="card">
@@ -146,29 +162,13 @@ include('dashboard_fetching.php');
             </div>
         </div>
 
-        <!-- A- Blood Type -->
-        <div class="col-xl-3 col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title"><i class="fas fa-tint"></i> A- Blood</h4>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                    </div>
-                    <p><?= $a_minus_units ?> units available</p>
-                </div>
-                <div class="card-footer">
-                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('A-') ?>">View Details <i class="fas fa-angle-right"></i></a>
-                </div>
-            </div>
-        </div>
-
         <!-- B+ Blood Type -->
         <div class="col-xl-3 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title"><i class="fas fa-tint"></i> B+ Blood</h4>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
                     </div>
                     <p><?= $b_plus_units ?> units available</p>
                 </div>
@@ -178,24 +178,6 @@ include('dashboard_fetching.php');
             </div>
         </div>
 
-        <!-- B- Blood Type -->
-        <div class="col-xl-3 col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title"><i class="fas fa-tint"></i> B- Blood</h4>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                    </div>
-                    <p><?= $b_minus_units ?> units available</p>
-                </div>
-                <div class="card-footer">
-                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('B-') ?>">View Details <i class="fas fa-angle-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mb-3">
         <!-- AB+ Blood Type -->
         <div class="col-xl-3 col-md-6">
             <div class="card">
@@ -211,7 +193,9 @@ include('dashboard_fetching.php');
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row mb-3">
         <!-- AB- Blood Type -->
         <div class="col-xl-3 col-md-6">
             <div class="card">
@@ -228,18 +212,34 @@ include('dashboard_fetching.php');
             </div>
         </div>
 
-        <!-- O+ Blood Type -->
+        <!-- B- Blood Type -->
         <div class="col-xl-3 col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title"><i class="fas fa-tint"></i> O+ Blood</h4>
+                    <h4 class="card-title"><i class="fas fa-tint"></i> B- Blood</h4>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
                     </div>
-                    <p><?= $o_plus_units ?> units available</p>
+                    <p><?= $b_minus_units ?> units available</p>
                 </div>
                 <div class="card-footer">
-                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('O+') ?>">View Details <i class="fas fa-angle-right"></i></a>
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('B-') ?>">View Details <i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- A- Blood Type -->
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><i class="fas fa-tint"></i> A- Blood</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                    </div>
+                    <p><?= $a_minus_units ?> units available</p>
+                </div>
+                <div class="card-footer">
+                    <a class="small stretched-link" href="blood_inventory.php?blood_type=<?= urlencode('A-') ?>">View Details <i class="fas fa-angle-right"></i></a>
                 </div>
             </div>
         </div>

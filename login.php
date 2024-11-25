@@ -37,7 +37,7 @@ include('includes/navbar.php');
 
     .login-card {
         width: 100%;
-        max-width: 400px;
+        max-width: 600px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         overflow: hidden;
