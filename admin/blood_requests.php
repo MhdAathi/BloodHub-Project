@@ -42,9 +42,9 @@ include('includes/navbar.php');
                         <div class="col-md-2">
                             <select id="urgencyLevelFilter" class="form-select">
                                 <option value="">Select Urgency Level</option>
-                                <option value="routine">Routine</option>
-                                <option value="urgent">Urgent</option>
-                                <option value="emergency">Emergency</option>
+                                <option value="Routine">Routine</option>
+                                <option value="Urgent">Urgent</option>
+                                <option value="Emergency">Emergency</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -94,7 +94,7 @@ include('includes/navbar.php');
                                         <td><?= $row['urgency_level']; ?></td>
                                         <td><?= $row['date_needed']; ?></td>
                                         <td><?= $row['additional_info']; ?></td>
-                                        <td>
+                                        <td class="text-center">
                                             <span class="badge 
     <?= $row['status'] == 'pending' ? 'bg-warning text-dark' : ($row['status'] == 'accepted' ? 'bg-success text-white' : ($row['status'] == 'dispatched' ? 'bg-secondary text-white' : 'bg-danger text-white')) ?>">
                                                 <?= ucfirst($row['status']); ?>
@@ -104,13 +104,13 @@ include('includes/navbar.php');
                                             <?php if ($row['status'] == 'pending'): ?>
                                                 <form action="process_request.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="accept_btn" class="btn btn-success" title="Accept Request">
+                                                    <button type="submit" name="accept_btn" class="btn btn-success btn-sm" title="Accept Request">
                                                         <i class="fas fa-check"></i>
                                                     </button>
                                                 </form>
                                                 <form action="process_request.php" method="POST" style="display:inline;">
                                                     <input type="hidden" name="request_id" value="<?= $row['id']; ?>">
-                                                    <button type="submit" name="reject_btn" class="btn btn-danger" title="Reject Request">
+                                                    <button type="submit" name="reject_btn" class="btn btn-danger btn-sm" title="Reject Request">
                                                         <i class="fas fa-times"></i>
                                                     </button>
                                                 </form>

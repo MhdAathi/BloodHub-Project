@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('config/dbcon.php');
 
 // Load Composer's autoload file to enable the use of external libraries
@@ -7,6 +8,7 @@ require '../vendor/autoload.php';
 // Import PHPMailer classes for sending emails
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 
 if (isset($_POST['schedule_btn'])) {
     // Retrieve and sanitize form data
@@ -20,7 +22,6 @@ if (isset($_POST['schedule_btn'])) {
     $query = "INSERT INTO donation_schedule (donor_id, scheduled_date, time_slot_category, time_slot,  location) VALUES (?, ?, ?, ?, ?)";
     $stmt = $con->prepare($query);
     $stmt->bind_param("issss", $donor_id, $scheduled_date, $time_slot_category, $time_slot,  $location);
-
 
     if ($stmt->execute()) {
         // Update donation status in donor_history table
@@ -69,12 +70,8 @@ if (isset($_POST['schedule_btn'])) {
                     <ul>
                         <li><strong>Date:</strong> $scheduled_date</li>
                         <li><strong>Time Slot:</strong> $time_slot</li>
-                        <li><strong>Time Slot Category:</strong> $time_slot_category</li>
                         <li><strong>Location:</strong> $location</li>
                     </ul>
-                    
-                    <p>You can view the location on Google Maps by clicking the link below:</p>
-                    <p><a href='https://www.google.com/maps/search/?api=1&query=$map_location' target='_blank'>View Location on Google Maps</a></p>
                     
                     <p>Your generous contribution is vital in saving lives, and we greatly appreciate your commitment to helping those in need.</p>
                     
@@ -87,7 +84,7 @@ if (isset($_POST['schedule_btn'])) {
                     Phone: (012) 345-6789<br>
                     Email: contact@blooddonationcenter.com<br>
                     Website: www.blooddonationcenter.com
-                    </p> ";
+                    </p>";
 
                     // Send the email
                     $mail->send();

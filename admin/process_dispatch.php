@@ -126,17 +126,79 @@ if (isset($_POST['dispatch_blood_btn'])) {
                 $mail->isHTML(true);
                 $mail->Subject = 'Blood Dispatch Confirmation - Order ID: ' . $request_id;
                 $mail->Body    = "
-                <h3>Dear $hospital_name,</h3>
-                <p>Your blood request has been processed successfully.</p>
-                <ul>
-                    <li><strong>Blood Group:</strong> $blood_group</li>
-                    <li><strong>Quantity Dispatched:</strong> $quantity units</li>
-                    <li><strong>Dispatch Date:</strong> $dispatch_date</li>
-                </ul>
-                <p>Thank you for trusting BloodHub.</p>";
+                <html>
+                    <head>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                line-height: 1.6;
+                                color: #333333;
+                            }
+                            .email-container {
+                                max-width: 600px;
+                                margin: 0 auto;
+                                padding: 20px;
+                                border: 1px solid #e0e0e0;
+                                border-radius: 5px;
+                                background-color: #f9f9f9;
+                            }
+                            .header {
+                                background-color: #c20114;
+                                color: #ffffff;
+                                padding: 15px;
+                                text-align: center;
+                                font-size: 1.5em;
+                                border-radius: 5px 5px 0 0;
+                            }
+                            .content {
+                                padding: 20px;
+                            }
+                            .content ul {
+                                list-style-type: none;
+                                padding: 0;
+                            }
+                            .content ul li {
+                                margin-bottom: 10px;
+                            }
+                            .footer {
+                                margin-top: 20px;
+                                font-size: 0.9em;
+                                color: #666666;
+                                text-align: center;
+                            }
+                            .footer a {
+                                color: #c20114;
+                                text-decoration: none;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class='email-container'>
+                            <div class='header'>
+                                Blood Dispatch Confirmation
+                            </div>
+                            <div class='content'>
+                                <p>Dear <strong>$hospital_name</strong>,</p>
+                                <p>We are pleased to inform you that your blood request has been processed successfully. Below are the details of the dispatch:</p>
+                                <ul>
+                                    <li><strong>Blood Group:</strong> $blood_group</li>
+                                    <li><strong>Quantity Dispatched:</strong> $quantity units</li>
+                                    <li><strong>Dispatch Date:</strong> $dispatch_date</li>
+                                    <li><strong>Order ID:</strong> $request_id</li>
+                                </ul>
+                                <p>If you have any questions or require further assistance, please do not hesitate to contact us.</p>
+                                <p>Thank you for choosing <strong>BloodHub</strong>.</p>
+                            </div>
+                            <div class='footer'>
+                                <p>BloodHub Dispatch Center<br>
+                                <a href='mailto:support@bloodhub.com'>support@bloodhub.com</a></p>
+                            </div>
+                        </div>
+                    </body>
+                </html>";
 
                 $mail->send();
-                $_SESSION['message'] = "Blood dispatched, and email sent to hospital.";
+                $_SESSION['message'] = "Blood dispatched, and email sent to the hospital.";
             } catch (Exception $e) {
                 $_SESSION['message'] = "Blood dispatched, but email failed to send: {$mail->ErrorInfo}";
             }

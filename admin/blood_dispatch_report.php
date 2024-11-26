@@ -51,12 +51,13 @@ include('includes/navbar.php');
                                 <th>Blood Type</th>
                                 <th>Dispatch (Units)</th>
                                 <th>Date of Dispatch</th>
+                                <th>Dispatch Driver ID</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             // Fetch blood dispatch details from the database  
-                            $query = "SELECT id, hospital_name, hospital_address, blood_group, dispatch_units, DATE_FORMAT(dispatch_date, '%Y-%m-%d') as dispatch_date FROM blood_dispatches";
+                            $query = "SELECT id, driver_id, hospital_name, hospital_address, blood_group, dispatch_units, DATE_FORMAT(dispatch_date, '%Y-%m-%d') as dispatch_date FROM blood_dispatches";
                             $query_run = mysqli_query($con, $query);
 
                             if ($query_run) {
@@ -70,6 +71,7 @@ include('includes/navbar.php');
                                             <td><?= htmlspecialchars($row['blood_group']); ?></td>
                                             <td><?= htmlspecialchars($row['dispatch_units']); ?></td>
                                             <td><?= htmlspecialchars($row['dispatch_date']); ?></td>
+                                            <td><?= htmlspecialchars($row['driver_id']); ?></td>
                                         </tr>
                             <?php
                                     }

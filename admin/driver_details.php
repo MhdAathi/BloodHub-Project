@@ -53,19 +53,25 @@ include('includes/header.php');
                         </thead>
                         <tbody>
                             <?php
-                            // Fetch drivers from database
+                            // Fetch drivers from the database
                             $query = "SELECT * FROM driver_details";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
                                 foreach ($query_run as $row) {
-                                    // Check if the driver is inactive and if 30 minutes have passed since the last status change
-                                    if ($row['status'] == 0 && strtotime($row['status_change_timestamp']) < strtotime('-30 minutes')) {
-                                        // Revert the status to active if more than 30 minutes have passed
-                                        $update_query = "UPDATE driver_details SET status = 1 WHERE driver_id = ?";
-                                        $stmt = mysqli_prepare($con, $update_query);
-                                        mysqli_stmt_bind_param($stmt, "i", $row['driver_id']);
-                                        mysqli_stmt_execute($stmt);
+                                    // Check if the driver's status is inactive
+                                    if ($row['status'] == 0) {
+                                        // Check if the status_change_timestamp exists and if it's less than 30 minutes old
+                                        if (isset($row['status_change_timestamp']) && strtotime($row['status_change_timestamp']) > strtotime('-30 minutes')) {
+                                            // Driver should remain inactive, do nothing
+                                            continue;
+                                        } else {
+                                            // If more than 30 minutes have passed, update the status to active
+                                            $update_query = "UPDATE driver_details SET status = 1 WHERE driver_id = ?";
+                                            $stmt = $con->prepare($update_query);
+                                            $stmt->bind_param("i", $row['driver_id']);
+                                            $stmt->execute();
+                                        }
                                     }
                             ?>
                                     <tr>
