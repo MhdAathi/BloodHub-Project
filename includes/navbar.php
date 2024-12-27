@@ -172,6 +172,11 @@
                             <?= $_SESSION['auth_user']['user_name'] ?>
                         </a>
                         <ul class="dropdown-menu">
+                            <?php if ($_SESSION['auth_role'] == 'Admin' || $_SESSION['auth_role'] == 'Staff') : ?>
+                                <li>
+                                    <a class="dropdown-item" href="admin/index.php">Dashboard</a>
+                                </li>
+                            <?php endif; ?>
                             <li>
                                 <form action="all_code.php" method="POST">
                                     <button type="submit" name="logout_btn" class="dropdown-item">Logout</button>

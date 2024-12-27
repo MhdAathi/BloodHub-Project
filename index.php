@@ -1,5 +1,6 @@
 <?php
-include('admin/authentication.php');
+session_start();
+include('admin/config/dbcon.php');
 include('includes/header.php');
 include('includes/navbar.php');
 ?>
@@ -8,6 +9,13 @@ include('includes/navbar.php');
     /* Main */
     /* Import Montserrat Font */
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
+    .navbar {
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1000;
+    }
 
     /* Global Styles */
     * {
@@ -172,6 +180,7 @@ include('includes/navbar.php');
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: center;
     }
+
     .about_card:hover {
         transform: translateY(-8px);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -515,6 +524,10 @@ include('includes/navbar.php');
     /* Media Queries End*/
 </style>
 
+<div class="mt-3 mb-3" style="justify-content: center; margin: 20px auto;">
+    <?php include('message.php'); ?>
+</div>
+
 <section class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
     <div class="carousel-indicators">
         <button aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators"
@@ -667,19 +680,20 @@ include('includes/navbar.php');
             </div>
             <!-- Form Column -->
             <div class="col-md-6 p-1">
-                <form action="#" class="bg-light p-4 contact-form">
+                <form action="submit_feedback.php" method="POST" class="bg-light p-4 contact-form">
                     <div class="form-group">
-                        <input type="text" class="form-control" required placeholder="Your Full Name">
+                        <input type="text" class="form-control" id="name" name="name" required placeholder="Your Full Name">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" required placeholder="Your Email Address">
+                        <input type="email" class="form-control" id="email" name="email" required placeholder="Your Email Address">
                     </div>
                     <div class="form-group">
-                        <textarea rows="3" required class="form-control" placeholder="Your Query Here"></textarea>
+                        <textarea rows="3" required class="form-control" id="query" name="query" placeholder="Your Query Here"></textarea>
                     </div>
-                    <button class="btn btn-warning btn-sm">Send</button>
+                    <button type="submit" class="btn btn-warning btn-sm" name="submit_feedback_btn">Send</button>
                 </form>
             </div>
+
         </div>
     </div>
 </section>
@@ -739,7 +753,7 @@ include('includes/navbar.php');
                         </li>
                         <li class="d-flex align-items-center mb-3">
                             <i class="fas fa-clock me-2" style="color: #ffc107; font-size: 20px;"></i>
-                            <span>Committed to timely deliveries, ensuring no delays in urgent situations.</span>
+                            <span>Committed to timely deliveries, ensuring no delays.</span>
                         </li>
                     </ul>
                     <p>Join us in supporting our drivers as they play a crucial role in saving lives!</p>

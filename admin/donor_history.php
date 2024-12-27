@@ -8,6 +8,7 @@ $donor_name = isset($_POST['donor_name']) ? $_POST['donor_name'] : '';
 $blood_group = isset($_POST['blood_group']) ? $_POST['blood_group'] : '';
 $date_from = isset($_POST['date_from']) ? $_POST['date_from'] : '';
 $date_to = isset($_POST['date_to']) ? $_POST['date_to'] : '';
+$donation_status = isset($_POST['donation_status']) ? $_POST['donation_status'] : '';
 
 // Build the SQL query based on filters
 $query = "SELECT * FROM donor_history WHERE 1=1";
@@ -31,6 +32,10 @@ if ($date_from && $date_to) {
     $query .= " AND last_donation_date <= '$date_to'";
 }
 
+// Filter by donation status
+if ($donation_status !== '') { // Ensure it captures the empty string correctly
+    $query .= " AND donation_status = '$donation_status'";
+}
 $query_run = mysqli_query($con, $query);
 ?>
 
@@ -124,6 +129,14 @@ $query_run = mysqli_query($con, $query);
 
                     <input type="text" name="date_from" class="form-control datepicker me-2" style="max-width: 200px;" placeholder="From Date" value="<?= htmlspecialchars($date_from); ?>">
                     <input type="text" name="date_to" class="form-control datepicker me-2" style="max-width: 200px;" placeholder="To Date" value="<?= htmlspecialchars($date_to); ?>">
+
+                    <select name="donation_status" class="form-control me-2" style="max-width: 200px;">
+                        <option value="">Select Donation Status</option>
+                        <option value="0" <?= ($donation_status == '0') ? 'selected' : ''; ?>>Pending</option>
+                        <option value="1" <?= ($donation_status == '1') ? 'selected' : ''; ?>>Scheduled</option>
+                        <option value="2" <?= ($donation_status == '2') ? 'selected' : ''; ?>>Donated</option>
+                        <option value="3" <?= ($donation_status == '3') ? 'selected' : ''; ?>>Canceled</option>
+                    </select>
 
                     <button type="submit" class="btn btn-primary me-2">Search</button> <!-- Search Button -->
             </form>

@@ -113,6 +113,10 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
                     Manage Users
                 </a>
+                <a class="nav-link" href="manage_feedback.php">
+                    <div class="sb-nav-link-icon"><i class="fas fa-users-cog"></i></div>
+                    Manage Feedbacks
+                </a>
                 <a class="nav-link" href="driver_details.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
                     Driver Management

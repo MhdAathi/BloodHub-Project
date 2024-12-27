@@ -40,7 +40,7 @@
             background-color: rgba(255, 255, 255, 0.8);
             z-index: 9999;
             visibility: hidden;
-            opacity: 0;
+            opacity: 100%;
             transition: visibility 0s linear 0.3s, opacity 0.3s ease-in-out;
         }
 

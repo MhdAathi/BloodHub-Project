@@ -92,8 +92,10 @@ include('includes/header.php');
                                             <?php endif; ?>
                                         </td>
                                         <td class="text-center">
-                                            <a href="edit_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-success btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
-                                            <a href="delete_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete this record?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="edit_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>"
+                                             class="btn btn-success btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <a href="delete_driver.php?driver_id=<?= htmlspecialchars($row['driver_id']); ?>"
+                                             class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('');"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 <?php
